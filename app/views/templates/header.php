@@ -5,5 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $data['title']; ?></title>
+  <link rel="stylesheet" href="<?= BASEURL; ?>/CSS/style.css">
+  <script src="<?= BASEURL; ?>/JS/script.js"></script>
 </head>
 <body>
+
+<nav>
+  <ul>
+    <li><a href="<?= BASEURL; ?>">Home</a></li>
+    <li><a href="<?= BASEURL; ?>/">Data Siswa</a></li>
+  </ul>
+</nav>

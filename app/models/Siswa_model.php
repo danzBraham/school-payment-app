@@ -10,4 +10,8 @@ class Siswa_model {
   public function getAllSiswa() {
     return $this->db->results("SELECT * FROM $this->table");
   }
+
+  public function searchSiswaByNis($nis) {
+    return $this->db->result("SELECT * FROM $this->table WHERE nis LIKE '%$nis%'");
+  }
 }

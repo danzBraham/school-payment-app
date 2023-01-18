@@ -9,9 +9,13 @@ class Database {
     return mysqli_connect($this->host, $this->user, $this->pass, $this->db);
   }
 
-  public function result($query) {
+  public function query($query) {
     $conn = $this->connection();
-    $result = mysqli_query($conn, $query);
+    return mysqli_query($conn, $query);
+  }
+
+  public function result($query) {
+    $result = $this->query($query);
 
     while($row = mysqli_fetch_assoc($result)) {
       return $row;
@@ -19,8 +23,7 @@ class Database {
   }
 
   public function results($query) {
-    $conn = $this->connection();
-    $result = mysqli_query($conn, $query);
+    $result = $this->query($query);
 
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {

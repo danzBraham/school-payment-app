@@ -6,7 +6,7 @@ class Database {
   private $pass = DB_PASS;
 
   public function connection() {
-    return mysqli_connect($this->host, $this->db, $this->user, $this->pass);
+    return mysqli_connect($this->host, $this->user, $this->pass, $this->db);
   }
 
   public function result($query) {

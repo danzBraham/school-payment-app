@@ -13,6 +13,6 @@
 <nav>
   <ul>
     <li><a href="<?= BASEURL; ?>">Home</a></li>
-    <li><a href="<?= BASEURL; ?>/">Data Siswa</a></li>
+    <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
   </ul>
 </nav>

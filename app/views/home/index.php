@@ -1,7 +1,7 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/home/siswa" method="POST" autocomplete="off">
-    <input list="nis" name="nis" id="nis" placeholder="NIS Siswa" class="search">
-    <datalist id="nis">
+    <input list="Allnis" name="nis" id="nis" placeholder="NIS Siswa" class="search">
+    <datalist id="Allnis">
     <?php foreach($data['siswa'] as $s) : ?>
       <option value="<?= $s['nis']; ?>">
     <?php endforeach; ?>

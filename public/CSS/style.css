@@ -32,13 +32,17 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-ul li {
-  display: inline-block;
-}
-
 .container {
   padding: 20px 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.container .search {
+  padding: 5px;
+}
+
+.container button {
+  padding: 5px 10px;
 }

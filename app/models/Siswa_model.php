@@ -11,7 +11,8 @@ class Siswa_model {
     return $this->db->results("SELECT * FROM $this->table");
   }
 
-  public function searchSiswaByNis($nis) {
-    return $this->db->result("SELECT * FROM $this->table WHERE nis LIKE '%$nis%'");
+  public function searchSiswaByNis() {
+    $nis = $_POST['nis'];
+    return $this->db->results("SELECT * FROM $this->table WHERE nis LIKE '%$nis%'");
   }
 }

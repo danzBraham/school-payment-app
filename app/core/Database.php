@@ -5,29 +5,39 @@ class Database {
   private $user = DB_USER;
   private $pass = DB_PASS;
 
-  public function connection() {
-    return mysqli_connect($this->host, $this->user, $this->pass, $this->db);
+  protected function connect() {
+    $conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
+    return $conn;
+
+    if ($conn->connect_errno) {
+      echo "Failed to connect to MySQL: $conn->connect_error";
+      exit();
+    }
   }
 
-  public function query($query) {
-    $conn = $this->connection();
-    return mysqli_query($conn, $query);
+  protected function query($query) {
+    return $this->connect()->query($query);
   }
 
   public function result($query) {
     $result = $this->query($query);
-
-    while($row = mysqli_fetch_assoc($result)) {
-      return $row;
+    $numRows = $result->num_rows;
+    if ($numRows > 0) {
+      while ($row = $result->fetch_assoc()) {
+        return $row;
+      }
     }
   }
 
   public function results($query) {
     $result = $this->query($query);
+    $numRows = $result->num_rows;
 
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-      $rows[] = $row;
+    if ($numRows > 0) {
+      $rows = [];
+      while ($row = $result->fetch_assoc()) {
+        $rows[] = $row;
+      }
     }
 
     return $rows;

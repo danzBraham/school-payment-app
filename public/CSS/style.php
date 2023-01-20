@@ -1,3 +1,4 @@
+<?php header("Content-Type: text/css"); ?>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
@@ -74,5 +75,11 @@ tbody {
 }
 
 .info {
+  background-color: #fff3cd;
+  width: fit-content;
   text-align: center;
+  margin: auto;
+  padding: 10px 25px;
+  border-radius: 10px;
+  color: #232323;
 }

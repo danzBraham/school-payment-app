@@ -12,7 +12,7 @@
   <hr>
 
   <?php if (!isset($data['siswaByNis'])) : ?>
-    <h1>Halo Bang</h1>
+    <h1 class="info">Mohon Cari Siswa Berdasarkan NIS</h1>
   <?php else : ?>
     <ul>
       <li><?= $data['siswaByNis']['nis']; ?></li>

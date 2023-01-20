@@ -22,6 +22,7 @@ class Database {
   public function result($query) {
     $result = $this->query($query);
     $numRows = $result->num_rows;
+
     if ($numRows > 0) {
       while ($row = $result->fetch_assoc()) {
         return $row;
@@ -34,7 +35,6 @@ class Database {
     $numRows = $result->num_rows;
 
     if ($numRows > 0) {
-      $rows = [];
       while ($row = $result->fetch_assoc()) {
         $rows[] = $row;
       }

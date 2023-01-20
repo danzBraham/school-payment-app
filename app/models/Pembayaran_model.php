@@ -8,11 +8,11 @@ class Pembayaran_model {
   }
 
   public function getAllSiswa() {
-    return $this->db->results("SELECT * FROM $this->table");
+    return $this->db->results("SELECT * FROM $this->table INNER JOIN tb_kelas USING(id_kelas)");
   }
 
   public function searchSiswaByNis() {
     $nis = $_POST['nis'];
-    return $this->db->results("SELECT * FROM $this->table WHERE nis LIKE '%$nis%'");
+    return $this->db->result("SELECT * FROM $this->table INNER JOIN tb_kelas USING(id_kelas) WHERE nis LIKE '%$nis%'");
   }
 }

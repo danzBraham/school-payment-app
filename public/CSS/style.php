@@ -47,8 +47,8 @@ nav ul li a:hover {
   gap: 20px;
 }
 
-.container .search {
-  padding: 5px;
+.container input {
+  padding: 8px 12px;
 }
 
 .container button {

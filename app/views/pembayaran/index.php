@@ -14,14 +14,35 @@
   <?php if (!isset($data['siswaByNis'])) : ?>
     <h1 class="info">Mohon Cari Siswa Berdasarkan NIS</h1>
   <?php else : ?>
-    <ul>
-      <li><?= $data['siswaByNis']['nis']; ?></li>
-      <li><?= $data['siswaByNis']['nama']; ?></li>
-      <li><?= $data['siswaByNis']['password']; ?></li>
-      <li><?= $data['siswaByNis']['alamat']; ?></li>
-      <li><?= $data['siswaByNis']['no_telp']; ?></li>
-      <li><?= $data['siswaByNis']['kelas']; ?></li>
-    </ul>
+    <form action="">
+      <table>
+        <tr>
+          <td><label for="nis">NIS</label></td>
+          <td>:</td>
+          <td><input type="text" name="nis" id="nis" readonly value="<?= $data['siswaByNis']['nis']; ?>"></td>
+        </tr>
+        <tr>
+          <td><label for="nama">Nama</label></td>
+          <td>:</td>
+          <td><input type="text" name="nama" id="nama" readonly value="<?= $data['siswaByNis']['nama']; ?>"></td>
+        </tr>
+        <tr>
+          <td><label for="alamat">Alamat</label></td>
+          <td>:</td>
+          <td><input type="text" name="alamat" id="alamat" readonly value="<?= $data['siswaByNis']['alamat']; ?>"></td>
+        </tr>
+        <tr>
+          <td><label for="telp">No Telp</label></td>
+          <td>:</td>
+          <td><input type="text" name="telp" id="telp" readonly value="<?= $data['siswaByNis']['no_telp']; ?>"></td>
+        </tr>
+        <tr>
+          <td><label for="kelas">Kelas</label></td>
+          <td>:</td>
+          <td><input type="text" name="kelas" id="kelas" readonly value="<?= $data['siswaByNis']['kelas']; ?>"></td>
+        </tr>
+      </table>
+    </form>
   <?php endif; ?>
 
 </div>

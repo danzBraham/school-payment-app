@@ -12,7 +12,8 @@
 
 <nav>
   <ul>
-    <li><a href="<?= BASEURL; ?>">Home</a></li>
+    <li><a href="<?= BASEURL; ?>">Dashboard</a></li>
     <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
+    <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
   </ul>
 </nav>

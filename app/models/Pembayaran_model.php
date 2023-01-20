@@ -1,5 +1,5 @@
 <?php
-class Siswa_model {
+class Pembayaran_model {
   private $table = 'tb_siswa';
   private $db;
 
@@ -8,7 +8,7 @@ class Siswa_model {
   }
 
   public function getAllSiswa() {
-    return $this->db->results("SELECT * FROM $this->table INNER JOIN tb_kelas USING(id_kelas)");
+    return $this->db->results("SELECT * FROM $this->table");
   }
 
   public function searchSiswaByNis() {

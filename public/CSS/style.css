@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -45,4 +48,23 @@ nav ul li a:hover {
 
 .container button {
   padding: 5px 10px;
+}
+
+table, tr, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 6px 12px;
+}
+
+table {
+  border-radius: 8px;
+}
+
+thead {
+  background-color: #36304A;
+  color: #fff;
+}
+
+tbody {
+  background-color: #efefef;
 }

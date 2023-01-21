@@ -52,7 +52,7 @@ nav ul li a:hover {
 }
 
 .container button {
-  padding: 5px 10px;
+  padding: 8px 12px;
 }
 
 table, tr, td, th {
@@ -82,4 +82,26 @@ tbody {
   padding: 10px 25px;
   border-radius: 10px;
   color: #232323;
+}
+
+.container-pembayaran {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 15px;
+}
+
+.input-box {
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+  margin-bottom: 13px;
+}
+
+.input-box input {
+  max-width: 100%;
+}
+
+.history-siswa h1 {
+  text-align: center;
+  border: 3px solid red;
 }

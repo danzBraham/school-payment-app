@@ -10,6 +10,7 @@ class Pembayaran extends Controller {
 
   public function siswa() {
     $data['title'] = 'Pembayaran';
+    $data['siswa'] = $this->model('Pembayaran_model')->getAllSiswa();
     $data['siswaByNis'] = $this->model('Pembayaran_model')->searchSiswaByNis();
     $this->view('templates/header', $data);
     $this->view('pembayaran/index', $data);

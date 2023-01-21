@@ -15,6 +15,7 @@
     <ul>
       <li><a href="<?= BASEURL; ?>">Dashboard</a></li>
       <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
+      <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
     </ul>
   </nav>

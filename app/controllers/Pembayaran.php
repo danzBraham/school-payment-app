@@ -16,4 +16,9 @@ class Pembayaran extends Controller {
     $this->view('pembayaran/index', $data);
     $this->view('templates/footer');
   }
+
+  public function bayar() {
+    $this->model('Pembayaran_model')->addPembayaran($_POST);
+    header('Location: ' . BASEURL . '/spp');
+  }
 }

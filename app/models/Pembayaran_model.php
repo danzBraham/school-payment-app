@@ -17,10 +17,16 @@ class Pembayaran_model {
 
   public function addPembayaran($data) {
     $nis = $data['nis'];
-    $spp = 
+    $jml_bayar = intval($data['jml-bayar']);
+    $tgl_bayar = $data['tgl-bayar'];
+    $nama_bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    $bulan_sekarang = date('n');
+    $nama_bulan = $nama_bulan[$bulan_sekarang - 1];
+    $nominal_bayar = intval(str_replace('.', '', substr($data['nominal-bayar'], 2)));
+    $keterangan = $jml_bayar >= $nominal_bayar ? 'Lunas' : 'Belum Lunas';
 
-    $this->db->query("INSERT INTO tb_pembayaran VALUES (
-      '', ''
+    return $this->db->query("INSERT INTO tb_spp VALUES (
+      '', $nis, $jml_bayar, '$tgl_bayar', '$nama_bulan', '$keterangan'
     )");
   }
 }

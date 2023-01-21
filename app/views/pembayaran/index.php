@@ -15,7 +15,7 @@
     <h1 class="info">Mohon Cari Siswa Berdasarkan NIS</h1>
   <?php else : ?>
   <div class="container-pembayaran">
-    <form action="<?= BASEURL; ?>/pembayaran/add" method="POST" autocomplete="off">
+    <form action="<?= BASEURL; ?>/pembayaran/bayar" method="POST" autocomplete="off">
       <div class="input-box">
         <label for="nis">NIS</label>
         <input type="number" id="nis" name="nis" value="<?= $data['siswaByNis']['nis']; ?>" readonly>
@@ -25,17 +25,18 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="tanggal-bayar">Tanggal Bayar</label>
-        <input type="text" id="tanggal-bayar" name="tanggal-bayar" value="<?= date('Y-m-d'); ?>" readonly>
+        <label for="tgl-bayar">Tanggal Bayar</label>
+        <input type="text" id="tgl-bayar" name="tgl-bayar" value="<?= date('Y-m-d'); ?>" readonly>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar</label>
-        <input type="text" id="nominal-bayar" value="Rp<?= number_format($data['siswaByNis']['nominal'], 0, ',', '.'); ?>" readonly>
+        <input type="text" id="nominal-bayar" name="nominal-bayar" value="Rp<?= number_format($data['siswaByNis']['nominal'], 0, ',', '.'); ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="jumlah-bayar">Jumlah Bayar</label>
-        <input type="number" id="jumlah-bayar" name="jumlah-bayar" placeholder="Masukkan Jumlah Bayar">
+        <label for="jml-bayar">Jumlah Bayar</label>
+        <input type="number" id="jml-bayar" name="jml-bayar" placeholder="Masukkan Jumlah Bayar">
       </div>
+      <button type="submit">Bayar</button>
     </form>
 
     <div class="history-siswa">

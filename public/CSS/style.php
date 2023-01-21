@@ -105,3 +105,8 @@ tbody {
   text-align: center;
   border: 3px solid red;
 }
+
+td h2 {
+  text-align: center;
+  color: #232323;
+}

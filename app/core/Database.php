@@ -15,7 +15,7 @@ class Database {
     }
   }
 
-  protected function query($query) {
+  public function query($query) {
     return $this->connect()->query($query);
   }
 
@@ -33,6 +33,7 @@ class Database {
   public function results($query) {
     $result = $this->query($query);
     $numRows = $result->num_rows;
+    $rows = [];
 
     if ($numRows > 0) {
       while ($row = $result->fetch_assoc()) {

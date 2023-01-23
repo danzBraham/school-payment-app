@@ -25,8 +25,17 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
+        <label for="bulan">bulan</label>
+        <select name="bulan">
+          <?php $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; ?>
+          <?php foreach ($bulan as $b) : ?>
+            <option value="<?= $b; ?>"><?= $b; ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <div class="input-box">
         <label for="tgl-bayar">Tanggal Bayar</label>
-        <input type="text" id="tgl-bayar" name="tgl-bayar" value="<?= date('Y-m-d'); ?>" readonly>
+        <input type="text" id="tgl-bayar" value="<?= date('Y-m-d'); ?>" readonly>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar</label>

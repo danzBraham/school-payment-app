@@ -98,8 +98,8 @@ tbody {
   margin-bottom: 13px;
 }
 
-.input-box input {
-  max-width: 100%;
+.input-box select {
+  padding: 8px 12px;
 }
 
 td h2 {

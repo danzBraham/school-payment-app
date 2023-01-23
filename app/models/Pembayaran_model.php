@@ -40,7 +40,7 @@ class Pembayaran_model {
     }
   
 
-    $this->db->query("UPDATE tb_siswa SET saldo = $saldo");
+    $this->db->query("UPDATE tb_siswa SET saldo = $saldo WHERE nis = $nis");
 
     return $this->db->query("UPDATE tb_spp SET
       jumlah_bayar = $jml_bayar, tgl_bayar = NOW(), keterangan = '$keterangan' WHERE nis = $nis AND bulan = '$bulan'

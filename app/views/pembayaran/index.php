@@ -3,7 +3,7 @@
     <input list="Allnis" name="nis" id="nis" placeholder="NIS Siswa" class="search">
     <datalist id="Allnis">
     <?php foreach($data['siswa'] as $s) : ?>
-      <option value="<?= $s['nis']; ?>">
+      <option value="<?= $s['nis']; ?>"><?= $s['nama']; ?></option>
     <?php endforeach; ?>
     </datalist>
     <button type="submit">Cari</button>

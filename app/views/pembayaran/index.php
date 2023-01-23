@@ -40,7 +40,26 @@
     </form>
 
     <div class="history-siswa">
-      <h1>HISTORY SISWA</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Bulan</th>
+            <th>tgl-bayar</th>
+            <th>jumlah-bayar</th>
+            <th>keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($data['siswaHistory'] as $data) : ?>
+          <tr>
+            <td><?= $data['bulan']; ?></td>
+            <td><?= $data['tgl_bayar']; ?></td>
+            <td><?= $data['jumlah_bayar']; ?></td>
+            <td><?= $data['keterangan']; ?></td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
     </div>
   </div>
   <?php endif; ?>

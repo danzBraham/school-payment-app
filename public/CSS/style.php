@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 :root {
@@ -15,6 +14,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 nav {
@@ -63,6 +63,7 @@ table, tr, td, th {
 
 table {
   border-radius: 8px;
+  overflow: hidden;
 }
 
 thead {
@@ -87,7 +88,7 @@ tbody {
 .container-pembayaran {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 15px;
+  gap: 30px;
 }
 
 .input-box {
@@ -101,12 +102,11 @@ tbody {
   max-width: 100%;
 }
 
-.history-siswa h1 {
-  text-align: center;
-  border: 3px solid red;
-}
-
 td h2 {
   text-align: center;
   color: #232323;
+}
+
+.history-siswa table, tr {
+  width: 100%;
 }

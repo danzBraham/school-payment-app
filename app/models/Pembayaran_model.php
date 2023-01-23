@@ -15,6 +15,11 @@ class Pembayaran_model {
     return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_angkatan USING(angkatan) WHERE nis LIKE '%$nis%'");
   }
 
+  public function getHistorySiswa() {
+    $nis = $_POST['nis'];
+    return $this->db->results("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_angkatan USING(angkatan) INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%'");
+  }
+
   public function addPembayaran($data) {
     $nis = $data['nis'];
     $jml_bayar = intval($data['jml-bayar']);

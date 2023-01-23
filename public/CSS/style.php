@@ -10,6 +10,9 @@
 :root {
   font-family: 'Poppins', sans-serif;
   --main-color: #36304A;
+  --second-color: #635888;
+  --third-color: #9990B7;
+  --fourth-color: #201C2B;
 }
 
 html {
@@ -49,10 +52,28 @@ nav ul li a:hover {
 
 .container input {
   padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid var(--fourth-color);
 }
 
 .container button {
   padding: 8px 12px;
+  background-color: var(--second-color);
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px soild var(--third-color);
+  color: #efefef;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: var(--third-color);
+}
+
+.add-btn a button{
+  padding: 14px;
+  font-size: 16px;
 }
 
 table, tr, td, th {
@@ -73,6 +94,20 @@ thead {
 
 tbody {
   background-color: #efefef;
+}
+
+.add-form {
+  display: none;
+}
+
+.add-form:target {
+  display: block;
+  width: 40%;
+}
+
+.add-form textarea {
+  font-size: 16px;
+  padding: 10px;
 }
 
 .info {

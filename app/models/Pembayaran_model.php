@@ -29,21 +29,16 @@ class Pembayaran_model {
 
     if ($saldo >= $nominal_bayar) {
       $keterangan = 'Lunas';
-      $jml_bayar = $nominal_bayar;
       $saldo -= $nominal_bayar;
-    } else if ($saldo < $nominal_bayar) {
-      if ($jml_bayar >= $nominal_bayar) {
-        $keterangan = 'Lunas';
-        $saldo += $jml_bayar - $nominal_bayar;
-        $jml_bayar = $nominal_bayar;
-      } else if (($total = $saldo + $jml_bayar) >= $nominal_bayar) {
+      $jml_bayar = $nominal_bayar;
+    } else if (($total = $saldo + $jml_bayar) >= $nominal_bayar) {
         $keterangan = 'Lunas';
         $saldo = $total - $nominal_bayar;
         $jml_bayar = $nominal_bayar;
-      } else {
+    } else {
         $keterangan = 'Belum Lunas';
-      }
     }
+  
 
     $this->db->query("UPDATE tb_siswa SET saldo = $saldo");
 

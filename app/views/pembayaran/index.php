@@ -53,9 +53,9 @@
           <?php foreach ($data['siswaHistory'] as $data) : ?>
           <tr>
             <td><?= $data['bulan']; ?></td>
-            <td><?= $data['tgl_bayar']; ?></td>
-            <td><?= $data['jumlah_bayar']; ?></td>
-            <td><?= $data['keterangan']; ?></td>
+            <td><?= ($data['tgl_bayar']) ? $data['tgl_bayar'] : '-'; ?></td>
+            <td>Rp<?= number_format($data['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <td><?= ($data['keterangan']) ? $data['keterangan'] : 'Belum Lunas'; ?></td>
           </tr>
           <?php endforeach; ?>
         </tbody>

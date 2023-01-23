@@ -135,6 +135,7 @@ tbody {
 
 .input-box select {
   padding: 8px 12px;
+  border-radius: 8px;
 }
 
 td h2 {

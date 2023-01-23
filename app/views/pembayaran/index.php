@@ -25,7 +25,7 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="bulan">bulan</label>
+        <label for="bulan">Bulan</label>
         <select name="bulan">
           <?php $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; ?>
           <?php foreach ($bulan as $b) : ?>

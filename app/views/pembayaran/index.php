@@ -42,6 +42,10 @@
         <input type="text" id="nominal-bayar" name="nominal-bayar" value="Rp<?= number_format($data['siswaByNis']['nominal'], 0, ',', '.'); ?>" readonly>
       </div>
       <div class="input-box">
+        <label for="saldo">Saldo</label>
+        <input type="text" id="saldo" name="saldo" value="Rp<?= number_format($data['siswaByNis']['saldo'], 0, ',', '.'); ?>" readonly>
+      </div>
+      <div class="input-box">
         <label for="jml-bayar">Jumlah Bayar</label>
         <input type="number" id="jml-bayar" name="jml-bayar" placeholder="Masukkan Jumlah Bayar">
       </div>

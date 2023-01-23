@@ -25,7 +25,27 @@ class Pembayaran_model {
     $bulan = $data['bulan'];
     $jml_bayar = intval($data['jml-bayar']);
     $nominal_bayar = intval(str_replace('.', '', substr($data['nominal-bayar'], 2)));
-    $keterangan = $jml_bayar >= $nominal_bayar ? 'Lunas' : 'Belum Lunas';
+    $saldo = intval(str_replace('.', '', substr($data['saldo'], 2)));
+
+    if ($saldo >= $nominal_bayar) {
+      $keterangan = 'Lunas';
+      $jml_bayar = $nominal_bayar;
+      $saldo -= $nominal_bayar;
+    } else if ($saldo < $nominal_bayar) {
+      if ($jml_bayar >= $nominal_bayar) {
+        $keterangan = 'Lunas';
+        $saldo += $jml_bayar - $nominal_bayar;
+        $jml_bayar = $nominal_bayar;
+      } else if (($total = $saldo + $jml_bayar) >= $nominal_bayar) {
+        $keterangan = 'Lunas';
+        $saldo = $total - $nominal_bayar;
+        $jml_bayar = $nominal_bayar;
+      } else {
+        $keterangan = 'Belum Lunas';
+      }
+    }
+
+    $this->db->query("UPDATE tb_siswa SET saldo = $saldo");
 
     return $this->db->query("UPDATE tb_spp SET
       jumlah_bayar = $jml_bayar, tgl_bayar = NOW(), keterangan = '$keterangan' WHERE nis = $nis AND bulan = '$bulan'

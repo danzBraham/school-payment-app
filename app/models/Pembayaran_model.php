@@ -32,13 +32,12 @@ class Pembayaran_model {
       $saldo -= $nominal_bayar;
       $jml_bayar = $nominal_bayar;
     } else if (($total = $saldo + $jml_bayar) >= $nominal_bayar) {
-        $keterangan = 'Lunas';
-        $saldo = $total - $nominal_bayar;
-        $jml_bayar = $nominal_bayar;
+      $keterangan = 'Lunas';
+      $saldo = $total - $nominal_bayar;
+      $jml_bayar = $nominal_bayar;
     } else {
-        $keterangan = 'Belum Lunas';
+      $keterangan = 'Belum Lunas';
     }
-  
 
     $this->db->query("UPDATE tb_siswa SET saldo = $saldo WHERE nis = $nis");
 

@@ -4,7 +4,6 @@
       <tr>
         <th>ID Kelas</th>
         <th>Kelas</th>
-        <th>Angkatan</th>
         <th>Tahun Ajaran</th>
       </tr>
     </thead>
@@ -13,7 +12,6 @@
       <tr>
         <td><?= $kelas['id_kelas']; ?></td>
         <td><?= $kelas['kelas']; ?></td>
-        <td><?= $kelas['angkatan']; ?></td>
         <td><?= $kelas['thn_ajaran']; ?></td>
       </tr>
       <?php endforeach; ?>

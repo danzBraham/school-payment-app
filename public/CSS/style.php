@@ -146,3 +146,9 @@ td h2 {
 .history-siswa table, tr {
   width: 100%;
 }
+
+@media print {
+  .print {
+    display: none;
+  }
+}

@@ -7,6 +7,6 @@ class Spp_model {
   }
 
   public function getAllSpp() {
-    return $this->db->results("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE keterangan = 'Lunas' ORDER BY tgl_bayar DESC");
+    return $this->db->results("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis)");
   }
 }

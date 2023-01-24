@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="print">
     <ul>
       <li><a href="<?= BASEURL; ?>">Dashboard</a></li>
       <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>

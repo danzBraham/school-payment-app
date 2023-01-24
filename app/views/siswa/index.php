@@ -42,7 +42,6 @@
         <th>Alamat</th>
         <th>No Telp</th>
         <th>Kelas</th>
-        <th>Saldo</th>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +53,6 @@
         <td><?= $siswa['alamat']; ?></td>
         <td><?= $siswa['no_telp']; ?></td>
         <td><?= $siswa['kelas'] ?></td>
-        <td>Rp<?= number_format($siswa['saldo'], 0, ',', '.'); ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>

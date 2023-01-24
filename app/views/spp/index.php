@@ -4,14 +4,13 @@
       <tr>
         <th>NIS</th>
         <th>Nama Siswa</th>
-        <th>Jumlah Bayar</th>
         <th>Tanggal Bayar</th>
-        <th>Bulan</th>
-        <th>Keterangan</th>
+        <th>Jumlah Bayar</th>
+        <th>Sisa Tagihan</th>
       </tr>
     </thead>
     <tbody>
-      <?php if ($data['spp'] != 'undefined') : ?>
+      <?php if ($data['spp'] != null) : ?>
       <?php foreach($data['spp'] as $spp) : ?>
       <tr>
         <td><?= $spp['nis']; ?></td>

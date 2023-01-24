@@ -12,12 +12,12 @@ class Pembayaran_model {
 
   public function searchSiswaByNis() {
     $nis = $_POST['nis'];
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_angkatan USING(angkatan) WHERE nis LIKE '%$nis%'");
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_thn_ajaran USING(thn_ajaran) INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%'");
   }
 
-  public function getHistorySiswa() {
+  public function getSiswaHistory() {
     $nis = $_POST['nis'];
-    return $this->db->results("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_angkatan USING(angkatan) INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%'");
+    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%'");
   }
 
   public function addPembayaran($data) {

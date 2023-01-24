@@ -1,5 +1,5 @@
-<?php header("Content-Type: text/css"); ?>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<?php header("Content-Type: text/css");
+?>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -13,6 +13,7 @@
   --second-color: #635888;
   --third-color: #9990B7;
   --fourth-color: #201C2B;
+  --text: #efefef;
 }
 
 html {
@@ -36,7 +37,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #efefef;
+  color: var(--text);
 }
 
 nav ul li a:hover {
@@ -63,7 +64,7 @@ nav ul li a:hover {
   border-radius: 8px;
   font-size: 16px;
   border: 1px soild var(--third-color);
-  color: #efefef;
+  color: var(--text);
   cursor: pointer;
 }
 
@@ -71,7 +72,7 @@ nav ul li a:hover {
   background-color: var(--third-color);
 }
 
-.add-btn a button{
+.add-btn a button {
   padding: 14px;
   font-size: 16px;
 }
@@ -93,7 +94,7 @@ thead {
 }
 
 tbody {
-  background-color: #efefef;
+  background-color: var(--text);
 }
 
 .add-form {
@@ -122,8 +123,9 @@ tbody {
 
 .container-pembayaran {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 30px;
+  grid-template-columns: 1fr 2.7fr;
+  gap: 50px;
+  overflow: hidden;
 }
 
 .input-box {
@@ -145,6 +147,18 @@ td h2 {
 
 .history-siswa table, tr {
   width: 100%;
+}
+
+.total {
+  background-color: var(--main-color);
+  color: var(--text);
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.total-tagihan {
+  font-weight: 500;
 }
 
 @media print {

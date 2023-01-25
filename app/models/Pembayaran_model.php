@@ -28,6 +28,9 @@ class Pembayaran_model {
 
     while ($jumlahBayar > 0) {
       $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      if (!$dataSPP) {
+        return;
+      }
       $jumlahBayarSPP = $dataSPP['jumlah_bayar'];
       $bulan = $dataSPP['bulan'];
 

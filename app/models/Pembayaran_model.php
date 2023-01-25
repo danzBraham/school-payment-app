@@ -31,7 +31,7 @@ class Pembayaran_model {
       if (!$dataSPP) {
         return;
       }
-      $jumlahBayarSPP = $dataSPP['jumlah_bayar'];
+      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
       $bulan = $dataSPP['bulan'];
 
       if ($jumlahBayarSPP == 0) {
@@ -42,23 +42,32 @@ class Pembayaran_model {
                             tgl_bayar = NOW(),
                             jumlah_bayar = $bayar 
                             WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = $tagihanLebih;
         } else {
-        $this->db->query("UPDATE tb_spp SET
-                          tgl_bayar = NOW(),
-                          jumlah_bayar = $jumlahBayar
-                          WHERE nis = $nis AND bulan = '$bulan'");
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $jumlahBayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = 0;
         }
       } else if ($jumlahBayarSPP < $nominalBayar) {
-        $sisaTagihan = $nominalBayar - $jumlahBayarSPP;
-        $bayar = $jumlahBayarSPP + $sisaTagihan;
-        $jumlahBayar -= $sisaTagihan;
-        $this->db->query("UPDATE tb_spp SET
-                          tgl_bayar = NOW(),
-                          jumlah_bayar = $bayar
-                          WHERE nis = $nis AND bulan = '$bulan'");
+        if (($jumlahBayarSPP + $jumlahBayar) >= $nominalBayar) {
+          $sisaTagihan = $nominalBayar - $jumlahBayarSPP;
+          $bayar = $jumlahBayarSPP + $sisaTagihan;
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $bayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar -= $sisaTagihan;
+        } else {
+          $bayar = $jumlahBayarSPP + $jumlahBayar;
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $bayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = 0;
+        }
       }
-
-      $jumlahBayar -= $nominalBayar;
     }
 
     $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");

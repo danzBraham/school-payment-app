@@ -25,10 +25,6 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="tgl-bayar">Tanggal Bayar</label>
-        <input type="text" id="tgl-bayar" value="<?= date('Y-m-d'); ?>" readonly>
-      </div>
-      <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar</label>
         <input type="text" id="nominal-bayar" name="nominal-bayar"
           value="Rp<?= number_format($data['siswaByNis']['nominal'], 0, ',', '.'); ?>" readonly>

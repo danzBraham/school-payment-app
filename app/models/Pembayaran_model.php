@@ -22,27 +22,44 @@ class Pembayaran_model {
 
   public function addPembayaran($data) {
     $nis = $data['nis'];
-    $bulan = $data['bulan'];
-    $jml_bayar = intval($data['jml-bayar']);
-    $nominal_bayar = intval(str_replace('.', '', substr($data['nominal-bayar'], 2)));
-    $saldo = intval(str_replace('.', '', substr($data['saldo'], 2)));
 
-    if ($saldo >= $nominal_bayar) {
-      $keterangan = 'Lunas';
-      $saldo -= $nominal_bayar;
-      $jml_bayar = $nominal_bayar;
-    } else if (($total = $saldo + $jml_bayar) >= $nominal_bayar) {
-      $keterangan = 'Lunas';
-      $saldo = $total - $nominal_bayar;
-      $jml_bayar = $nominal_bayar;
-    } else {
-      $keterangan = 'Belum Lunas';
+    $nominal = $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_thn_ajaran USING(thn_ajaran) WHERE nis = $nis");
+
+    $belumBayar = $this->db->results("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar IS NULL OR jumlah_bayar < 500000)");
+
+    $nominalBayar = $nominal['nominal'];
+    $sisaUang = 0;
+
+    foreach ($belumBayar as $b) {
+      $jumlahBayar = $data['jml-bayar'];
+      if ($jumlahBayar == $nominalBayar) {
+        
+      }
     }
 
-    $this->db->query("UPDATE tb_siswa SET saldo = $saldo WHERE nis = $nis");
+    // Perulangan untuk setiap bulan
+    for ($i = 1; $i <= 12; $i++) {
+      // Input jumlah uang yang dibayar
+      $uangBayar = readline("Masukkan jumlah uang yang dibayar pada bulan ke-" . $i . ": ");
 
-    return $this->db->query("UPDATE tb_spp SET
-      jumlah_bayar = $jml_bayar, tgl_bayar = NOW(), keterangan = '$keterangan' WHERE nis = $nis AND bulan = '$bulan'
-    ");
+      // Cek apakah uang bayar pas atau lebih
+      if ($uangBayar == $tagihan) {
+        echo "Tagihan di bulan ke-" . $i . " sudah terbayar\n";
+      } elseif ($uangBayar > $tagihan) {
+        $sisaUang += $uangBayar - $tagihan;
+        echo "Tagihan di bulan ke-" . $i . " sudah terbayar dan sisa uang sebesar " . ($uangBayar - $tagihan) . "\n";
+      } else {
+        echo "Tagihan di bulan ke-" . $i . " belum terbayar\n";
+      }
+
+      // Cek sisa uang
+      if ($sisaUang >= $tagihan) {
+        $sisaUang -= $tagihan;
+        echo "Tagihan di bulan ke-" . ($i + 1) . " sudah terbayar dengan sisa uang " . $sisaUang . "\n";
+      } else {
+        $tagihan -= $sisaUang;
+        echo "Tagihan di bulan ke-" . ($i + 1) . " sebesar " . $tagihan . " dengan sisa uang " . $sisaUang . "\n";
+      }
+    }
   }
 }

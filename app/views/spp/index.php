@@ -15,10 +15,9 @@
       <tr>
         <td><?= $spp['nis']; ?></td>
         <td><?= $spp['nama']; ?></td>
-        <td>Rp<?= number_format($spp['jumlah_bayar'], 0, ',', '.'); ?></td>
-        <td><?= $spp['tgl_bayar']; ?></td>
         <td><?= $spp['bulan']; ?></td>
-        <td><?= $spp['keterangan'] ?></td>
+        <td><?= $spp['tgl_bayar']; ?></td>
+        <td>Rp<?= number_format($spp['jumlah_bayar'], 0, ',', '.'); ?></td>
       </tr>
       <?php endforeach; ?>
       <?php else : ?>

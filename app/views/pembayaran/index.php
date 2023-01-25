@@ -13,6 +13,7 @@
 
   <?php if (!isset($data['siswaByNis'])) : ?>
   <h1 class="info">Mohon Cari Siswa Berdasarkan NIS</h1>
+  <h1 class="info"><?php var_dump($data['test']); ?></h1>
   <?php else : ?>
   <div class="container-pembayaran">
     <form action="<?= BASEURL; ?>/pembayaran/bayar" method="POST" autocomplete="off">

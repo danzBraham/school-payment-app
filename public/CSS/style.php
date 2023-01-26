@@ -24,11 +24,12 @@ html {
 nav {
   padding: 20px 50px;
   background-color: var(--main-color);
+  font-size: 20px;
 }
 
 nav ul {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 nav ul li {

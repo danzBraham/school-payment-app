@@ -4,9 +4,9 @@
       <tr>
         <th>NIS</th>
         <th>Nama Siswa</th>
+        <th>Bulan</th>
         <th>Tanggal Bayar</th>
         <th>Jumlah Bayar</th>
-        <th>Sisa Tagihan</th>
       </tr>
     </thead>
     <tbody>

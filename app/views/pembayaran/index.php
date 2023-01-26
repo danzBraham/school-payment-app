@@ -33,7 +33,7 @@
         <label for="jml-bayar">Jumlah Bayar</label>
         <input type="number" id="jml-bayar" name="jml-bayar" placeholder="Masukkan Jumlah Bayar">
       </div>
-      <button type="submit">Bayar</button>
+      <button type="submit" onclick="return confirm('Apakah Jumlah Bayar Sudah Benar?')">Bayar</button>
     </form>
 
     <div class="history-siswa">

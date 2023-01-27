@@ -26,7 +26,6 @@ class Pembayaran_model {
     $nominalBayar = $dataSiswa['nominal'];
     $jumlahBayar = intval($data['jml-bayar']);
 
-    // Payment Logic By Me
     while ($jumlahBayar > 0) {
       $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
       if (!$dataSPP) {
@@ -69,19 +68,6 @@ class Pembayaran_model {
           $jumlahBayar = 0;
         }
       }
-    }
-
-    while ($jumlahBayar > 0) {
-      $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-      if (!$dataSPP) {
-          return;
-      }
-      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
-      $bulan = $dataSPP['bulan'];
-      $bayar = min($jumlahBayar, $nominalBayar - $jumlahBayarSPP);
-
-      $this->db->query("UPDATE tb_spp SET tgl_bayar = NOW(), jumlah_bayar = $bayar WHERE nis = $nis AND bulan = '$bulan'");
-      $jumlahBayar -= $bayar;
     }
 
     $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");

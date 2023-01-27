@@ -48,16 +48,16 @@
         <tbody>
           <?php $total =  $data['siswaByNis']['total_tagihan']; ?>
           <?php foreach ($data['siswaHistory'] as $data) : ?>
-            <tr>
-              <td><?= $data['bulan']; ?></td>
-              <td><?= ($data['tgl_bayar']) ? $data['tgl_bayar'] : '-'; ?></td>
-              <td>Rp<?= number_format($data['jumlah_bayar'], 0, ',', '.'); ?></td>
-            </tr>
-            <?php endforeach; ?>
-            <tr>
-              <td colspan="2" class="total">Sisa Tagihan</td>
-              <td class="total-tagihan">Rp<?= number_format($total, 0, ',', '.'); ?></td>
-            </tr>
+          <tr>
+            <td><?= $data['bulan']; ?></td>
+            <td><?= ($data['tgl_bayar']) ? $data['tgl_bayar'] : '-'; ?></td>
+            <td>Rp<?= number_format($data['jumlah_bayar'], 0, ',', '.'); ?></td>
+          </tr>
+          <?php endforeach; ?>
+          <tr>
+            <td colspan="2" class="total">Sisa Tagihan</td>
+            <td class="total-tagihan">Rp<?= number_format($total, 0, ',', '.'); ?></td>
+          </tr>
         </tbody>
       </table>
     </div>

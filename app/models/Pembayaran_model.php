@@ -27,49 +27,49 @@ class Pembayaran_model {
     $jumlahBayar = intval($data['jml-bayar']);
 
     // Payment Logic By Me
-    // while ($jumlahBayar > 0) {
-    //   $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-    //   if (!$dataSPP) {
-    //     return;
-    //   }
-    //   $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
-    //   $bulan = $dataSPP['bulan'];
+    while ($jumlahBayar > 0) {
+      $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      if (!$dataSPP) {
+        return;
+      }
+      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
+      $bulan = $dataSPP['bulan'];
 
-    //   if ($jumlahBayarSPP == 0) {
-    //     if ($jumlahBayar > $nominalBayar) {
-    //       $tagihanLebih = $jumlahBayar - $nominalBayar;
-    //       $bayar = $jumlahBayar - $tagihanLebih;
-    //       $this->db->query("UPDATE tb_spp SET
-    //                         tgl_bayar = NOW(),
-    //                         jumlah_bayar = $bayar 
-    //                         WHERE nis = $nis AND bulan = '$bulan'");
-    //       $jumlahBayar = $tagihanLebih;
-    //     } else {
-    //       $this->db->query("UPDATE tb_spp SET
-    //                         tgl_bayar = NOW(),
-    //                         jumlah_bayar = $jumlahBayar
-    //                         WHERE nis = $nis AND bulan = '$bulan'");
-    //       $jumlahBayar = 0;
-    //     }
-    //   } else if ($jumlahBayarSPP < $nominalBayar) {
-    //     if (($jumlahBayarSPP + $jumlahBayar) >= $nominalBayar) {
-    //       $sisaTagihan = $nominalBayar - $jumlahBayarSPP;
-    //       $bayar = $jumlahBayarSPP + $sisaTagihan;
-    //       $this->db->query("UPDATE tb_spp SET
-    //                         tgl_bayar = NOW(),
-    //                         jumlah_bayar = $bayar
-    //                         WHERE nis = $nis AND bulan = '$bulan'");
-    //       $jumlahBayar -= $sisaTagihan;
-    //     } else {
-    //       $bayar = $jumlahBayarSPP + $jumlahBayar;
-    //       $this->db->query("UPDATE tb_spp SET
-    //                         tgl_bayar = NOW(),
-    //                         jumlah_bayar = $bayar
-    //                         WHERE nis = $nis AND bulan = '$bulan'");
-    //       $jumlahBayar = 0;
-    //     }
-    //   }
-    // }
+      if ($jumlahBayarSPP == 0) {
+        if ($jumlahBayar > $nominalBayar) {
+          $tagihanLebih = $jumlahBayar - $nominalBayar;
+          $bayar = $jumlahBayar - $tagihanLebih;
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $bayar 
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = $tagihanLebih;
+        } else {
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $jumlahBayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = 0;
+        }
+      } else if ($jumlahBayarSPP < $nominalBayar) {
+        if (($jumlahBayarSPP + $jumlahBayar) >= $nominalBayar) {
+          $sisaTagihan = $nominalBayar - $jumlahBayarSPP;
+          $bayar = $jumlahBayarSPP + $sisaTagihan;
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $bayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar -= $sisaTagihan;
+        } else {
+          $bayar = $jumlahBayarSPP + $jumlahBayar;
+          $this->db->query("UPDATE tb_spp SET
+                            tgl_bayar = NOW(),
+                            jumlah_bayar = $bayar
+                            WHERE nis = $nis AND bulan = '$bulan'");
+          $jumlahBayar = 0;
+        }
+      }
+    }
 
     while ($jumlahBayar > 0) {
       $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
@@ -79,11 +79,10 @@ class Pembayaran_model {
       $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
       $bulan = $dataSPP['bulan'];
       $bayar = min($jumlahBayar, $nominalBayar - $jumlahBayarSPP);
-  
-      $this->db->query("UPDATE tb_spp SET tgl_bayar = NOW(), jumlah_bayar = jumlah_bayar + $bayar WHERE nis = $nis AND bulan = '$bulan'");
+
+      $this->db->query("UPDATE tb_spp SET tgl_bayar = NOW(), jumlah_bayar = $bayar WHERE nis = $nis AND bulan = '$bulan'");
       $jumlahBayar -= $bayar;
-  }
-  
+    }
 
     $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);

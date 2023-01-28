@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $data['title']; ?></title>
   <link rel="stylesheet" href="<?= BASEURL; ?>/CSS/style.php">
-  <script src="<?= BASEURL; ?>/JS/script.js"></script>
+  <script src="<?= BASEURL; ?>/JS/script.php"></script>
 </head>
 
 <body>

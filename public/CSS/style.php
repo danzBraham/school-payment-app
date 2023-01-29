@@ -150,6 +150,13 @@ table .aksi .delete-btn:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.close-btn img {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  cursor: pointer;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -163,6 +170,7 @@ form {
 }
 
 .add-form {
+  position: relative;
   background-color: var(--third-color);
   padding: 20px;
   border-radius: 10px;

@@ -20,6 +20,6 @@ class Pembayaran extends Controller {
 
   public function bayar() {
     $this->model('Pembayaran_model')->addPembayaran($_POST);
-    header('Location: ' . BASEURL . '/spp');
+    header('Location: ' . BASEURL . '/histori');
   }
 }

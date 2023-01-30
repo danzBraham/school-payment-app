@@ -117,7 +117,7 @@ table .aksi a button {
 
 table .aksi .edit-btn {
   background-color: var(--third-color);
-  color: #121212;
+  color: var(--text);
 }
 
 table .aksi .edit-btn:hover {

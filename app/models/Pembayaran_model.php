@@ -26,19 +26,32 @@ class Pembayaran_model {
                             WHERE nis = $nis AND bulan = '$bulan'");
   }
 
+  // public function insertTransaksi($idSPP, $jumlahBayar, $petugas = 1) {
+  //   return $this->db->query("INSERT INTO tb_transaksi VALUES(
+  //     '', 1, $idSPP, NOW(), $jumlahBayar
+  //   )");
+  // }
+
   public function addPembayaran($data) {
     $nis = $data['nis'];
     $dataSiswa = $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_thn_ajaran USING(thn_ajaran) WHERE nis = $nis");
+    $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+    $idSPP = $dataSPP['id_spp'];
     $nominalBayar = $dataSiswa['nominal'];
     $jumlahBayar = intval($data['jml-bayar']);
 
+    $this->db->query("INSERT INTO tb_transaksi VALUES (
+      '', 1, $idSPP, NOW(), $jumlahBayar
+    )");
+
     while ($jumlahBayar > 0) {
-      $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-      if (!$dataSPP) {
+      $dataSPPLoop = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      $idSPP = $dataSPPLoop['id_spp'];
+      if (!$dataSPPLoop) {
         return;
       }
-      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
-      $bulan = $dataSPP['bulan'];
+      $jumlahBayarSPP = intval($dataSPPLoop['jumlah_bayar']);
+      $bulan = $dataSPPLoop['bulan'];
 
       if ($jumlahBayarSPP == 0) {
         if ($jumlahBayar > $nominalBayar) {
@@ -63,12 +76,6 @@ class Pembayaran_model {
         }
       }
     }
-
-    // $newDataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND jumlab_bayar IS NOT NULL ORDER BY id_spp DESC");
-    // $idSPP = $newDataSPP['id_spp'];
-    // $this->db->query("INSERT INTO tb_transaksi VALUES (
-    //   '', 1, $idSPP, NOW(), $jumlahBayar
-    // )");
 
     $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);

@@ -13,4 +13,9 @@ class Siswa extends Controller {
     $this->model('Siswa_model')->addSiswa($_POST);
     header('Location: ' . BASEURL . '/siswa');
   }
+
+  public function ubah() {
+    $id = json_decode(file_get_contents("php://input"), true);
+    echo json_encode($this->model('Siswa_model')->getSiswa($id['id']));
+  }
 }

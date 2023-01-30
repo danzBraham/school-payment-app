@@ -1,5 +1,5 @@
-<?php header("Content-Type: text/css");?>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<?php header("Content-Type: text/css");
+?>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -173,9 +173,9 @@ form {
   gap: 4px;
 }
 
-.modal {
+.modal-add, .modal-edit {
   position: relative;
-  visibility: hidden;
+  display: none;
   opacity: 0;
   background-color: var(--third-color);
   padding: 20px;
@@ -185,8 +185,8 @@ form {
   transition: all 300ms ease-in-out;
 }
 
-.modal.click {
-  visibility: visible;
+.modal-add.click, .modal-edit.click {
+  display: flex;
   opacity: 1;
 }
 

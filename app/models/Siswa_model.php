@@ -6,6 +6,10 @@ class Siswa_model {
     $this->db = new Database;
   }
 
+  public function getSiswa($id) {
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = $id");
+  }
+
   public function getAllSiswa() {
     return $this->db->results("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
   }

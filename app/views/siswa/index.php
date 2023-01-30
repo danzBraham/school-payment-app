@@ -33,9 +33,8 @@
   </table>
 </div>
 
-<div id="modal" class="modal">
-  <div class="overlay">
-    <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="add-form" class="add-form" autocomplete="off">
+  <div id="overlay" class="overlay">
+    <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal" class="modal" autocomplete="off">
       <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
       <div class="input-box">
         <label for="nis">NIS</label>
@@ -68,4 +67,3 @@
       <button type="submit">Tambah</button>
     </form>
   </div>
-</div>

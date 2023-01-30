@@ -2,19 +2,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   const addBtn = document.querySelector("#add-btn");
   const modal = document.querySelector("#modal");
+  const overlay = document.querySelector("#overlay");
   const closeBtn = document.querySelector("#close-btn");
 
   addBtn.addEventListener("click", function () {
-    modal.style.display = "flex";
+    overlay.classList.add('click');
+    modal.classList.add('click');
   });
 
   closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
+    overlay.classList.remove('click');
+    modal.classList.remove('click');
   });
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
-      modal.style.display = "none";
+      overlay.classList.remove('click');
+    modal.classList.remove('click');
     }
   });
 });

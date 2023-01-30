@@ -1,5 +1,5 @@
-<?php header("Content-Type: text/css");?>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<?php header("Content-Type: text/css");
+?>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -134,12 +134,10 @@ table .aksi .delete-btn:hover {
   color: var(--text);
 }
 
-.modal {
-  display: none;
-}
-
 .overlay {
   position: absolute;
+  visibility: hidden;
+  opacity: 0;
   top: 0;
   left: 0;
   right: 0;
@@ -148,6 +146,12 @@ table .aksi .delete-btn:hover {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.7);
+  transition: all 300ms ease-in-out;
+}
+
+.overlay.click {
+  visibility: visible;
+  opacity: 1;
 }
 
 .close-btn img {
@@ -169,40 +173,48 @@ form {
   gap: 4px;
 }
 
-.add-form {
+.modal {
   position: relative;
+  visibility: hidden;
+  opacity: 0;
   background-color: var(--third-color);
   padding: 20px;
   border-radius: 10px;
   font-weight: 600;
   width: 40%;
+  transition: all 300ms ease-in-out;
 }
 
-.add-form .input-box input {
+.modal.click {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal .input-box input {
   padding: 8px 12px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
 
-.add-form .input-box select {
+.modal .input-box select {
   padding: 8px 12px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
 
-.add-form .input-box textarea {
+.modal .input-box textarea {
   padding: 8px 12px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
 
-.add-form .input-box input:focus,
-.add-form .input-box select:focus,
-.add-form .input-box textarea:focus {
+.modal .input-box input:focus,
+.modal .input-box select:focus,
+.modal .input-box textarea:focus {
   outline: 1px solid var(--text);
 }
 
-.add-form button {
+.modal button {
   padding: 8px 12px;
   background-color: var(--fourth-color);
   color: var(--text);
@@ -215,7 +227,7 @@ form {
   border: none;
 }
 
-.add-form button:hover {
+.modal button:hover {
   background-color: var(--main-color);
 }
 

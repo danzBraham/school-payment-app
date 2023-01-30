@@ -24,7 +24,7 @@
         <td><?= $siswa['no_telp']; ?></td>
         <td><?= $siswa['kelas'] ?></td>
         <td class="aksi">
-          <a href=""><button class="edit-btn">Edit</button></a>
+          <a href=""><button id="edit-btn" class="edit-btn">Edit</button></a>
           <a href=""><button class="delete-btn">Delete</button></a>
         </td>
       </tr>
@@ -33,37 +33,38 @@
   </table>
 </div>
 
-  <div id="overlay" class="overlay">
-    <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal" class="modal" autocomplete="off">
-      <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
-      <div class="input-box">
-        <label for="nis">NIS</label>
-        <input type="number" id="nis" name="nis">
-      </div>
-      <div class="input-box">
-        <label for="nama">Nama</label>
-        <input type="text" id="nama" name="nama">
-      </div>
-      <div class="input-box">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-      </div>
-      <div class="input-box">
-        <label for="kelas">Kelas</label>
-        <select name="kelas">
-          <?php foreach ($data['kelas'] as $kelas) : ?>
-          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-      <div class="input-box">
-        <label for="telp">No Telp</label>
-        <input type="text" id="telp" name="telp">
-      </div>
-      <div class="input-box">
-        <label for="alamat">alamat</label>
-        <textarea rows="5" name="alamat"></textarea>
-      </div>
-      <button type="submit">Tambah</button>
-    </form>
-  </div>
+<div id="overlay" class="overlay">
+  <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal-add" class="modal" autocomplete="off">
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
+    <div class="input-box">
+      <label for="nis">NIS</label>
+      <input type="number" id="nis" name="nis">
+    </div>
+    <div class="input-box">
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" name="nama">
+    </div>
+    <div class="input-box">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+    </div>
+    <div class="input-box">
+      <label for="kelas">Kelas</label>
+      <select name="kelas">
+        <option selected>Pilih Kelas</option>
+        <?php foreach ($data['kelas'] as $kelas) : ?>
+        <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <div class="input-box">
+      <label for="telp">No Telp</label>
+      <input type="text" id="telp" name="telp">
+    </div>
+    <div class="input-box">
+      <label for="alamat">alamat</label>
+      <textarea rows="5" name="alamat"></textarea>
+    </div>
+    <button type="submit">Tambah</button>
+  </form>
+</div>

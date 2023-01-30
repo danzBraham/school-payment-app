@@ -1,7 +1,8 @@
 <?php header('Content-Type: text/javascript'); ?>
 document.addEventListener("DOMContentLoaded", function () {
   const addBtn = document.querySelector("#add-btn");
-  const modal = document.querySelector("#modal");
+  const editBtn = document.querySelector("#edit-btn");
+  const modal = document.querySelector("#modal-add");
   const overlay = document.querySelector("#overlay");
   const closeBtn = document.querySelector("#close-btn");
 

@@ -1,5 +1,5 @@
-<?php header("Content-Type: text/css");
-?>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+<?php header("Content-Type: text/css");?>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -215,6 +215,7 @@ form {
 }
 
 .modal button {
+  width: 100%;
   padding: 8px 12px;
   background-color: var(--fourth-color);
   color: var(--text);
@@ -222,7 +223,6 @@ form {
   font-weight: 500;
   font-size: 18px;
   cursor: pointer;
-  width: fit-content;
   align-self: end;
   border: none;
 }

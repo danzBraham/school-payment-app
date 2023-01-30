@@ -6,6 +6,7 @@
         <th>Nama Siswa</th>
         <th>Bulan</th>
         <th>Jumlah Bayar</th>
+        <th>Total Tagihan</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <td><?= $spp['nama']; ?></td>
         <td><?= $spp['bulan']; ?></td>
         <td>Rp<?= number_format($spp['jumlah_bayar'], 0, ',', '.'); ?></td>
+        <td>Rp<?= number_format($spp['total_tagihan'], 0, ',', '.'); ?></td>
       </tr>
       <?php endforeach; ?>
       <?php else : ?>

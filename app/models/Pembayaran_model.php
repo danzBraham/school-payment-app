@@ -26,12 +26,6 @@ class Pembayaran_model {
                             WHERE nis = $nis AND bulan = '$bulan'");
   }
 
-  // public function insertTransaksi($idSPP, $jumlahBayar, $petugas = 1) {
-  //   return $this->db->query("INSERT INTO tb_transaksi VALUES(
-  //     '', 1, $idSPP, NOW(), $jumlahBayar
-  //   )");
-  // }
-
   public function addPembayaran($data) {
     $nis = $data['nis'];
     $dataSiswa = $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) INNER JOIN tb_thn_ajaran USING(thn_ajaran) WHERE nis = $nis");
@@ -39,6 +33,14 @@ class Pembayaran_model {
     $idSPP = $dataSPP['id_spp'];
     $nominalBayar = $dataSiswa['nominal'];
     $jumlahBayar = intval($data['jml-bayar']);
+    $tagihanSiswa = $dataSiswa['total_tagihan'];
+
+    if ($jumlahBayar > $tagihanSiswa) {
+      echo "<script>
+              alert('Jumlah bayar melebihi tagihan');
+            </script>";
+      return;
+    }
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
       '', 1, $idSPP, NOW(), $jumlahBayar

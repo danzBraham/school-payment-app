@@ -41,7 +41,6 @@
         <thead>
           <tr>
             <th>Bulan</th>
-            <!-- <th>Tanggal Bayar</th> -->
             <th>Jumlah Bayar</th>
           </tr>
         </thead>
@@ -50,7 +49,6 @@
           <?php foreach ($data['siswaHistory'] as $data) : ?>
           <tr>
             <td><?= $data['bulan']; ?></td>
-            <!-- <td><?= ($data['tgl_bayar']) ? $data['tgl_bayar'] : '-'; ?></td> -->
             <td>Rp<?= number_format($data['jumlah_bayar'], 0, ',', '.'); ?></td>
           </tr>
           <?php endforeach; ?>

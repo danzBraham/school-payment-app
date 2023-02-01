@@ -137,6 +137,7 @@ table .aksi .delete-btn:hover {
 .overlay {
   position: absolute;
   visibility: hidden;
+  backdrop-filter: blur(5px);
   opacity: 0;
   top: 0;
   left: 0;
@@ -170,10 +171,17 @@ form {
 .search-form {
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  gap: 6px;
 }
 
-.modal-add, .modal-edit {
+.search-form select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid var(--fourth-color);
+}
+
+.modal-add {
   position: relative;
   display: none;
   opacity: 0;
@@ -185,7 +193,7 @@ form {
   transition: all 300ms ease-in-out;
 }
 
-.modal-add.click, .modal-edit.click {
+.modal-add.click {
   display: flex;
   opacity: 1;
 }

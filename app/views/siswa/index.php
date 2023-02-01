@@ -24,7 +24,7 @@
         <td><?= $siswa['no_telp']; ?></td>
         <td><?= $siswa['kelas'] ?></td>
         <td class="aksi">
-          <button class="edit-btn" data-id="<?= $siswa['nis']; ?>">Edit</button>
+          <a href="<?= BASEURL; ?>/siswa/edit"><button class="edit-btn">Edit</button></a>
           <a href=""><button class="delete-btn">Delete</button></a>
         </td>
       </tr>
@@ -67,37 +67,5 @@
       <textarea rows="5" name="alamat"></textarea>
     </div>
     <button type="submit">Tambah</button>
-  </form>
-
-  <!-- Edit -->
-  <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal-edit" class="modal modal-edit" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
-    <div class="input-box">
-      <label for="nama-edit">Nama</label>
-      <input type="text" id="nama-edit" name="nama">
-    </div>
-    <div class="input-box">
-      <label for="password-edit">Password</label>
-      <input type="password" id="password-edit" name="password">
-    </div>
-    <div class="input-box">
-      <label for="kelas-edit">Kelas</label>
-      <!-- <input type="text" id="kelas-edit" name="kelas"> -->
-      <select name="kelas">
-        <option selected id="kelas-edit"></option>
-        <?php foreach ($data['kelas'] as $kelas) : ?>
-        <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
-        <?php endforeach; ?>
-      </select>
-    </div>
-    <div class="input-box">
-      <label for="telp-edit">No Telp</label>
-      <input type="text" id="telp-edit" name="telp">
-    </div>
-    <div class="input-box">
-      <label for="alamat-edit">alamat</label>
-      <textarea rows="5" id="alamat-edit" name="alamat"></textarea>
-    </div>
-    <button type="submit">Ubah</button>
   </form>
 </div>

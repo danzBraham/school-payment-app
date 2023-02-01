@@ -23,27 +23,19 @@ class Pembayaran_model {
   }
 
   public function updateSPP($bayar, $nis, $bulan, $tahun) {
-    return $this->db->query("UPDATE tb_spp SET
-                            jumlah_bayar = $bayar 
-                            WHERE nis = $nis AND bulan = '$bulan' AND thn_ajaran = '$tahun'");
+    $this->db->query("UPDATE tb_spp SET
+                      jumlah_bayar = $bayar 
+                      WHERE nis = $nis AND bulan = '$bulan' AND thn_ajaran = '$tahun'");
+    return $this->db->rowCount();
   }
 
   public function addPembayaran($data) {
     $nis = $data['nis'];
     $tahun = $data['tahun-ajaran'];
-    $dataSiswa = $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = $nis");
     $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
     $idSPP = $dataSPP['id_spp'];
     $nominalBayar = 500000;
     $jumlahBayar = intval($data['jml-bayar']);
-    $tagihanSiswa = $dataSiswa['total_tagihan'];
-
-    if ($jumlahBayar > $tagihanSiswa) {
-      echo "<script>
-              alert('Jumlah bayar melebihi tagihan');
-            </script>";
-      return;
-    }
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
       '', 1, $idSPP, NOW(), $jumlahBayar

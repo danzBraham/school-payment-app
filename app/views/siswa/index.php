@@ -49,6 +49,24 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
     </div>
+    <!-- Cara 1 -->
+    <!-- <div class="input-box">
+      <label for="thn-ajaran">Tahun Ajaran</label>
+      <?php $tahun = date('Y'); ?>
+      <?php $tahunDepan = $tahun + 1; ?>
+      <?php $tahunAjaran = "$tahun/$tahunDepan"; ?>
+      <input type="thn-ajaran" id="thn-ajaran" name="thn-ajaran" value="<?= $tahunAjaran; ?>" readonly>
+    </div> -->
+    <!-- Cara 2 -->
+    <div class="input-box">
+      <label for="thn-ajaran">Tahun Ajaran</label>
+      <select name="thn-ajaran">
+        <option selected>Pilih Tahun Ajaran</option>
+        <option value="2022/2023">2022/2023</option>
+        <option value="2023/2024">2023/2024</option>
+        <option value="2024/2025">2024/2025</option>
+      </select>
+    </div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas">

@@ -4,19 +4,22 @@ class Database {
   private $db = DB_NAME;
   private $user = DB_USER;
   private $pass = DB_PASS;
+  private $conn;
 
-  protected function connect() {
-    $conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
-    return $conn;
+  public function __construct() {
+    $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
 
-    if ($conn->connect_errno) {
-      echo "Failed to connect to MySQL: $conn->connect_error";
-      exit();
+    if ($this->conn->connect_error) {
+      die('Connection Failed: ' . $this->conn->connect_error);
     }
   }
 
   public function query($query) {
-    return $this->connect()->query($query);
+    $result = $this->conn->query($query);
+    if (!$result) {
+      die('Error in query: ' . $this->conn->error);
+    }
+    return $result;
   }
 
   public function result($query) {
@@ -42,5 +45,9 @@ class Database {
     }
 
     return $rows;
+  }
+
+  public function rowCount() {
+    return $this->conn->affected_rows;
   }
 }

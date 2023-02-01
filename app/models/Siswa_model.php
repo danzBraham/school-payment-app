@@ -26,8 +26,7 @@ class Siswa_model {
     $telp = $data['telp'];
     $alamat = $data['alamat'];
 
-    $dataKelas = $this->db->result("SELECT * FROM tb_kelas WHERE id_kelas = '$kelas'");
-    $thnAjaran = explode("/", $dataKelas['thn_ajaran']);
+    $thnAjaran = explode("/", $data['thn-ajaran']);
     $thnAjaranDepan = [$thnAjaran[0] + 1, $thnAjaran[1] + 1];
     $thnAjaranLusaDepan = [$thnAjaran[0] + 2, $thnAjaran[1] + 2];
     $thnAjaran = implode('/', $thnAjaran);

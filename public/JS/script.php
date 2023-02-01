@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.querySelector("#modal");
   const overlay = document.querySelector("#overlay");
   const closeBtn = document.querySelector("#close-btn");
+  const alert = document.querySelector("#alert");
+  const closeBtnAlert = document.querySelector("#close-btn-alert");
 
   addBtn.addEventListener("click", function () {
     overlay.classList.add('click');
@@ -18,7 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       overlay.classList.remove('click');
-      modalAdd.classList.remove('click');
+      modal.classList.remove('click');
     }
+  });
+
+  closeBtnAlert.addEventListener("click", () => {
+    const parent = alert.parentNode;
+    parent.removeChild(alert);
   });
 });

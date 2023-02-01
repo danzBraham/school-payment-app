@@ -10,8 +10,15 @@ class Siswa extends Controller {
   }
 
   public function tambah() {
-    $this->model('Siswa_model')->addSiswa($_POST);
-    header('Location: ' . BASEURL . '/siswa');
+    if ($this->model('Siswa_model')->addSiswa($_POST) > 0) {
+      Flasher::setFlash('success', 'berhasil', 'ditambah');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    } else {
+      Flasher::setFlash('failed', 'gagal', 'ditambah');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    }
   }
 
   public function edit($nis) {
@@ -24,8 +31,15 @@ class Siswa extends Controller {
   }
 
   public function update() {
-    $this->model('Siswa_model')->updateSiswa($_POST);
-    header('Location: ' . BASEURL . '/siswa');
+    if ($this->model('Siswa_model')->updateSiswa($_POST) > 0) {
+      Flasher::setFlash('success', 'berhasil', 'diperbarui');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    } else {
+      Flasher::setFlash('failed', 'gagal', 'diperbarui');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    }
   }
 
   public function delete($nis) {

@@ -80,6 +80,28 @@ nav ul li a:hover {
   font-size: 16px;
 }
 
+.alert {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.alert-success {
+  background-color: #bbf7d0;
+}
+
+.alert-failed {
+  background-color: #fecaca;
+}
+
+.close-btn-alert {
+  cursor: pointer;
+}
+
 table, tr, td, th {
   border: 1px solid black;
   border-collapse: collapse;

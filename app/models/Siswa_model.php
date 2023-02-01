@@ -27,8 +27,10 @@ class Siswa_model {
     $alamat = $data['alamat'];
 
     $thnAjaran = explode("/", $data['thn-ajaran']);
-    $thnAjaranDepan = [$thnAjaran[0] + 1, $thnAjaran[1] + 1];
-    $thnAjaranLusaDepan = [$thnAjaran[0] + 2, $thnAjaran[1] + 2];
+    $thnSatu = intval($thnAjaran[0]);
+    $thnDua = intval($thnAjaran[1]);
+    $thnAjaranDepan = [$thnSatu + 1, $thnDua + 1];
+    $thnAjaranLusaDepan = [$thnSatu + 2, $thnDua + 2];
     $thnAjaran = implode('/', $thnAjaran);
     $thnAjaranDepan = implode('/', $thnAjaranDepan);
     $thnAjaranLusaDepan = implode('/', $thnAjaranLusaDepan);
@@ -37,43 +39,45 @@ class Siswa_model {
       $nis, '$kelas', '$nama', '$password', '$alamat', '$telp'
     )");
 
-    return $this->db->query("INSERT INTO tb_spp VALUES
-                            ('', $nis, 'Juli', null, '$thnAjaran'),
-                            ('', $nis, 'Agustus', null, '$thnAjaran'),
-                            ('', $nis, 'September', null, '$thnAjaran'),
-                            ('', $nis, 'Oktober', null, '$thnAjaran'),
-                            ('', $nis, 'November', null, '$thnAjaran'),
-                            ('', $nis, 'Desember', null, '$thnAjaran'),
-                            ('', $nis, 'Januari', null, '$thnAjaran'),
-                            ('', $nis, 'Februari', null, '$thnAjaran'),
-                            ('', $nis, 'Maret', null, '$thnAjaran'),
-                            ('', $nis, 'April', null, '$thnAjaran'),
-                            ('', $nis, 'Mei', null, '$thnAjaran'),
-                            ('', $nis, 'Juni', null, '$thnAjaran'),
-                            ('', $nis, 'Juli', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Agustus', null, '$thnAjaranDepan'),
-                            ('', $nis, 'September', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Oktober', null, '$thnAjaranDepan'),
-                            ('', $nis, 'November', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Desember', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Januari', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Februari', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Maret', null, '$thnAjaranDepan'),
-                            ('', $nis, 'April', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Mei', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Juni', null, '$thnAjaranDepan'),
-                            ('', $nis, 'Juli', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Agustus', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'September', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Oktober', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'November', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Desember', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Januari', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Februari', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Maret', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'April', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Mei', null, '$thnAjaranLusaDepan'),
-                            ('', $nis, 'Juni', null, '$thnAjaranLusaDepan')");
+    $this->db->query("INSERT INTO tb_spp VALUES
+                    ('', $nis, 'Juli', null, '$thnAjaran'),
+                    ('', $nis, 'Agustus', null, '$thnAjaran'),
+                    ('', $nis, 'September', null, '$thnAjaran'),
+                    ('', $nis, 'Oktober', null, '$thnAjaran'),
+                    ('', $nis, 'November', null, '$thnAjaran'),
+                    ('', $nis, 'Desember', null, '$thnAjaran'),
+                    ('', $nis, 'Januari', null, '$thnAjaran'),
+                    ('', $nis, 'Februari', null, '$thnAjaran'),
+                    ('', $nis, 'Maret', null, '$thnAjaran'),
+                    ('', $nis, 'April', null, '$thnAjaran'),
+                    ('', $nis, 'Mei', null, '$thnAjaran'),
+                    ('', $nis, 'Juni', null, '$thnAjaran'),
+                    ('', $nis, 'Juli', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Agustus', null, '$thnAjaranDepan'),
+                    ('', $nis, 'September', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Oktober', null, '$thnAjaranDepan'),
+                    ('', $nis, 'November', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Desember', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Januari', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Februari', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Maret', null, '$thnAjaranDepan'),
+                    ('', $nis, 'April', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Mei', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Juni', null, '$thnAjaranDepan'),
+                    ('', $nis, 'Juli', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Agustus', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'September', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Oktober', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'November', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Desember', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Januari', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Februari', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Maret', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'April', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Mei', null, '$thnAjaranLusaDepan'),
+                    ('', $nis, 'Juni', null, '$thnAjaranLusaDepan')");
+
+    return $this->db->rowCount();
   }
 
   public function updateSiswa($data) {

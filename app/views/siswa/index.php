@@ -1,6 +1,7 @@
 <div class="container">
-  <!-- <span class="add-btn"><a href="#add-form"><button>Tambah Siswa</button></a></span> -->
   <button id="add-btn" class="add-btn">Tambah Siswa</button>
+  
+  <?php Flasher::flash(); ?>
 
   <table>
     <thead>
@@ -36,7 +37,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
     <div class="input-box">
       <label for="nis">NIS</label>
       <input type="number" id="nis" name="nis">

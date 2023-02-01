@@ -4,10 +4,8 @@
       <tr>
         <th>Petugas</th>
         <th>Nama Siswa</th>
-        <th>Bulan</th>
         <th>Tanggal Bayar</th>
         <th>Bayar</th>
-        <th>Tahun Ajaran</th>
       </tr>
     </thead>
     <tbody>
@@ -16,10 +14,8 @@
       <tr>
         <td><?= $h['username']; ?></td>
         <td><?= $h['nama']; ?></td>
-        <td><?= $h['bulan']; ?></td>
         <td><?= $h['tgl_bayar']; ?></td>
         <td>Rp<?= number_format($h['bayar'], 0, ',', '.'); ?></td>
-        <td><?= $h['thn_ajaran']; ?></td>
       </tr>
       <?php endforeach; ?>
       <?php else : ?>

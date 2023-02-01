@@ -168,6 +168,12 @@ form {
   gap: 13px;
 }
 
+.form-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-form {
   display: flex;
   flex-direction: row;
@@ -181,7 +187,7 @@ form {
   border: 1px solid var(--fourth-color);
 }
 
-.modal-add {
+.modal {
   position: relative;
   display: none;
   opacity: 0;
@@ -193,7 +199,7 @@ form {
   transition: all 300ms ease-in-out;
 }
 
-.modal-add.click {
+.modal.click {
   display: flex;
   opacity: 1;
 }

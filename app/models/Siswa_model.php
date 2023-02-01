@@ -6,8 +6,8 @@ class Siswa_model {
     $this->db = new Database;
   }
 
-  public function getSiswa($id) {
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = $id");
+  public function getSiswa($nis) {
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = $nis");
   }
 
   public function getAllSiswa() {
@@ -34,7 +34,7 @@ class Siswa_model {
     $thnAjaranLusaDepan = implode('/', $thnAjaranLusaDepan);
 
     $this->db->query("INSERT INTO tb_siswa VALUES (
-      $nis, '$kelas', '$nama', '$password', '$alamat', '$telp', 6000000
+      $nis, '$kelas', '$nama', '$password', '$alamat', '$telp'
     )");
 
     return $this->db->query("INSERT INTO tb_spp VALUES
@@ -74,5 +74,31 @@ class Siswa_model {
                             ('', $nis, 'April', null, '$thnAjaranLusaDepan'),
                             ('', $nis, 'Mei', null, '$thnAjaranLusaDepan'),
                             ('', $nis, 'Juni', null, '$thnAjaranLusaDepan')");
+  }
+
+  public function updateSiswa($data) {
+    $nis = intval($data['nis']);
+    $nama = $data['nama'];
+    $password = $data['password'];
+    $kelas = $data['kelas'];
+    $telp = $data['telp'];
+    $alamat = $data['alamat'];
+
+    $this->db->query("UPDATE tb_siswa SET
+                      id_kelas = '$kelas',
+                      nama = '$nama',
+                      password = '$password',
+                      alamat = '$alamat',
+                      no_telp = '$telp'
+                      WHERE nis = $nis");
+
+    return $this->db->rowCount();
+  }
+
+  public function deleteSiswa($nis) {
+    $this->db->query("DELETE FROM tb_transaksi WHERE nis = $nis");
+    $this->db->query("DELETE FROM tb_spp WHERE nis = $nis");
+    $this->db->query("DELETE FROM tb_siswa WHERE nis = $nis");
+    return $this->db->rowCount();
   }
 }

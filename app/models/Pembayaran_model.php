@@ -32,23 +32,21 @@ class Pembayaran_model {
   public function addPembayaran($data) {
     $nis = $data['nis'];
     $tahun = $data['tahun-ajaran'];
-    $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-    $idSPP = $dataSPP['id_spp'];
     $nominalBayar = 500000;
     $jumlahBayar = intval($data['jml-bayar']);
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
-      '', 1, $idSPP, NOW(), $jumlahBayar
+      '', 1, $nis, NOW(), $jumlahBayar
     )");
 
     while ($jumlahBayar > 0) {
-      $dataSPPLoop = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-      $idSPP = $dataSPPLoop['id_spp'];
-      if (!$dataSPPLoop) {
+      $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      $idSPP = $dataSPP['id_spp'];
+      if (!$dataSPP) {
         return;
       }
-      $jumlahBayarSPP = intval($dataSPPLoop['jumlah_bayar']);
-      $bulan = $dataSPPLoop['bulan'];
+      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
+      $bulan = $dataSPP['bulan'];
 
       if ($jumlahBayarSPP == 0) {
         if ($jumlahBayar > $nominalBayar) {

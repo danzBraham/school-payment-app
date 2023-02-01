@@ -24,8 +24,8 @@
         <td><?= $siswa['no_telp']; ?></td>
         <td><?= $siswa['kelas'] ?></td>
         <td class="aksi">
-          <a href="<?= BASEURL; ?>/siswa/edit"><button class="edit-btn">Edit</button></a>
-          <a href=""><button class="delete-btn">Delete</button></a>
+          <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
+          <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>
         </td>
       </tr>
       <?php endforeach; ?>
@@ -33,10 +33,10 @@
   </table>
 </div>
 
+<!-- Modal -->
 <div id="overlay" class="overlay">
-  <!-- Tambah -->
-  <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal-add" class="modal modal-add" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
+  <form action="<?= BASEURL; ?>/siswa/tambah" method="POST" id="modal" class="modal" autocomplete="off">
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg" alt=""></div>
     <div class="input-box">
       <label for="nis">NIS</label>
       <input type="number" id="nis" name="nis">

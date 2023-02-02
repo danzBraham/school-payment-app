@@ -43,7 +43,14 @@ class Siswa extends Controller {
   }
 
   public function delete($nis) {
-    $this->model('Siswa_model')->deleteSiswa($nis);
-    header('Location: ' . BASEURL . '/siswa');
+    if ($this->model('Siswa_model')->deleteSiswa($nis) > 0) {
+      Flasher::setFlash('success', 'berhasil', 'dihapus');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    } else {
+      Flasher::setFlash('failed', 'gagal', 'dihapus');
+      header('Location: ' . BASEURL . '/siswa');
+      exit;
+    }
   }
 }

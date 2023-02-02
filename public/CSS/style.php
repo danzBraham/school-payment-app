@@ -22,6 +22,8 @@ html {
 }
 
 nav {
+  position: fixed;
+  width: 100%;
   padding: 20px 50px;
   background-color: var(--main-color);
   font-size: 20px;
@@ -46,7 +48,7 @@ nav ul li a:hover {
 }
 
 .container {
-  padding: 20px 50px;
+  padding: 90px 50px 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -122,14 +124,15 @@ tbody {
   background-color: var(--text);
 }
 
+table .no-data {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+
 table .aksi {
   width: 200px;
   text-align: center;
-}
-
-table td h2 {
-  text-align: center;
-  color: #232323;
 }
 
 table .aksi a button {

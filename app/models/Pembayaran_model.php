@@ -12,14 +12,17 @@ class Pembayaran_model {
 
   public function searchSiswaByNis() {
     $nis = $_POST['nis'];
-    $tahun = $_POST['tahun'];
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%'");
+  }
+
+  public function getThnAjaran() {
+    $nis = $_POST['nis'];
+    return $this->db->query("SELECT thn_ajaran FROM tb_spp WHERE nis = $nis GROUP BY thn_ajaran");
   }
 
   public function getSiswaHistory() {
     $nis = $_POST['nis'];
-    $tahun = $_POST['tahun'];
-    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
+    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%'");
   }
 
   public function updateSPP($bayar, $nis, $bulan, $tahun) {
@@ -71,20 +74,19 @@ class Pembayaran_model {
         }
       }
     }
-
-    // $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");
-    // $tagihanTerbayar = intval($tagihanTerbayar['SUM(jumlah_bayar)']);
-    // $totalTagihan = $nominalBayar * 12;
-    // $totalTagihan -= $tagihanTerbayar;
-    // return $this->db->query("UPDATE tb_siswa SET total_tagihan = $totalTagihan WHERE nis = $nis");
   }
 
   public function getTagihan() {
     $nis = $_POST['nis'];
-    $tahun = $_POST['tahun'];
-    $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
+    if (isset($_POST['tahun'])) {
+      $tahun = $_POST['tahun'];
+      $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
+      $totalTagihan = 500000 * 12;
+    } else {
+      $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");
+      $totalTagihan = 500000 * 36;
+    }
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);
-    $totalTagihan = 500000 * 12;
     $totalTagihan -= $tagihanTerbayar;
     return $totalTagihan;
   }

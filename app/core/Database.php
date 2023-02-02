@@ -50,4 +50,8 @@ class Database {
   public function rowCount() {
     return $this->conn->affected_rows;
   }
+
+  public function lastID() {
+    return $this->conn->insert_id;
+  }
 }

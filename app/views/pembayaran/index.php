@@ -6,12 +6,6 @@
       <option value="<?= $s['nis']; ?>"><?= $s['nama']; ?></option>
       <?php endforeach; ?>
     </datalist>
-    <select name="tahun">
-      <option selected>Pilih Tahun Ajaran</option>
-      <option value="2022/2023">2022/2023</option>
-      <option value="2023/2024">2023/2024</option>
-      <option value="2024/2025">2024/2025</option>
-    </select>
     <button type="submit">Cari</button>
   </form>
 
@@ -32,7 +26,12 @@
       </div>
       <div class="input-box">
         <label for="tahun">Tahun Ajaran</label>
-        <input type="text" id="tahun" name="tahun-ajaran" value="<?= $data['siswaByNis']['thn_ajaran']; ?>" readonly>
+        <select name="tahun">
+          <option selected>Pilih Tahun Ajaran</option>
+          <?php foreach($data['thnAjaran'] as $thn) : ?>
+          <option value="<?= $thn['thn_ajaran']; ?>"><?= $thn['thn_ajaran']; ?></option>
+          <?php endforeach; ?>
+        </select>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar</label>
@@ -54,7 +53,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php $dataTagihan = $data['tagihan']; ?>
+          <!-- <?php $dataTagihan = $data['tagihan']; ?> -->
           <?php foreach ($data['siswaHistory'] as $data) : ?>
           <tr>
             <td><?= $data['bulan']; ?></td>

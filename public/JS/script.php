@@ -7,15 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const alert = document.querySelector("#alert");
   const closeBtnAlert = document.querySelector("#close-btn-alert");
 
-  addBtn.addEventListener("click", function () {
-    overlay.classList.add('click');
-    modal.classList.add('click');
-  });
+  if (addBtn) {
+    addBtn.addEventListener("click", function () {
+      overlay.classList.add('click');
+      modal.classList.add('click');
+    });
 
-  closeBtn.addEventListener("click", () => {
-    overlay.classList.remove('click');
-    modal.classList.remove('click');
-  });
+    closeBtn.addEventListener("click", () => {
+      overlay.classList.remove('click');
+      modal.classList.remove('click');
+    });
+  }
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  closeBtnAlert.addEventListener("click", () => {
+  closeBtnAlert.addEventListener('click', () => {
     const parent = alert.parentNode;
     parent.removeChild(alert);
   });

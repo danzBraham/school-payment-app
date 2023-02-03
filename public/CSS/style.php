@@ -48,7 +48,7 @@ nav ul li a:hover {
 }
 
 .container {
-  padding: 90px 50px 50px;
+  padding: 85px 50px 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;

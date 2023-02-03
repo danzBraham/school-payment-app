@@ -11,11 +11,11 @@ class Siswa extends Controller {
 
   public function tambah() {
     if ($this->model('Siswa_model')->addSiswa($_POST) > 0) {
-      Flasher::setFlash('success', 'berhasil', 'ditambah');
+      Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'ditambah');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     } else {
-      Flasher::setFlash('failed', 'gagal', 'ditambah');
+      Flasher::setFlash('Data Siswa', 'failed', 'gagal', 'ditambah');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     }
@@ -32,11 +32,11 @@ class Siswa extends Controller {
 
   public function update() {
     if ($this->model('Siswa_model')->updateSiswa($_POST) > 0) {
-      Flasher::setFlash('success', 'berhasil', 'diperbarui');
+      Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'diperbarui');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     } else {
-      Flasher::setFlash('failed', 'gagal', 'diperbarui');
+      Flasher::setFlash('Data Siswa', 'failed', 'gagal', 'diperbarui');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     }
@@ -44,11 +44,11 @@ class Siswa extends Controller {
 
   public function delete($nis) {
     if ($this->model('Siswa_model')->deleteSiswa($nis) > 0) {
-      Flasher::setFlash('success', 'berhasil', 'dihapus');
+      Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'dihapus');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     } else {
-      Flasher::setFlash('failed', 'gagal', 'dihapus');
+      Flasher::setFlash('Data Siswa', 'failed', 'gagal', 'dihapus');
       header('Location: ' . BASEURL . '/siswa');
       exit;
     }

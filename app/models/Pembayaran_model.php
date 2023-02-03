@@ -12,7 +12,8 @@ class Pembayaran_model {
 
   public function searchSiswaByNis() {
     $nis = $_POST['nis'];
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%'");
+    $tahun = $_POST['tahun'];
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
   }
 
   public function getThnAjaran() {
@@ -22,14 +23,14 @@ class Pembayaran_model {
 
   public function getSiswaHistory() {
     $nis = $_POST['nis'];
-    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%'");
+    $tahun = $_POST['tahun'];
+    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
   }
 
   public function updateSPP($bayar, $nis, $bulan, $tahun) {
-    $this->db->query("UPDATE tb_spp SET
+    return $this->db->query("UPDATE tb_spp SET
                       jumlah_bayar = $bayar 
                       WHERE nis = $nis AND bulan = '$bulan' AND thn_ajaran = '$tahun'");
-    return $this->db->rowCount();
   }
 
   public function addPembayaran($data) {
@@ -44,7 +45,7 @@ class Pembayaran_model {
 
     while ($jumlahBayar > 0) {
       $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
-      $idSPP = $dataSPP['id_spp'];
+
       if (!$dataSPP) {
         return;
       }
@@ -74,19 +75,15 @@ class Pembayaran_model {
         }
       }
     }
+    return $this->db->rowCount();
   }
 
   public function getTagihan() {
     $nis = $_POST['nis'];
-    if (isset($_POST['tahun'])) {
-      $tahun = $_POST['tahun'];
-      $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
-      $totalTagihan = 500000 * 12;
-    } else {
-      $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND jumlah_bayar IS NOT NULL");
-      $totalTagihan = 500000 * 36;
-    }
+    $tahun = $_POST['tahun'];
+    $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);
+    $totalTagihan = 500000 * 12;
     $totalTagihan -= $tagihanTerbayar;
     return $totalTagihan;
   }

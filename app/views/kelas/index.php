@@ -4,6 +4,7 @@
       <tr>
         <th>ID Kelas</th>
         <th>Kelas</th>
+        <th>Jurusan</th>
       </tr>
     </thead>
     <tbody>
@@ -11,6 +12,7 @@
       <tr>
         <td><?= $kelas['id_kelas']; ?></td>
         <td><?= $kelas['kelas']; ?></td>
+        <td><?= $kelas['jurusan']; ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>

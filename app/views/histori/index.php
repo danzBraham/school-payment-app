@@ -1,4 +1,6 @@
 <div class="container">
+  <?php Flasher::flash(); ?>
+
   <table>
     <thead>
       <tr>

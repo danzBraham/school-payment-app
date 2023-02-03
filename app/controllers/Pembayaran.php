@@ -21,7 +21,14 @@ class Pembayaran extends Controller {
   }
 
   public function bayar() {
-    $this->model('Pembayaran_model')->addPembayaran($_POST);
-    header('Location: ' . BASEURL . '/histori');
+    if ($this->model('Pembayaran_model')->addPembayaran($_POST) > 0) {
+      Flasher::setFlash('Transaksi', 'success', 'berhasil', 'dilakukan');;
+      header('Location: ' . BASEURL . '/histori');
+      exit;
+    } else {
+      Flasher::setFlash('Transaksi', 'failed', 'gagal', 'dilakukan');;
+      header('Location: ' . BASEURL . '/histori');
+      exit;
+    }
   }
 }

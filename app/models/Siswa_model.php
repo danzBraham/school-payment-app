@@ -7,31 +7,39 @@ class Siswa_model {
   }
 
   public function getSiswa($nis) {
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = $nis");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = :nis");
+    $this->db->bind('nis', $nis);
+    return $this->db->result();
   }
 
   public function getAllSiswa() {
-    return $this->db->results("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+    return $this->db->results();
   }
 
   public function getAllKelas() {
-    return $this->db->results("SELECT * FROM tb_kelas");
+    $this->db->query("SELECT * FROM tb_kelas");
+    return $this->db->results();
   }
 
   public function insertSPP($nis, $thnAjaran) {
-    return $this->db->query("INSERT INTO tb_spp VALUES
-                    ('', $nis, 'Juli', null, '$thnAjaran'),
-                    ('', $nis, 'Agustus', null, '$thnAjaran'),
-                    ('', $nis, 'September', null, '$thnAjaran'),
-                    ('', $nis, 'Oktober', null, '$thnAjaran'),
-                    ('', $nis, 'November', null, '$thnAjaran'),
-                    ('', $nis, 'Desember', null, '$thnAjaran'),
-                    ('', $nis, 'Januari', null, '$thnAjaran'),
-                    ('', $nis, 'Februari', null, '$thnAjaran'),
-                    ('', $nis, 'Maret', null, '$thnAjaran'),
-                    ('', $nis, 'April', null, '$thnAjaran'),
-                    ('', $nis, 'Mei', null, '$thnAjaran'),
-                    ('', $nis, 'Juni', null, '$thnAjaran')");
+    $this->db->query("INSERT INTO tb_spp VALUES
+                    ('', ?, 'Juli', null, '?'),
+                    ('', ?, 'Agustus', null, '?'),
+                    ('', ?, 'September', null, '?'),
+                    ('', ?, 'Oktober', null, '?'),
+                    ('', ?, 'November', null, '?'),
+                    ('', ?, 'Desember', null, '?'),
+                    ('', ?, 'Januari', null, '?'),
+                    ('', ?, 'Februari', null, '?'),
+                    ('', ?, 'Maret', null, '?'),
+                    ('', ?, 'April', null, '?'),
+                    ('', ?, 'Mei', null, '?'),
+                    ('', ?, 'Juni', null, '?')");
+
+    $this->db->bind('nis', $nis);
+    $this->db->bind('thnAjaran', $thnAjaran);
+    return $this->db->execute();
   }
 
   public function addSiswa($data) {
@@ -70,17 +78,24 @@ class Siswa_model {
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
-
+  
     $this->db->query("UPDATE tb_siswa SET
-                      id_kelas = '$kelas',
-                      nama = '$nama',
-                      password = '$password',
-                      alamat = '$alamat',
-                      no_telp = '$telp'
-                      WHERE nis = $nis");
-
+                      id_kelas = :kelas,
+                      nama = :nama,
+                      password = :password,
+                      alamat = :alamat,
+                      no_telp = :telp
+                      WHERE nis = :nis");
+  
+    $this->db->bind('id_kelas', $kelas);
+    $this->db->bind('nama', $nama);
+    $this->db->bind('password', $password);
+    $this->db->bind('alamat', $alamat);
+    $this->db->bind('telp', $telp);
+    $this->db->bind('nis', $nis);
+    $this->db->execute();
     return $this->db->rowCount();
-  }
+  }  
 
   public function deleteSiswa($nis) {
     $this->db->query("DELETE FROM tb_transaksi WHERE nis = $nis");

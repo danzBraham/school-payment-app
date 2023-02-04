@@ -4,54 +4,67 @@ class Database {
   private $db = DB_NAME;
   private $user = DB_USER;
   private $pass = DB_PASS;
-  private $conn;
+  private $dbh;
+  private $stmt;
 
   public function __construct() {
-    $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
+    $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db;
+    $option = [
+      PDO::ATTR_PERSISTENT => true,
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ];
 
-    if ($this->conn->connect_error) {
-      die('Connection Failed: ' . $this->conn->connect_error);
+    try {
+      $this->dbh = new PDO($dsn, $this->user, $this->pass, $option);
+    } catch (PDOException $e) {
+      die($e->getMessage());
     }
   }
 
   public function query($query) {
-    $result = $this->conn->query($query);
-    if (!$result) {
-      die('Error in query: ' . $this->conn->error);
-    }
-    return $result;
+    return $this->stmt = $this->dbh->prepare($query);
   }
 
-  public function result($query) {
-    $result = $this->query($query);
-    $numRows = $result->num_rows;
-
-    if ($numRows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        return $row;
-      }
-    }
-  }
-
-  public function results($query) {
-    $result = $this->query($query);
-    $numRows = $result->num_rows;
-    $rows = [];
-
-    if ($numRows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        $rows[] = $row;
+  public function bind($params, $value, $type = null) {
+    if (is_null($type)) {
+      switch (true) {
+        case is_int($value):
+          $type = PDO::PARAM_INT;
+          break;
+        case is_bool($value):
+          $type = PDO::PARAM_BOOL;
+          break;
+        case is_null($value):
+          $type = PDO::PARAM_NULL;
+          break;
+        default:
+          $type = PDO::PARAM_STR;
       }
     }
 
-    return $rows;
+    $this->stmt->bindValue($params, $value, $type);
+  }
+
+  public function execute() {
+    return $this->stmt->execute();
+  }
+
+  public function result() {
+    $this->execute();
+    return $this->stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public function results() {
+    $this->execute();
+    return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function rowCount() {
-    return $this->conn->affected_rows;
+    return $this->stmt->rowCount();
   }
 
   public function lastID() {
-    return $this->conn->insert_id;
+    return $this->dbh->lastInsertId();
   }
 }

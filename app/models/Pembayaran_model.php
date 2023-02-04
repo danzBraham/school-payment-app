@@ -11,20 +11,24 @@ class Pembayaran_model {
   }
 
   public function searchSiswaByNis() {
-    $nis = $_POST['nis'];
+    $key = $_POST['keyword'];
     $tahun = $_POST['tahun'];
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
+    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key%'");
+    $nis = $data['nis'];
+    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = $nis AND thn_ajaran = '$tahun'");
   }
 
-  public function getThnAjaran() {
-    $nis = $_POST['nis'];
-    return $this->db->query("SELECT thn_ajaran FROM tb_spp WHERE nis = $nis GROUP BY thn_ajaran");
-  }
+  // public function getThnAjaran() {
+  //   $nis = $_POST['nis'];
+  //   return $this->db->query("SELECT thn_ajaran FROM tb_spp WHERE nis = $nis GROUP BY thn_ajaran");
+  // }
 
   public function getSiswaHistory() {
-    $nis = $_POST['nis'];
+    $key = $_POST['keyword'];
     $tahun = $_POST['tahun'];
-    return $this->db->results("SELECT * FROM tb_spp WHERE nis LIKE '%$nis%' AND thn_ajaran = '$tahun'");
+    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key%'");
+    $nis = $data['nis'];
+    return $this->db->results("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun'");
   }
 
   public function updateSPP($bayar, $nis, $bulan, $tahun) {
@@ -79,8 +83,10 @@ class Pembayaran_model {
   }
 
   public function getTagihan() {
-    $nis = $_POST['nis'];
+    $key = $_POST['keyword'];
     $tahun = $_POST['tahun'];
+    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key'");
+    $nis = $data['nis'];
     $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);
     $totalTagihan = 500000 * 12;

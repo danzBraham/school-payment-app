@@ -1,11 +1,6 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
-    <input list="Allnis" name="nis" id="nis" placeholder="NIS Siswa">
-    <datalist id="Allnis">
-      <?php foreach($data['siswa'] as $s) : ?>
-      <option value="<?= $s['nis']; ?>"><?= $s['nama']; ?></option>
-      <?php endforeach; ?>
-    </datalist>
+    <input type="text" name="keyword" placeholder="NIS atau Nama Siswa">
     <select name="tahun">
       <option selected>Pilih Tahun Ajaran</option>
       <option value="2023/2024">2023/2024</option>

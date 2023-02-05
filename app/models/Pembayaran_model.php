@@ -7,34 +7,52 @@ class Pembayaran_model {
   }
 
   public function getAllSiswa() {
-    return $this->db->results("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+    return $this->db->results();
   }
 
   public function searchSiswaByNis() {
-    $key = $_POST['keyword'];
+    $keyword = $_POST['keyword'];
     $tahun = $_POST['tahun'];
-    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key%'");
+
+    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
+    $this->db->bind('nis', $keyword);
+    $this->db->bind('keyword', "%$keyword%");
+    $data = $this->db->result();
     $nis = $data['nis'];
-    return $this->db->result("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = $nis AND thn_ajaran = '$tahun'");
+
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND thn_ajaran = :tahun");
+    $this->db->bind('nis', $nis);
+    $this->db->bind('tahun', $tahun);
+    return $this->db->result();
   }
 
-  // public function getThnAjaran() {
-  //   $nis = $_POST['nis'];
-  //   return $this->db->query("SELECT thn_ajaran FROM tb_spp WHERE nis = $nis GROUP BY thn_ajaran");
-  // }
-
   public function getSiswaHistory() {
-    $key = $_POST['keyword'];
+    $keyword = $_POST['keyword'];
     $tahun = $_POST['tahun'];
-    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key%'");
+
+    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
+    $this->db->bind('nis', $keyword);
+    $this->db->bind('keyword', "%$keyword%");
+    $data = $this->db->result();
     $nis = $data['nis'];
-    return $this->db->results("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun'");
+
+    $this->db->query("SELECT * FROM tb_spp WHERE nis = :nis AND thn_ajaran = :tahun");
+    $this->db->bind('nis', $nis);
+    $this->db->bind('tahun', $tahun);
+    return $this->db->results();
   }
 
   public function updateSPP($bayar, $nis, $bulan, $tahun) {
-    return $this->db->query("UPDATE tb_spp SET
-                      jumlah_bayar = $bayar 
-                      WHERE nis = $nis AND bulan = '$bulan' AND thn_ajaran = '$tahun'");
+    $this->db->query("UPDATE tb_spp SET
+                      jumlah_bayar = :bayar 
+                      WHERE nis = :nis AND bulan = :bulan AND thn_ajaran = :tahun");
+
+    $this->db->bind('bayar', $bayar);
+    $this->db->bind('nis', $nis);
+    $this->db->bind('bulan', $bulan);
+    $this->db->bind('tahun', $tahun);
+    $this->db->execute();
   }
 
   public function addPembayaran($data) {
@@ -44,8 +62,12 @@ class Pembayaran_model {
     $jumlahBayar = intval($data['jml-bayar']);
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
-      '', 1, $nis, NOW(), $jumlahBayar
+      null, :petugas, :nis, NOW(), :jumlahBayar
     )");
+    $this->db->bind('petugas', 1);
+    $this->db->bind('nis', $nis);
+    $this->db->bind('jumlahBayar', $jumlahBayar);
+    $this->db->execute();
 
     while ($jumlahBayar > 0) {
       $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
@@ -83,11 +105,19 @@ class Pembayaran_model {
   }
 
   public function getTagihan() {
-    $key = $_POST['keyword'];
+    $keyword = $_POST['keyword'];
     $tahun = $_POST['tahun'];
-    $data = $this->db->result("SELECT * FROM tb_siswa WHERE nis = $key OR nama LIKE '%$key'");
+
+    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
+    $this->db->bind('nis', $keyword);
+    $this->db->bind('keyword', "%$keyword%");
+    $data = $this->db->result();
     $nis = $data['nis'];
-    $tagihanTerbayar = $this->db->result("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND jumlah_bayar IS NOT NULL");
+
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND thn_ajaran = :tahun AND jumlah_bayar IS NOT NULL");
+    $this->db->bind('nis', $nis);
+    $this->db->bind('tahun', $tahun);
+    $tagihanTerbayar = $this->db->result();
     $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);
     $totalTagihan = 500000 * 12;
     $totalTagihan -= $tagihanTerbayar;

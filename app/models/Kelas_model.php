@@ -7,6 +7,7 @@ class Kelas_model {
   }
 
   public function getAllKelas() {
-    return $this->db->results("SELECT * FROM tb_kelas");
+    $this->db->query("SELECT * FROM tb_kelas");
+    return $this->db->results();
   }
 }

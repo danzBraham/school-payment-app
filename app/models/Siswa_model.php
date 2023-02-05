@@ -24,22 +24,22 @@ class Siswa_model {
 
   public function insertSPP($nis, $thnAjaran) {
     $this->db->query("INSERT INTO tb_spp VALUES
-                    ('', :nis, 'Juli', null, ':thn_ajaran'),
-                    ('', :nis, 'Agustus', null, ':thn_ajaran'),
-                    ('', :nis, 'September', null, ':thn_ajaran'),
-                    ('', :nis, 'Oktober', null, ':thn_ajaran'),
-                    ('', :nis, 'November', null, ':thn_ajaran'),
-                    ('', :nis, 'Desember', null, ':thn_ajaran'),
-                    ('', :nis, 'Januari', null, ':thn_ajaran'),
-                    ('', :nis, 'Februari', null, ':thn_ajaran'),
-                    ('', :nis, 'Maret', null, ':thn_ajaran'),
-                    ('', :nis, 'April', null, ':thn_ajaran'),
-                    ('', :nis, 'Mei', null, ':thn_ajaran'),
-                    ('', :nis, 'Juni', null, ':thn_ajaran')");
+                    ('', :nis, 'Juli', null, :thnAjaran),
+                    ('', :nis, 'Agustus', null, :thnAjaran),
+                    ('', :nis, 'September', null, :thnAjaran),
+                    ('', :nis, 'Oktober', null, :thnAjaran),
+                    ('', :nis, 'November', null, :thnAjaran),
+                    ('', :nis, 'Desember', null, :thnAjaran),
+                    ('', :nis, 'Januari', null, :thnAjaran),
+                    ('', :nis, 'Februari', null, :thnAjaran),
+                    ('', :nis, 'Maret', null, :thnAjaran),
+                    ('', :nis, 'April', null, :thnAjaran),
+                    ('', :nis, 'Mei', null, :thnAjaran),
+                    ('', :nis, 'Juni', null, :thnAjaran)");
 
     $this->db->bind('nis', $nis);
-    $this->db->bind('thn_ajaran', $thnAjaran);
-    return $this->db->execute();
+    $this->db->bind('thnAjaran', $thnAjaran);
+    $this->db->execute();
   }
 
   public function addSiswa($data) {
@@ -105,10 +105,17 @@ class Siswa_model {
 
   public function deleteSiswa($nis) {
     $this->db->query("DELETE FROM tb_transaksi WHERE nis = :nis");
+    $this->db->bind('nis', $nis);
+    $this->db->execute();
+
     $this->db->query("DELETE FROM tb_spp WHERE nis = :nis");
+    $this->db->bind('nis', $nis);
+    $this->db->execute();
+
     $this->db->query("DELETE FROM tb_siswa WHERE nis = :nis");
     $this->db->bind('nis', $nis);
     $this->db->execute();
+
     return $this->db->rowCount();
   }
 }

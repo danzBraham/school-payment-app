@@ -7,6 +7,7 @@ class Histori_model {
   }
 
   public function getAllHistori() {
-    return $this->db->results("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) ORDER BY tgl_bayar DESC LIMIT 15");
+    $this->db->query("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) ORDER BY tgl_bayar DESC LIMIT 15");
+    return $this->db->results();
   }
 }

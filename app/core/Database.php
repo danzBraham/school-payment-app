@@ -23,7 +23,7 @@ class Database {
   }
 
   public function query($query) {
-    return $this->stmt = $this->dbh->prepare($query);
+    $this->stmt = $this->dbh->prepare($query);
   }
 
   public function bind($params, $value, $type = null) {
@@ -47,7 +47,7 @@ class Database {
   }
 
   public function execute() {
-    return $this->stmt->execute();
+    $this->stmt->execute();
   }
 
   public function result() {

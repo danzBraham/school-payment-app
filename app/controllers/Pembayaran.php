@@ -1,6 +1,18 @@
 <?php
 class Pembayaran extends Controller {
   public function index() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = 'Pembayaran';
     $data['siswa'] = $this->model('Pembayaran_model')->getAllSiswa();
     $this->view('templates/header', $data);
@@ -9,6 +21,18 @@ class Pembayaran extends Controller {
   }
 
   public function siswa() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = 'Pembayaran';
     $data['siswa'] = $this->model('Pembayaran_model')->getAllSiswa();
     $data['siswaByNis'] = $this->model('Pembayaran_model')->searchSiswaByNis();
@@ -20,6 +44,18 @@ class Pembayaran extends Controller {
   }
 
   public function bayar() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     if ($this->model('Pembayaran_model')->addPembayaran($_POST) > 0) {
       Flasher::setFlash('Transaksi', 'success', 'berhasil', 'dilakukan');;
       header('Location: ' . BASEURL . '/histori');

@@ -1,16 +1,36 @@
 <?php
 class Home extends Controller {
   public function index() {
+    // if (isset($_SESSION['login']) && $_SESSION['level'] == 'admin') {
+    //   header('Location: ' . BASEURL . '/dashboard');
+    //   exit;
+    // } elseif (isset($_SESSION['login']) && $_SESSION['level'] == 'petugas') {
+    //   header('Location: ' . BASEURL . '/pembayaran');
+    //   exit;
+    // } elseif (isset($_SESSION['login']) && isset($_SESSION['nis'])) {
+    //   header('Location: ' . BASEURL . '/histori');
+    //   exit;
+    // }
+
     $data['title'] = 'Home';
     $this->view('home/index', $data);
   }
 
   public function login() {
-    if ($this->model('Home_model')->login() > 0) {
+    if ($this->model('Home_model')->login() > 0 && $_SESSION['level'] == 'admin') {
       header('Location: ' . BASEURL . '/dashboard');
       exit;
+    } elseif ($this->model('Home_model')->login() > 0 && $_SESSION['level'] == 'petugas') {
+      header('Location: ' . BASEURL . '/pembayaran');
+      exit;
+    } elseif ($this->model('Home_model')->login() > 0 && isset($_SESSION['nis'])) {
+      header('Location: ' . BASEURL . '/histori');
+      exit;
     } else {
-      header('Location: ' . BASEURL . '/home');
+      echo '<script>
+              alert("Gagal Login!");
+              document.location.href = "' . BASEURL . '/home";
+            </script>';
       exit;
     }
   }

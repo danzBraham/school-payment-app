@@ -1,6 +1,23 @@
 <?php
 class Siswa extends Controller {
   public function index() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = "Siswa";
     $data['siswa'] = $this->model('Siswa_model')->getAllSiswa();
     $data['kelas'] = $this->model('Siswa_model')->getAllKelas();
@@ -10,6 +27,23 @@ class Siswa extends Controller {
   }
 
   public function tambah() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     if ($this->model('Siswa_model')->addSiswa($_POST) > 0) {
       Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'ditambah');
       header('Location: ' . BASEURL . '/siswa');
@@ -22,6 +56,23 @@ class Siswa extends Controller {
   }
 
   public function edit($nis) {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = "Siswa";
     $data['siswa'] = $this->model('Siswa_model')->getSiswa($nis);
     $data['kelas'] = $this->model('Siswa_model')->getAllKelas();
@@ -31,6 +82,23 @@ class Siswa extends Controller {
   }
 
   public function update() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     if ($this->model('Siswa_model')->updateSiswa($_POST) > 0) {
       Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'diperbarui');
       header('Location: ' . BASEURL . '/siswa');
@@ -43,6 +111,23 @@ class Siswa extends Controller {
   }
 
   public function delete($nis) {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     if ($this->model('Siswa_model')->deleteSiswa($nis) > 0) {
       Flasher::setFlash('Data Siswa', 'success', 'berhasil', 'dihapus');
       header('Location: ' . BASEURL . '/siswa');

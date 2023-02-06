@@ -1,10 +1,3 @@
-<?php
-  if (!isset($_SESSION['username'])) {
-  header('Location' . BASEURL . '/home');
-  exit;
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,12 +13,21 @@
 <body>
   <nav class="print">
     <ul>
-      <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
-      <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
-      <li><a href="<?= BASEURL; ?>/kelas">Data Kelas</a></li>
-      <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
-      <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
-      <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-      <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+      <?php if ($_SESSION['username'] == 'admin') : ?>
+        <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
+        <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
+        <li><a href="<?= BASEURL; ?>/kelas">Data Kelas</a></li>
+        <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
+        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
+        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+      <?php elseif ($_SESSION['username'] == 'petugas') : ?>
+        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
+        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+      <?php elseif ($_SESSION['nis']) : ?>
+        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+      <?php endif; ?>
     </ul>
   </nav>

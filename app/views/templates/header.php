@@ -20,14 +20,14 @@
         <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
         <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php elseif ($_SESSION['username'] == 'petugas') : ?>
         <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php elseif ($_SESSION['nis']) : ?>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
+        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php endif; ?>
     </ul>
   </nav>

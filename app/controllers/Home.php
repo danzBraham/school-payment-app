@@ -1,16 +1,16 @@
 <?php
 class Home extends Controller {
   public function index() {
-    // if (isset($_SESSION['login']) && $_SESSION['level'] == 'admin') {
-    //   header('Location: ' . BASEURL . '/dashboard');
-    //   exit;
-    // } elseif (isset($_SESSION['login']) && $_SESSION['level'] == 'petugas') {
-    //   header('Location: ' . BASEURL . '/pembayaran');
-    //   exit;
-    // } elseif (isset($_SESSION['login']) && isset($_SESSION['nis'])) {
-    //   header('Location: ' . BASEURL . '/histori');
-    //   exit;
-    // }
+    if (isset($_SESSION['login']) && $_SESSION['level'] == 'admin') {
+      header('Location: ' . BASEURL . '/dashboard');
+      exit;
+    } elseif (isset($_SESSION['login']) && $_SESSION['level'] == 'petugas') {
+      header('Location: ' . BASEURL . '/pembayaran');
+      exit;
+    } elseif (isset($_SESSION['login']) && isset($_SESSION['nis'])) {
+      header('Location: ' . BASEURL . '/histori');
+      exit;
+    }
 
     $data['title'] = 'Home';
     $this->view('home/index', $data);
@@ -36,7 +36,7 @@ class Home extends Controller {
   }
 
   public function logout() {
-    $this->model('Home_model')->out();
+    $this->model('Home_model')->logout();
     header('Location: ' . BASEURL . '/home');
     exit;
   }

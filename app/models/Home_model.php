@@ -47,8 +47,7 @@ class Home_model {
     }
   }
 
-  public function out() {
-    session_start();
+  public function logout() {
     session_unset();
     session_destroy();
   }

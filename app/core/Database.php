@@ -23,7 +23,11 @@ class Database {
   }
 
   public function query($query) {
-    $this->stmt = $this->dbh->prepare($query);
+    try {
+      $this->stmt = $this->dbh->prepare($query);
+    } catch (PDOException $e) {
+      die($e->getMessage());
+    }
   }
 
   public function bind($params, $value, $type = null) {

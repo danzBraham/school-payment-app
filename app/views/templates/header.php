@@ -1,3 +1,10 @@
+<?php
+  if (!isset($_SESSION['username'])) {
+  header('Location' . BASEURL . '/login');
+  exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

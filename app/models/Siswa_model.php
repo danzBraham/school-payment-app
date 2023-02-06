@@ -59,14 +59,14 @@ class Siswa_model {
     $thnAjaranLusaDepan = implode('/', $thnAjaranLusaDepan);
 
     $this->db->query("INSERT INTO tb_siswa VALUES (
-      null, :id_kelas, :nama, :password, :alamat, :no_telp
+      '', :id_kelas, :nama, :password, :alamat, :telp
     )");
 
     $this->db->bind('id_kelas', $kelas);
     $this->db->bind('nama', $nama);
     $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
-    $this->db->bind('no_telp', $telp);
+    $this->db->bind('telp', $telp);
     $this->db->execute();
     $nis = $this->db->lastID();
 

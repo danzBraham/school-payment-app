@@ -70,11 +70,15 @@ class Pembayaran_model {
     $this->db->execute();
 
     while ($jumlahBayar > 0) {
-      $dataSPP = $this->db->result("SELECT * FROM tb_spp WHERE nis = $nis AND thn_ajaran = '$tahun' AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      $this->db->query("SELECT * FROM tb_spp WHERE nis = :nis AND thn_ajaran = :tahun AND (jumlah_bayar < 500000 OR jumlah_bayar IS NULL)");
+      $this->db->bind('nis', $nis);
+      $this->db->bind('tahun', $tahun);
+      $dataSPP = $this->db->result();
 
       if (!$dataSPP) {
         return;
       }
+
       $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
       $bulan = $dataSPP['bulan'];
 
@@ -101,6 +105,7 @@ class Pembayaran_model {
         }
       }
     }
+
     return $this->db->rowCount();
   }
 

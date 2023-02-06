@@ -3,15 +3,15 @@
       <input type="hidden" name="nis" value="<?= $data['siswa']['nis']; ?>">
       <div class="input-box">
         <label for="nama">Nama</label>
-        <input type="text" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>">
+        <input type="text" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>" required>
       </div>
       <div class="input-box">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" value="<?= $data['siswa']['password']; ?>">
+        <input type="password" id="password" name="password" value="<?= $data['siswa']['password']; ?>" required>
       </div>
       <div class="input-box">
         <label for="kelas">Kelas</label>
-        <select name="kelas">
+        <select name="kelas" required>
           <?php foreach ($data['kelas'] as $kelas) : ?>
           <?php if ($kelas['kelas'] == $data['siswa']['kelas'] && $kelas['jurusan'] == $data['siswa']['jurusan']) : ?>
             <option selected value="<?= $data['siswa']['id_kelas']; ?>"><?= $data['siswa']['kelas']; ?>-<?= $data['siswa']['jurusan']; ?></option>
@@ -23,11 +23,11 @@
       </div>
       <div class="input-box">
         <label for="telp">No Telp</label>
-        <input type="text" id="telp" name="telp" value="<?= $data['siswa']['no_telp']; ?>">
+        <input type="text" id="telp" name="telp" value="<?= $data['siswa']['no_telp']; ?>" required>
       </div>
       <div class="input-box">
         <label for="alamat">alamat</label>
-        <textarea rows="5" name="alamat"><?= $data['siswa']['alamat']; ?></textarea>
+        <textarea rows="5" name="alamat" required><?= $data['siswa']['alamat']; ?></textarea>
       </div>
       <button type="submit">Edit</button>
     </form>

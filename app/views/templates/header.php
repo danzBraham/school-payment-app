@@ -1,6 +1,6 @@
 <?php
   if (!isset($_SESSION['username'])) {
-  header('Location' . BASEURL . '/login');
+  header('Location' . BASEURL . '/home');
   exit;
   }
 ?>
@@ -20,11 +20,12 @@
 <body>
   <nav class="print">
     <ul>
-      <li><a href="<?= BASEURL; ?>">Dashboard</a></li>
+      <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
       <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
       <li><a href="<?= BASEURL; ?>/kelas">Data Kelas</a></li>
       <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+      <li><a href="<?= BASEURL; ?>/logout">Logout</a></li>
     </ul>
   </nav>

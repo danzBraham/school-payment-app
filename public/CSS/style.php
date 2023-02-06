@@ -54,6 +54,22 @@ nav ul li a:hover {
   gap: 20px;
 }
 
+.container-login {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-login form {
+  width: 400px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px;
+  background-color: var(--third-color);
+  border-radius: 10px;
+}
+
 .container input {
   padding: 8px 12px;
   border-radius: 8px;

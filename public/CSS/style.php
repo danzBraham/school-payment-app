@@ -26,11 +26,12 @@ nav {
   width: 100%;
   padding: 20px 50px;
   background-color: var(--main-color);
-  font-size: 20px;
+  font-size: 18px;
 }
 
 nav ul {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 
@@ -45,6 +46,21 @@ nav ul li a {
 
 nav ul li a:hover {
   text-decoration: underline;
+}
+
+nav ul li:last-child {
+  background-color: #ef4444;
+  padding: 0 10px 2px;
+  border-radius: 6px;
+  margin-left: auto;
+}
+
+nav ul li:last-child:hover {
+  background-color: #b91c1c;
+}
+
+nav ul li:last-child a:hover {
+  text-decoration: none;
 }
 
 .container {
@@ -75,6 +91,10 @@ nav ul li a:hover {
   border-radius: 8px;
   font-size: 16px;
   border: 1px solid var(--fourth-color);
+}
+
+.container option:nth-child(even) {
+  background-color: #eee;
 }
 
 .container button {
@@ -162,7 +182,7 @@ table .aksi .edit-btn {
 }
 
 table .aksi .edit-btn:hover {
-  background-color: hsl(254, 21%, 74%);
+  background-color: hsl(254, 21%, 44%);
 }
 
 table .aksi .delete-btn {
@@ -171,7 +191,7 @@ table .aksi .delete-btn {
 }
 
 table .aksi .delete-btn:hover {
-  background-color: hsl(0, 84%, 70%);
+  background-color: hsl(0, 84%, 40%);
   color: var(--text);
 }
 
@@ -245,7 +265,7 @@ form {
   opacity: 1;
 }
 
-.modal .input-box input {
+.modal .input-box input, .container-login input {
   padding: 8px 12px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
@@ -265,11 +285,12 @@ form {
 
 .modal .input-box input:focus,
 .modal .input-box select:focus,
-.modal .input-box textarea:focus {
+.modal .input-box textarea:focus,
+.container-login input:focus {
   outline: 1px solid var(--text);
 }
 
-.modal button {
+.modal button, .container-login button {
   width: 100%;
   padding: 8px 12px;
   background-color: var(--fourth-color);
@@ -288,7 +309,7 @@ form {
 
 .info {
   background-color: #fff3cd;
-  width: fit-content;
+  width: 100%;
   text-align: center;
   margin: auto;
   padding: 10px 25px;

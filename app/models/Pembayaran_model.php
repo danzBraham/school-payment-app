@@ -19,6 +19,11 @@ class Pembayaran_model {
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $data = $this->db->result();
+    if ($this->db->rowCount() < 1) {
+      Flasher::setFlash('Siswa', 'failed', 'tidak', 'ditemukan');
+      header('Location:' . BASEURL . '/pembayaran');
+      exit;
+    }
     $nis = $data['nis'];
 
     $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND thn_ajaran = :tahun");

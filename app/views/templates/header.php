@@ -25,7 +25,7 @@
         <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
         <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
-      <?php elseif ($_SESSION['nis']) : ?>
+      <?php elseif (isset($_SESSION['nis'])) : ?>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
         <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php endif; ?>

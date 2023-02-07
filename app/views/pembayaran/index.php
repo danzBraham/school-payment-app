@@ -1,8 +1,8 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
-    <input type="text" name="keyword" placeholder="NIS atau Nama Siswa">
-    <select name="tahun">
-      <option selected>Pilih Tahun Ajaran</option>
+    <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
+    <select name="tahun" required>
+      <option selected value="">Pilih Tahun Ajaran</option>
       <option value="2023/2024">2023/2024</option>
       <option value="2024/2025">2024/2025</option>
       <option value="2025/2026">2025/2026</option>
@@ -10,10 +10,11 @@
     <button type="submit">Cari</button>
   </form>
 
+  <?php Flasher::flash(); ?>
   <hr>
 
   <?php if (!isset($data['siswaByNis'])) : ?>
-  <h1 class="info">Mohon Cari Siswa Berdasarkan NIS</h1>
+  <h1 class="info">-- Mohon Cari Siswa Berdasarkan NIS --</h1>
   <?php else : ?>
   <div class="container-pembayaran">
     <form action="<?= BASEURL; ?>/pembayaran/bayar" method="POST" autocomplete="off">

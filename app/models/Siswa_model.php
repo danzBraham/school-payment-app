@@ -22,57 +22,54 @@ class Siswa_model {
     return $this->db->results();
   }
 
-  public function insertSPP($nis, $thnAjaran) {
+  public function insertSPP($nis, $tahun ,$angkatan) {
     $this->db->query("INSERT INTO tb_spp VALUES
-                    ('', :nis, 'Juli', null, :thnAjaran),
-                    ('', :nis, 'Agustus', null, :thnAjaran),
-                    ('', :nis, 'September', null, :thnAjaran),
-                    ('', :nis, 'Oktober', null, :thnAjaran),
-                    ('', :nis, 'November', null, :thnAjaran),
-                    ('', :nis, 'Desember', null, :thnAjaran),
-                    ('', :nis, 'Januari', null, :thnAjaran),
-                    ('', :nis, 'Februari', null, :thnAjaran),
-                    ('', :nis, 'Maret', null, :thnAjaran),
-                    ('', :nis, 'April', null, :thnAjaran),
-                    ('', :nis, 'Mei', null, :thnAjaran),
-                    ('', :nis, 'Juni', null, :thnAjaran)");
+                    ('', :nis, 'Juli', :tahun , null, :angkatan),
+                    ('', :nis, 'Agustus', :tahun , null, :angkatan),
+                    ('', :nis, 'September', :tahun , null, :angkatan),
+                    ('', :nis, 'Oktober', :tahun , null, :angkatan),
+                    ('', :nis, 'November', :tahun , null, :angkatan),
+                    ('', :nis, 'Desember', :tahun , null, :angkatan),
+                    ('', :nis, 'Januari', :tahun , null, :angkatan),
+                    ('', :nis, 'Februari', :tahun , null, :angkatan),
+                    ('', :nis, 'Maret', :tahun , null, :angkatan),
+                    ('', :nis, 'April', :tahun , null, :angkatan),
+                    ('', :nis, 'Mei', :tahun , null, :angkatan),
+                    ('', :nis, 'Juni', :tahun , null, :angkatan)");
 
     $this->db->bind('nis', $nis);
-    $this->db->bind('thnAjaran', $thnAjaran);
+    $this->db->bind('tahun', $tahun);
+    $this->db->bind('angkatan', $angkatan);
     $this->db->execute();
   }
 
   public function addSiswa($data) {
+    $nis = $data['nis'];
     $nama = $data['nama'];
     $password = $data['password'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
 
-    $thnAjaran = explode("/", $data['thn-ajaran']);
-    $thnSatu = intval($thnAjaran[0]);
-    $thnDua = intval($thnAjaran[1]);
-    $thnAjaranDepan = [$thnSatu + 1, $thnDua + 1];
-    $thnAjaranLusaDepan = [$thnSatu + 2, $thnDua + 2];
-    $thnAjaran = implode('/', $thnAjaran);
-    $thnAjaranDepan = implode('/', $thnAjaranDepan);
-    $thnAjaranLusaDepan = implode('/', $thnAjaranLusaDepan);
-
     $this->db->query("INSERT INTO tb_siswa VALUES (
-      '', :id_kelas, :nama, :password, :alamat, :telp
+      :nis, :kelas, :nama, :password, :alamat, :telp
     )");
 
-    $this->db->bind('id_kelas', $kelas);
+    $this->db->bind('nis', $nis);
+    $this->db->bind('kelas', $kelas);
     $this->db->bind('nama', $nama);
     $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
     $this->db->bind('telp', $telp);
     $this->db->execute();
-    $nis = $this->db->lastID();
 
-    $this->insertSPP($nis, $thnAjaran);
-    $this->insertSPP($nis, $thnAjaranDepan);
-    $this->insertSPP($nis, $thnAjaranLusaDepan);
+    $firstYear = date('Y');
+    $secondYear = date('Y') + 1;
+    $ThirdYear = date('Y') + 2;
+
+    $this->insertSPP($nis, $firstYear, 'X');
+    $this->insertSPP($nis, $secondYear, 'XI');
+    $this->insertSPP($nis, $ThirdYear, 'XII');
 
     return $this->db->rowCount();
   }

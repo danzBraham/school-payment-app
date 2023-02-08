@@ -108,14 +108,22 @@ nav ul li:last-child a:hover {
   outline: none;
 }
 
+.container button span {
+  font-weight: 600;
+}
+
 .container button:hover {
   background-color: var(--third-color);
 }
 
-.container .add-btn {
+.container .add-btn, .container-btn button {
   width: fit-content;
   padding: 14px;
   font-size: 16px;
+}
+
+.container .add-btn span {
+  font-weight: 600;
 }
 
 .alert {
@@ -165,6 +173,7 @@ table .no-data {
   text-align: center;
   font-weight: 600;
   font-size: 20px;
+  padding: 15px;
 }
 
 table .aksi {
@@ -173,6 +182,7 @@ table .aksi {
 }
 
 table .aksi a button {
+  /* padding: 6px 12px; */
   font-weight: 600;
   width: 80px;
 }

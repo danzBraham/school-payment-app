@@ -26,7 +26,7 @@ class Siswa extends Controller {
     $this->view('templates/footer');
   }
 
-  public function tambah() {
+  public function add() {
     if (!isset($_SESSION['login'])) {
       header('Location: ' . BASEURL . '/home');
       exit;
@@ -137,5 +137,31 @@ class Siswa extends Controller {
       header('Location: ' . BASEURL . '/siswa');
       exit;
     }
+  }
+
+  public function experiment() {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
+    $data['title'] = "Experiment";
+    // $data['siswa'] = $this->model('Siswa_model')->getAllSiswa();
+    // $data['kelas'] = $this->model('Siswa_model')->getAllKelas();
+    $this->view('templates/header', $data);
+    $this->view('siswa/experiment');
+    $this->view('templates/footer');
   }
 }

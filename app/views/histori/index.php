@@ -29,7 +29,7 @@
       <?php else : ?>
       <tr>
         <td colspan="6">
-          <h2>Tidak Ada Data</h2>
+          <p class="no-data">Tidak Ada Data</p>
         </td>
       </tr>
       <?php endif; ?>

@@ -141,7 +141,8 @@ nav ul li:last-child a:hover {
 }
 
 table, tr, td, th {
-  border: 1px solid black;
+  /* border: 1px solid #fff; */
+  border: 1px solid #000;
   border-collapse: collapse;
   padding: 6px 12px;
 }

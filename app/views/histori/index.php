@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="container-btn">
+    <button class="laporan-btn laporan-kelas"><span class="button_top">Buat laporan Kelas</span></button>
+    <button class="laporan-btn laporan-bulan"><span class="button_top">Buat laporan Bulan</span></button>
+    <button class="laporan-btn laporan-siswa"><span class="button_top">Buat laporan Siswa</span></button>
+  </div>
+
   <?php Flasher::flash(); ?>
 
   <table>
@@ -21,10 +27,23 @@
       </tr>
       <?php endforeach; ?>
       <?php else : ?>
-        <tr>
-          <td colspan="6"><h2>Tidak Ada Data</h2></td>
-        </tr>
+      <tr>
+        <td colspan="6">
+          <h2>Tidak Ada Data</h2>
+        </td>
+      </tr>
       <?php endif; ?>
     </tbody>
   </table>
+</div>
+
+<div id="overlay" class="overlay">
+  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal" class="modal modal-kelas" autocomplete="off">
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <div class="input-box">
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" name="nama" required>
+    </div>
+    <button type="submit">Tambah</button>
+  </form>
 </div>

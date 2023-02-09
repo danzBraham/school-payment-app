@@ -276,6 +276,10 @@ form {
   opacity: 1;
 }
 
+.input-box.laporan-input-box {
+  gap: 10px;
+}
+
 .modal .input-box input, .container-login input {
   padding: 8px 12px;
   border-radius: 8px;

@@ -15,4 +15,13 @@ class Histori extends Controller {
     $this->view('histori/index', $data);
     $this->view('templates/footer');
   }
+
+  public function laporankelas() {
+    // var_dump($_POST);
+    $data['title'] = 'Laporan Kelas';
+    $data['kelas'] = $this->model('Histori_model')->getKelas();
+    $data['tanggal'] = $this->model('Histori_model')->getBulanAndTahun();
+    $data['laporan'] = $this->model('Histori_model')->makeLaporanKelas();
+    $this->view('histori/laporankelas', $data);
+  }
 }

@@ -38,10 +38,10 @@
 </div>
 
 <div id="overlay" class="overlay">
-  <form action="<?= BASEURL; ?>/histori/kelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
+  <form action="<?= BASEURL; ?>/histori/laporankelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
     <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
-    <div class="input-box">
-      <select name="angkatan" required>
+    <div class="input-box laporan-input-box">
+      <select name="kelas" required>
         <option selected value="">Pilih Kelas</option>
         <?php foreach ($data['kelas'] as $kelas) : ?>
           <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas'] . '-' . $kelas['jurusan']; ?></option>

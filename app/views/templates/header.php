@@ -17,6 +17,7 @@
         <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
         <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
         <li><a href="<?= BASEURL; ?>/kelas">Data Kelas</a></li>
+        <li><a href="<?= BASEURL; ?>/petugas">Data Petugas</a></li>
         <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
         <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
         <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>

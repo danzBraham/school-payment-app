@@ -7,7 +7,10 @@ class Histori extends Controller {
     }
 
     $data['title'] = 'Histori';
-    $data['histori'] = $this->model('Histori_model')->getAllHistori();
+    $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi();
+    $data['kelas'] = $this->model('Histori_model')->getAllKelas();
+    $data['bulan'] = $this->model('Histori_model')->getAllBulan();
+    $data['tahun'] = $this->model('Histori_model')->getAllTahun();
     $this->view('templates/header', $data);
     $this->view('histori/index', $data);
     $this->view('templates/footer');

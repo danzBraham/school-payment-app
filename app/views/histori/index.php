@@ -1,8 +1,8 @@
 <div class="container">
   <div class="container-btn">
-    <button class="laporan-btn laporan-kelas"><span class="button_top">Buat laporan Kelas</span></button>
-    <button class="laporan-btn laporan-bulan"><span class="button_top">Buat laporan Bulan</span></button>
-    <button class="laporan-btn laporan-siswa"><span class="button_top">Buat laporan Siswa</span></button>
+    <button id="laporan-kelas-btn" class="laporan-btn"><span class="button_top">Buat laporan Kelas</span></button>
+    <button id="laporan-bulan-btn" class="laporan-btn"><span class="button_top">Buat laporan Bulan</span></button>
+    <button id="laporan-siswa-btn" class="laporan-btn"><span class="button_top">Buat laporan Siswa</span></button>
   </div>
 
   <?php Flasher::flash(); ?>
@@ -38,8 +38,29 @@
 </div>
 
 <div id="overlay" class="overlay">
-  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal" class="modal modal-kelas" autocomplete="off">
+  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-kelas" class="modal" autocomplete="off">
     <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <h1>Kelas</h1>
+    <div class="input-box">
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" name="nama" required>
+    </div>
+    <button type="submit">Tambah</button>
+  </form>
+
+  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-bulan" class="modal" autocomplete="off">
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <h1>Bulan</h1>
+    <div class="input-box">
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" name="nama" required>
+    </div>
+    <button type="submit">Tambah</button>
+  </form>
+
+  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-siswa" class="modal" autocomplete="off">
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <h1>Siswa</h1>
     <div class="input-box">
       <label for="nama">Nama</label>
       <input type="text" id="nama" name="nama" required>

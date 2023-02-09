@@ -1,11 +1,11 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
     <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
-    <select name="tahun" required>
-      <option selected value="">Pilih Tahun Ajaran</option>
-      <option value="2023/2024">2023/2024</option>
-      <option value="2024/2025">2024/2025</option>
-      <option value="2025/2026">2025/2026</option>
+    <select name="angkatan" required>
+      <option selected value="">Pilih Angkatan</option>
+      <option value="X">X</option>
+      <option value="XI">XI</option>
+      <option value="XII">XII</option>
     </select>
     <button type="submit">Cari</button>
   </form>
@@ -27,8 +27,8 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="tahun-ajaran">Tahun Ajaran</label>
-        <input type="text" name="tahun-ajaran" id="tahun-ajaran" value="<?= $data['siswaByNis']['thn_ajaran']; ?>" readonly>
+        <label for="angkatan">Angkatan</label>
+        <input type="text" name="angkatan" id="angkatan" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar</label>

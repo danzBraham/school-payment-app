@@ -271,7 +271,7 @@ form {
   transition: all 300ms ease-in-out;
 }
 
-.modal.click {
+.modal.click, .modal.modal-kelas, .modal.modal-bulan, .modal.modal-siswa {
   display: flex;
   opacity: 1;
 }

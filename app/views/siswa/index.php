@@ -1,6 +1,5 @@
 <div class="container">
   <button id="add-btn" class="add-btn"><span class="button_top">Tambah Siswa</span></button>
-
   <?php Flasher::flash(); ?>
 
   <table>

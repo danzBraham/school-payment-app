@@ -40,6 +40,7 @@ class Siswa_model {
     $this->db->bind('nis', $nis);
     $this->db->bind('tahun', $tahun);
     $this->db->bind('angkatan', $angkatan);
+
     $this->db->execute();
   }
 
@@ -96,9 +97,10 @@ class Siswa_model {
     $this->db->bind('alamat', $alamat);
     $this->db->bind('no_telp', $telp);
     $this->db->bind('nis', $nis);
+
     $this->db->execute();
     return $this->db->rowCount();
-  }  
+  }
 
   public function deleteSiswa($nis) {
     $this->db->query("DELETE FROM tb_transaksi WHERE nis = :nis");
@@ -111,8 +113,8 @@ class Siswa_model {
 
     $this->db->query("DELETE FROM tb_siswa WHERE nis = :nis");
     $this->db->bind('nis', $nis);
-    $this->db->execute();
 
+    $this->db->execute();
     return $this->db->rowCount();
   }
 }

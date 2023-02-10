@@ -1,10 +1,6 @@
 <div class="container form-edit">
     <form action="<?= BASEURL; ?>/kelas/update" method="POST" id="modal" class="modal click" autocomplete="off">
-      <input type="hidden" name="id_kelas_old" value="<?= $data['satu-kelas']['id_kelas']; ?>">
-      <div class="input-box">
-        <label for="id_kelas">ID Kelas</label>
-        <input type="text" id="id_kelas" name="id_kelas" value="<?= $data['satu-kelas']['id_kelas']; ?>" required>
-      </div>
+      <input type="hidden" name="id_kelas" value="<?= $data['satu-kelas']['id_kelas']; ?>">
       <div class="input-box">
         <label for="kelas">Kelas</label>
         <select name="kelas" required>

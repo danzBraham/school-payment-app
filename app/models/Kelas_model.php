@@ -7,7 +7,7 @@ class Kelas_model {
   }
 
   public function getAllKelas() {
-    $this->db->query("SELECT * FROM tb_kelas ORDER BY kelas ASC");
+    $this->db->query("SELECT * FROM tb_kelas ORDER BY id_kelas ASC");
     return $this->db->results();
   }
 
@@ -44,21 +44,18 @@ class Kelas_model {
   }
 
   public function updateKelas($data) {
-    $idKelasOld = $data['id_kelas_old'];
     $idKelas = $data['id_kelas'];
     $kelas = $data['kelas'];
     $jurusan = $data['jurusan'];
 
     $this->db->query("UPDATE tb_kelas SET
-                      id_kelas = :id_kelas,
                       kelas = :kelas,
                       jurusan = :jurusan
-                      WHERE id_kelas = :id_kelas_old");
+                      WHERE id_kelas = :id_kelas");
   
     $this->db->bind('id_kelas', $idKelas);
     $this->db->bind('kelas', $kelas);
     $this->db->bind('jurusan', $jurusan);
-    $this->db->bind('id_kelas_old', $idKelasOld);
 
     $this->db->execute();
     return $this->db->rowCount();

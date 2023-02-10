@@ -23,7 +23,7 @@
         <td><?= $siswa['password']; ?></td>
         <td><?= $siswa['alamat']; ?></td>
         <td><?= $siswa['no_telp']; ?></td>
-        <td><?= $siswa['kelas'] ?>-<?= $siswa['jurusan'] ?></td>
+        <td><?= $siswa['id_kelas'] ?></td>
         <td class="aksi">
           <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
           <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>

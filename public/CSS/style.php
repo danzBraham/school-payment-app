@@ -169,6 +169,10 @@ tbody {
   background-color: var(--text);
 }
 
+tbody tr:hover {
+  background-color: #cdcdcd;
+}
+
 table .no-data {
   text-align: center;
   font-weight: 600;

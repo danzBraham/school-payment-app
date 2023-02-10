@@ -11,7 +11,7 @@ class Siswa_model {
     return $this->db->results();
   }
 
-  public function getSiswa($nis) {
+  public function getSiswaByNis($nis) {
     $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = :nis");
     $this->db->bind('nis', $nis);
     return $this->db->result();
@@ -113,8 +113,8 @@ class Siswa_model {
 
     $this->db->query("DELETE FROM tb_siswa WHERE nis = :nis");
     $this->db->bind('nis', $nis);
-
     $this->db->execute();
+
     return $this->db->rowCount();
   }
 }

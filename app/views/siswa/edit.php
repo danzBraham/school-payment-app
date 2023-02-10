@@ -13,10 +13,10 @@
         <label for="kelas">Kelas</label>
         <select name="kelas" required>
           <?php foreach ($data['kelas'] as $kelas) : ?>
-          <?php if ($kelas['kelas'] == $data['siswa']['kelas'] && $kelas['jurusan'] == $data['siswa']['jurusan']) : ?>
-            <option selected value="<?= $data['siswa']['id_kelas']; ?>"><?= $data['siswa']['kelas']; ?>-<?= $data['siswa']['jurusan']; ?></option>
+          <?php if ($kelas['id_kelas'] == $data['siswa']['id_kelas']) : ?>
+            <option selected value="<?= $data['siswa']['id_kelas']; ?>"><?= $data['siswa']['id_kelas']; ?></option>
           <?php else : ?>
-            <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?>-<?= $kelas['jurusan']; ?></option>
+            <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
           <?php endif; ?>
           <?php endforeach; ?>
         </select>

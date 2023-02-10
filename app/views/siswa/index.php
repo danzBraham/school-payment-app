@@ -71,7 +71,7 @@
       <input type="text" id="telp" name="telp" required>
     </div>
     <div class="input-box">
-      <label for="alamat">alamat</label>
+      <label for="alamat">Alamat</label>
       <textarea rows="5" name="alamat" required></textarea>
     </div>
     <button type="submit">Tambah</button>

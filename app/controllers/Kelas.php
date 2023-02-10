@@ -110,4 +110,33 @@ class Kelas extends Controller {
       exit;
     }
   }
+
+  public function delete($id) {
+    if (!isset($_SESSION['login'])) {
+      header('Location: ' . BASEURL . '/home');
+      exit;
+    }
+
+    if ($_SESSION['level'] == 'petugas') {
+      echo '<script>
+              alert("Anda Petugas!");
+              document.location.href = "' . BASEURL . '/pembayaran";
+            </script>';
+    } elseif (isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
+    if ($this->model('Kelas_model')->deleteKelas($id) > 0) {
+      Flasher::setFlash('Data Kelas', 'success', 'berhasil', 'dihapus');
+      header('Location: ' . BASEURL . '/kelas');
+      exit;
+    } else {
+      Flasher::setFlash('Data Kelas', 'failed', 'gagal', 'dihapus');
+      header('Location: ' . BASEURL . '/kelas');
+      exit;
+    }
+  }
 }

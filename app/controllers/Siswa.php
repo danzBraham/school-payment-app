@@ -74,7 +74,7 @@ class Siswa extends Controller {
     }
 
     $data['title'] = "Siswa";
-    $data['siswa'] = $this->model('Siswa_model')->getSiswa($nis);
+    $data['siswa'] = $this->model('Siswa_model')->getSiswaByNis($nis);
     $data['kelas'] = $this->model('Siswa_model')->getAllKelas();
     $this->view('templates/header', $data);
     $this->view('siswa/edit', $data);

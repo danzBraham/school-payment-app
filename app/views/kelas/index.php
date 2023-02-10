@@ -19,7 +19,8 @@
         <td><?= $kelas['jurusan']; ?></td>
         <td class="aksi">
           <a href="<?= BASEURL; ?>/kelas/edit/<?= $kelas['id_kelas']; ?>"><button class="edit-btn">Edit</button></a>
-          <a href="<?= BASEURL; ?>/kelas/delete/<?= $kelas['id_kelas']; ?>"><button class="delete-btn">Delete</button></a>
+          <a href="<?= BASEURL; ?>/kelas/delete/<?= $kelas['id_kelas']; ?>"><button
+              class="delete-btn">Delete</button></a>
         </td>
       </tr>
       <?php endforeach; ?>
@@ -37,11 +38,23 @@
     </div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
-      <input type="text" id="kelas" name="kelas" required>
+      <select name="kelas" id="kelas" required>
+        <option selected value="">Pilih Kelas</option>
+        <option value="X">X</option>
+        <option value="XI">XI</option>
+        <option value="XII">XII</option>
+      </select>
     </div>
     <div class="input-box">
       <label for="jurusan">Jurusan</label>
-      <input type="text" id="jurusan" name="jurusan" required>
+      <select name="jurusan" id="jurusan" required>
+        <option selected value="">Pilih Jurusan</option>
+        <option value="AN">AN</option>
+        <option value="DKV">DKV</option>
+        <option value="MM">MM</option>
+        <option value="RPL">RPL</option>
+        <option value="TKJ">TKJ</option>
+      </select>
     </div>
     <button type="submit">Tambah</button>
   </form>

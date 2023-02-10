@@ -60,4 +60,12 @@ class Kelas_model {
     $this->db->execute();
     return $this->db->rowCount();
   }
+
+  public function deleteKelas($id) {
+    $this->db->query("DELETE FROM tb_kelas WHERE id_kelas = :id");
+    $this->db->bind('id', $id);
+    $this->db->execute();
+
+    return $this->db->rowCount();
+  }
 }

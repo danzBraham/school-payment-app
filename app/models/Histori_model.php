@@ -54,4 +54,39 @@ class Histori_model {
     $this->db->bind('tahun', $tahun);
     return $this->db->results();
   }
+
+  public function getTagihan() {
+    $kelas = $_POST['kelas'];
+    $bulan = $_POST['bulan'];
+    $tahun = $_POST['tahun'];
+
+    $this->db->query("SELECT COUNT(*) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND tahun = :tahun ORDER BY nama ASC");
+    $this->db->bind('kelas', $kelas);
+    $this->db->bind('bulan', $bulan);
+    $this->db->bind('tahun', $tahun);
+    $totalData = $this->db->result();
+
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND tahun = :tahun AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
+    $this->db->bind('kelas', $kelas);
+    $this->db->bind('bulan', $bulan);
+    $this->db->bind('tahun', $tahun);
+    $totalTerbayar = $this->db->result();
+
+    $totalBayar = intval($totalData['COUNT(*)']) * 500000;
+    $totalTagihan = $totalBayar - intval($totalTerbayar['SUM(jumlah_bayar)']);
+    return $totalTagihan;
+  }
+
+  public function getTotal() {
+    $kelas = $_POST['kelas'];
+    $bulan = $_POST['bulan'];
+    $tahun = $_POST['tahun'];
+
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND tahun = :tahun AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
+    $this->db->bind('kelas', $kelas);
+    $this->db->bind('bulan', $bulan);
+    $this->db->bind('tahun', $tahun);
+    $totalTerbayar = $this->db->result();
+    return intval($totalTerbayar['SUM(jumlah_bayar)']);
+  }
 }

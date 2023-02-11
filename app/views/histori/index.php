@@ -44,7 +44,7 @@
       <select name="kelas" required>
         <option selected value="">Pilih Kelas</option>
         <?php foreach ($data['kelas'] as $kelas) : ?>
-          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas'] . '-' . $kelas['jurusan']; ?></option>
+          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
         <?php endforeach; ?>
       </select>
       <select name="bulan" required>

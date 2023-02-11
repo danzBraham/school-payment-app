@@ -35,18 +35,27 @@
             <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
           </tr>
           <?php endforeach; ?>
-          <tr>
+          <tr class="information">
             <th colspan="2">Total</th>
-            <td>Rp<?= number_format(3000000, 0, ',', '.'); ?></td>
+            <td>Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
+          </tr>
+          <tr class="information">
+            <th colspan="2">Tagihan</th>
+            <td>Rp<?= number_format($data['tagihan'], 0, ',', '.'); ?></td>
           </tr>
         </tbody>
       </table>
       <div class="tertanda">
-        <p>Denpasar, dd-mm-yyyy</p>
+        <p>Denpasar, <?= date('d-m-Y'); ?></p>
         <p>Zidan Abraham</p>
       </div>
     </div>
   </div>
+
+  <script>
+    window.print();
+  </script>
 </body>
+
 
 </html>

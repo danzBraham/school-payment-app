@@ -9,6 +9,11 @@
 
 :root {
   font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+}
+
+@page {
+  margin-top: -1px;
 }
 
 .container-laporan {
@@ -35,7 +40,7 @@
 }
 
 .container-laporan .laporan-info p {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -49,7 +54,7 @@ table, tr, th, td {
   padding: 6px;
 }
 
-table thead, table tr:last-child {
+table thead, table .information {
   color: #121212;
   font-weight: 700;
 }

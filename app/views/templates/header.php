@@ -11,24 +11,24 @@
 </head>
 
 <body>
-  <nav class="print">
+  <nav>
     <ul>
       <?php if ($_SESSION['username'] == 'admin') : ?>
-        <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
-        <li><a href="<?= BASEURL; ?>/siswa">Data Siswa</a></li>
-        <li><a href="<?= BASEURL; ?>/kelas">Data Kelas</a></li>
-        <li><a href="<?= BASEURL; ?>/petugas">Data Petugas</a></li>
-        <li><a href="<?= BASEURL; ?>/spp">Data SPP</a></li>
-        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
+      <li><a href="<?= BASEURL; ?>/siswa">Siswa</a></li>
+      <li><a href="<?= BASEURL; ?>/kelas">Kelas</a></li>
+      <li><a href="<?= BASEURL; ?>/petugas">Petugas</a></li>
+      <li><a href="<?= BASEURL; ?>/spp">SPP</a></li>
+      <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
+      <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php elseif ($_SESSION['username'] == 'petugas') : ?>
-        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
+      <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php elseif (isset($_SESSION['nis'])) : ?>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
+      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
       <?php endif; ?>
     </ul>
   </nav>

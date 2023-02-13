@@ -1,5 +1,10 @@
 <div class="container">
-  <button id="add-btn" class="add-btn"><span class="button_top">Tambah Petugas</span></button>
+  <header>
+    <h2>Data Petugas</h2>
+    <button id="add-btn" class="add-btn"><span class="button_top">Tambah Petugas</span></button>
+  </header>
+
+
   <?php Flasher::flash(); ?>
 
   <table>
@@ -21,7 +26,8 @@
         <td><?= $petugas['password']; ?></td>
         <td><?= $petugas['level']; ?></td>
         <td class="aksi">
-          <a href="<?= BASEURL; ?>/petugas/edit/<?= $petugas['id_petugas']; ?>"><button class="edit-btn">Edit</button></a>
+          <a href="<?= BASEURL; ?>/petugas/edit/<?= $petugas['id_petugas']; ?>"><button
+              class="edit-btn">Edit</button></a>
           <a href="<?= BASEURL; ?>/petugas/delete/<?= $petugas['id_petugas']; ?>"><button
               class="delete-btn">Delete</button></a>
         </td>
@@ -34,7 +40,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/petugas/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
     <div class="input-box">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>

@@ -12,8 +12,16 @@
   font-size: 12px;
 }
 
-@page {
-  margin-top: -1px;
+.layer {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
 }
 
 .container-laporan {
@@ -26,7 +34,7 @@
 }
 
 .container-laporan .laporan {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -71,4 +79,18 @@ table tr td:first-child {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+@media print {
+  .layer {
+    display: none;
+  }
+
+  .container-laporan {
+    padding: 50px;
+  }
+}
+
+@page {
+  margin: -1px;
 }

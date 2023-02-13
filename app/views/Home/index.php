@@ -13,6 +13,7 @@
 <body>
   <div class="container-login">
     <form action="<?= BASEURL; ?>/home/login" method="POST" autocomplete="off">
+      <?php Flasher::flash(); ?>
       <div class="input-box">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>

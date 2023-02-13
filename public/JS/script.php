@@ -2,14 +2,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const addBtn = document.querySelector("#add-btn");
   const laporanKlsBtn = document.querySelector("#laporan-kelas-btn");
-  const laporanBlnBtn = document.querySelector("#laporan-bulan-btn");
   const laporanSiswaBtn = document.querySelector("#laporan-siswa-btn");
   const modal = document.querySelector("#modal");
   const modalKls = document.querySelector("#modal-kelas");
-  const modalBln = document.querySelector("#modal-bulan");
   const modalSiswa = document.querySelector("#modal-siswa");
   const overlay = document.querySelector("#overlay");
-  const closeBtn = document.querySelectorAll("#close-btn");
+  const closeBtn = document.querySelectorAll(".close-btn");
   const alert = document.querySelector("#alert");
   const closeBtnAlert = document.querySelector("#close-btn-alert");
 
@@ -32,11 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
     closeBtn.addEventListener("click", () => {
       handleCloseModal(modal);
     });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        handleCloseModal(modal);
+      }
+    });
   }
 
   const handleLaporan = (el) => {
     modalKls.classList.remove('modal-kelas');
-    modalBln.classList.remove('modal-bulan');
     modalSiswa.classList.remove('modal-siswa');
     handleModal(el);
   }
@@ -47,33 +50,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (laporanBlnBtn) {
-    laporanBlnBtn.addEventListener('click', () => {
-      handleLaporan(modalBln);
-    });
-  }
-
   if (laporanSiswaBtn) {
     laporanSiswaBtn.addEventListener('click', () => {
       handleLaporan(modalSiswa);
     });
   }
 
-  if(closeBtn){
+  if(closeBtn) {
     closeBtn.forEach(el => {
       el.addEventListener("click", () => {
         handleCloseModal(modalKls);
-        handleCloseModal(modalBln);
         handleCloseModal(modalSiswa);
       });
-    })
-  }
+    });
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      handleCloseModal(modal);
-    }
-  });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        handleCloseModal(modalKls);
+        handleCloseModal(modalSiswa);
+      }
+    });
+  }
 
   closeBtnAlert.addEventListener('click', () => {
     const parent = alert.parentNode;

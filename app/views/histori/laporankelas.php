@@ -14,7 +14,7 @@
     <h1>Laporan SPP</h1>
     <div class="laporan">
       <div class="laporan-info">
-        <p>Kelas: <?= $data['kelas']['kelas'] . '-' . $data['kelas']['jurusan']; ?></p>
+        <p>Kelas: <?= $data['kelas']['id_kelas']; ?></p>
         <p>Bulan: <?= $data['tanggal']['bulan']; ?></p>
         <p>Tahun: <?= $data['tanggal']['tahun']; ?></p>
       </div>
@@ -49,11 +49,15 @@
         <p>Denpasar, <?= date('d-m-Y'); ?></p>
         <p>Zidan Abraham</p>
       </div>
+      <div class="layer"></div>
     </div>
   </div>
 
   <script>
-    window.print();
+    document.addEventListener("DOMContentLoaded", function () {
+      window.print();
+      window.onafterprint = () => history.back();
+    });
   </script>
 </body>
 

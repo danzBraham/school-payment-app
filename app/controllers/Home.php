@@ -31,6 +31,8 @@ class Home extends Controller {
               alert("Gagal Login!");
               document.location.href = "' . BASEURL . '/home";
             </script>';
+      // Flasher::setFlash('Anda', 'failed', 'gagal', 'login');
+      // header('Location: ' . BASEURL . '/home');
       exit;
     }
   }

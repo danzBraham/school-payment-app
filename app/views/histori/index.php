@@ -1,7 +1,6 @@
 <div class="container">
   <div class="container-btn">
     <button id="laporan-kelas-btn" class="laporan-btn"><span class="button_top">Buat laporan Kelas</span></button>
-    <button id="laporan-bulan-btn" class="laporan-btn"><span class="button_top">Buat laporan Bulan</span></button>
     <button id="laporan-siswa-btn" class="laporan-btn"><span class="button_top">Buat laporan Siswa</span></button>
   </div>
 
@@ -39,47 +38,43 @@
 
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/histori/laporankelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
-    <div class="input-box laporan-input-box">
-      <select name="kelas" required>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
+    <div class="input-box">
+      <label for="kelas">Kelas</label>
+      <select name="kelas" id="kelas" required>
         <option selected value="">Pilih Kelas</option>
         <?php foreach ($data['kelas'] as $kelas) : ?>
-          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
+        <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
         <?php endforeach; ?>
       </select>
-      <select name="bulan" required>
+    </div>
+    <div class="input-box">
+      <label for="bulan">Bulan</label>
+      <select name="bulan" id="bulan" required>
         <option selected value="">Pilih Bulan</option>
         <?php foreach ($data['bulan'] as $bulan) : ?>
-          <option value="<?= $bulan['bulan']; ?>"><?= $bulan['bulan']; ?></option>
+        <option value="<?= $bulan['bulan']; ?>"><?= $bulan['bulan']; ?></option>
         <?php endforeach; ?>
       </select>
-      <select name="tahun" required>
+    </div>
+    <div class="input-box">
+      <label for="tahun">Tahun</label>
+      <select name="tahun" id="tahun" required>
         <option selected value="">Pilih Tahun</option>
         <?php foreach ($data['tahun'] as $tahun) : ?>
-          <option value="<?= $tahun['tahun']; ?>"><?= $tahun['tahun']; ?></option>
+        <option value="<?= $tahun['tahun']; ?>"><?= $tahun['tahun']; ?></option>
         <?php endforeach; ?>
       </select>
     </div>
-    <button type="submit">Buat Laporan</button>
-  </form>
-
-  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-bulan" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
-    <h1>Bulan</h1>
-    <div class="input-box">
-      <label for="nama">Nama</label>
-      <input type="text" id="nama" name="nama" required>
-    </div>
-    <button type="submit">Tambah</button>
+    <button type="submit">Buat Laporan Kelas</button>
   </form>
 
   <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-siswa" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
-    <h1>Siswa</h1>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
     <div class="input-box">
-      <label for="nama">Nama</label>
-      <input type="text" id="nama" name="nama" required>
+      <label for="siswa">Siswa</label>
+      <input type="text" id="siswa" name="siswa" placeholder="Cari NIS Siswa" required>
     </div>
-    <button type="submit">Tambah</button>
+    <button type="submit">Buat Laporan Siswa</button>
   </form>
 </div>

@@ -31,7 +31,7 @@
         <input type="text" name="angkatan" id="angkatan" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="nominal-bayar">Nominal Bayar</label>
+        <label for="nominal-bayar">Nominal Bayar Perbulan</label>
         <input type="text" id="nominal-bayar" value="Rp500.000" readonly>
       </div>
       <div class="input-box">

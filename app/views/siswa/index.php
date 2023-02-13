@@ -1,5 +1,9 @@
 <div class="container">
-  <button id="add-btn" class="add-btn"><span class="button_top">Tambah Siswa</span></button>
+  <header>
+    <h2>Data Siswa</h2>
+    <button id="add-btn" class="add-btn"><span class="button_top">Tambah Siswa</span></button>
+  </header>
+
   <?php Flasher::flash(); ?>
 
   <table>
@@ -44,18 +48,18 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/siswa/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/Close-Btn.svg"></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
     <div class="input-box">
       <label for="nis">NIS</label>
-      <input type="text" id="nis" name="nis" required>
+      <input type="text" id="nis" name="nis" placeholder="Masukkan NIS" required>
     </div>
     <div class="input-box">
       <label for="nama">Nama</label>
-      <input type="text" id="nama" name="nama" required>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
     </div>
     <div class="input-box">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+      <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
     </div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
@@ -68,11 +72,11 @@
     </div>
     <div class="input-box">
       <label for="telp">No Telp</label>
-      <input type="text" id="telp" name="telp" required>
+      <input type="text" id="telp" name="telp" placeholder="Masukkan No Telp" required>
     </div>
     <div class="input-box">
       <label for="alamat">Alamat</label>
-      <textarea rows="5" name="alamat" required></textarea>
+      <textarea rows="5" name="alamat" placeholder="Masukkan Alamat" required></textarea>
     </div>
     <button type="submit">Tambah</button>
   </form>

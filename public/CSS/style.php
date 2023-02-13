@@ -21,22 +21,34 @@ html {
   height: 100%;
 }
 
+body {
+  background-color: #dee2e6;
+}
+
 nav {
   position: fixed;
   width: 100%;
-  padding: 20px 50px;
+  /* padding: 20px 50px; */
+  padding: 0 50px;
   background-color: var(--main-color);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 nav ul {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 5px;
 }
 
 nav ul li {
-  display: inline-block;
+  display: block;
+  padding: 20px 30px;
+}
+
+nav ul li:hover {
+  display: block;
+  padding: 20px 30px;
+  background-color: var(--second-color);
 }
 
 nav ul li a {
@@ -45,7 +57,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  color: #dedede;
 }
 
 nav ul li:last-child {
@@ -63,8 +75,19 @@ nav ul li:last-child a:hover {
   text-decoration: none;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  font-size: 32px;
+  color: var(--fourth-color);
+}
+
 .container {
-  padding: 85px 50px 50px;
+  padding: 85px 50px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -79,7 +102,7 @@ nav ul li:last-child a:hover {
 
 .container-login form {
   width: 400px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 600;
   padding: 20px;
   background-color: var(--third-color);
@@ -89,7 +112,7 @@ nav ul li:last-child a:hover {
 .container input {
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 13px;
   border: 1px solid var(--fourth-color);
 }
 
@@ -101,7 +124,7 @@ nav ul li:last-child a:hover {
   padding: 8px 12px;
   background-color: var(--second-color);
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 13px;
   border: none;
   color: var(--text);
   cursor: pointer;
@@ -119,7 +142,7 @@ nav ul li:last-child a:hover {
 .container .add-btn, .container-btn button {
   width: fit-content;
   padding: 14px;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .container .add-btn span {
@@ -133,7 +156,7 @@ nav ul li:last-child a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .alert-success {
@@ -149,8 +172,9 @@ nav ul li:last-child a:hover {
 }
 
 table, tr, td, th {
-  /* border: 1px solid #fff; */
-  border: 1px solid #121212;
+  font-size: 13px;
+  border-top: 1px solid #121212;
+  border-bottom: 1px solid #121212;
   border-collapse: collapse;
   padding: 6px 12px;
 }
@@ -166,7 +190,7 @@ thead {
 }
 
 tbody {
-  background-color: var(--text);
+  background-color: #f8f9fa;
 }
 
 tbody tr:hover {
@@ -233,15 +257,15 @@ table .aksi .delete-btn:hover {
 
 .close-btn img {
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 10px;
 }
 
 .form-edit {
@@ -256,10 +280,17 @@ form {
   gap: 6px;
 }
 
+hr {
+  border: none;
+  border-radius: 6px;
+  height: 3px;
+  background-color: #121212;
+}
+
 .search-form select {
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 13px;
   border: 1px solid var(--fourth-color);
 }
 
@@ -275,19 +306,20 @@ form {
   transition: all 300ms ease-in-out;
 }
 
-.modal.click, .modal.modal-kelas, .modal.modal-bulan, .modal.modal-siswa {
+.modal.click, .modal.modal-kelas, .modal.modal-siswa {
   display: flex;
   opacity: 1;
 }
 
-.input-box.laporan-input-box {
-  gap: 10px;
-}
-
 .modal .input-box input, .container-login input {
-  padding: 8px 12px;
+  padding: 8px 10px;
+  font-size: 14px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
+}
+
+.modal .input-box label {
+  font-size: 16px;
 }
 
 .modal .input-box select {
@@ -298,6 +330,7 @@ form {
 
 .modal .input-box textarea {
   padding: 8px 12px;
+  font-size: 14px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
@@ -316,7 +349,7 @@ form {
   color: var(--text);
   border-radius: 8px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   align-self: end;
   border: none;
@@ -327,13 +360,14 @@ form {
 }
 
 .info {
-  background-color: #fff3cd;
+  background-color: var(--main-color);
   width: 100%;
   text-align: center;
+  font-size: 28px;
   margin: auto;
   padding: 10px 25px;
   border-radius: 10px;
-  color: #232323;
+  color: var(--text);
 }
 
 .container-pembayaran {
@@ -363,15 +397,8 @@ form {
   color: var(--text);
   text-align: center;
   font-weight: 500;
-  font-size: 1.2rem;
 }
 
 .total-tagihan {
   font-weight: 500;
-}
-
-@media print {
-  .print {
-    display: none;
-  }
 }

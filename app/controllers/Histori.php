@@ -21,8 +21,17 @@ class Histori extends Controller {
     $data['kelas'] = $this->model('Histori_model')->getKelas();
     $data['tanggal'] = $this->model('Histori_model')->getBulanAndTahun();
     $data['laporan'] = $this->model('Histori_model')->makeLaporanKelas();
-    $data['tagihan'] = $this->model('Histori_model')->getTagihan();
-    $data['total'] = $this->model('Histori_model')->getTotal();
+    $data['total'] = $this->model('Histori_model')->getTotalKelas();
+    $data['tagihan'] = $this->model('Histori_model')->getTagihanKelas();
     $this->view('histori/laporankelas', $data);
+  }
+
+  public function laporansiswa() {
+    $data['title'] = 'Laporan Siswa';
+    $data['siswa'] = $this->model('Histori_model')->searchSiswaByNis();
+    $data['histori'] = $this->model('Histori_model')->getSiswaHistory();
+    $data['total'] = $this->model('Histori_model')->getTotalSiswa();
+    $data['tagihan'] = $this->model('Histori_model')->getTagihanSiswa();
+    $this->view('histori/laporansiswa', $data);
   }
 }

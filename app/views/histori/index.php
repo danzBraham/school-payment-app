@@ -69,11 +69,11 @@
     <button type="submit">Buat Laporan Kelas</button>
   </form>
 
-  <form action="<?= BASEURL; ?>/histori" method="POST" id="modal-siswa" class="modal" autocomplete="off">
+  <form action="<?= BASEURL; ?>/histori/laporansiswa" method="POST" id="modal-siswa" class="modal" autocomplete="off">
     <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
     <div class="input-box">
       <label for="siswa">Siswa</label>
-      <input type="text" id="siswa" name="siswa" placeholder="Cari NIS Siswa" required>
+      <input type="text" id="siswa" name="keyword" placeholder="Cari NIS atau Nama Lengkap Siswa" required>
     </div>
     <button type="submit">Buat Laporan Siswa</button>
   </form>

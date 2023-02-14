@@ -319,7 +319,7 @@ hr {
 }
 
 .modal .input-box label {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .modal .input-box select {

@@ -2,7 +2,7 @@
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
     <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
     <select name="angkatan" required>
-      <option selected value="">Pilih Angkatan</option>
+      <option selected value="">Pilih Kelas</option>
       <option value="X">X</option>
       <option value="XI">XI</option>
       <option value="XII">XII</option>
@@ -27,8 +27,8 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="angkatan">Angkatan</label>
-        <input type="text" name="angkatan" id="angkatan" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
+        <label for="kelas">Kelas</label>
+        <input type="text" name="angkatan" id="kelas" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar Perbulan</label>

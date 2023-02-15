@@ -65,11 +65,12 @@ class Pembayaran_model {
     $angkatan = $data['angkatan'];
     $nominalBayar = 500000;
     $jumlahBayar = intval($data['jml-bayar']);
+    $petugas = $_SESSION['id_petugas'];
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
       null, :petugas, :nis, NOW(), :jumlahBayar
     )");
-    $this->db->bind('petugas', 1);
+    $this->db->bind('petugas', $petugas);
     $this->db->bind('nis', $nis);
     $this->db->bind('jumlahBayar', $jumlahBayar);
     $this->db->execute();

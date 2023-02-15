@@ -57,10 +57,10 @@
       <label for="nama">Nama</label>
       <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
     </div>
-    <div class="input-box">
+    <!-- <div class="input-box">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
-    </div>
+    </div> -->
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas" required>

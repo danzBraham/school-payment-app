@@ -24,6 +24,7 @@
             <th>No</th>
             <th>Nama</th>
             <th>Jumlah Bayar</th>
+            <th>Tagihan</th>
           </tr>
         </thead>
         <tbody>
@@ -33,16 +34,22 @@
             <td><?= $i++; ?></td>
             <td><?= $laporan['nama']; ?></td>
             <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <?php $nominal = 500000; ?>
+            <?php if ($laporan['jumlah_bayar'] - $nominal == 0) : ?>
+              <td>Rp0</td>
+              <?php elseif ($laporan['jumlah_bayar'] - $nominal < $nominal) : ?>
+                <td>Rp<?= number_format($nominal - $laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <?php endif; ?>
           </tr>
           <?php endforeach; ?>
           <tr class="information">
             <th colspan="2">Total</th>
             <td>Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
-          </tr>
-          <tr class="information">
-            <th colspan="2">Tagihan</th>
             <td>Rp<?= number_format($data['tagihan'], 0, ',', '.'); ?></td>
           </tr>
+          <!-- <tr class="information">
+            <th colspan="2">Tagihan</th>
+          </tr> -->
         </tbody>
       </table>
       <div class="tertanda">

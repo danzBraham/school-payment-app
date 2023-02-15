@@ -47,19 +47,19 @@ class Siswa_model {
   public function addSiswa($data) {
     $nis = $data['nis'];
     $nama = $data['nama'];
-    $password = $data['password'];
+    // $password = $data['password'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
 
     $this->db->query("INSERT INTO tb_siswa VALUES (
-      :nis, :kelas, :nama, :password, :alamat, :telp
+      :nis, :kelas, :nama, '123456', :alamat, :telp
     )");
 
     $this->db->bind('nis', $nis);
     $this->db->bind('kelas', $kelas);
     $this->db->bind('nama', $nama);
-    $this->db->bind('password', $password);
+    // $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
     $this->db->bind('telp', $telp);
     $this->db->execute();

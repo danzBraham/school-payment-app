@@ -48,7 +48,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/siswa/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
     <div class="input-box">
       <label for="nis">NIS</label>
       <input type="text" id="nis" name="nis" placeholder="Masukkan NIS" required>
@@ -57,10 +57,6 @@
       <label for="nama">Nama</label>
       <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
     </div>
-    <!-- <div class="input-box">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
-    </div> -->
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas" required>

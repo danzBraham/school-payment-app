@@ -78,7 +78,7 @@ class Siswa_model {
   public function updateSiswa($data) {
     $nis = intval($data['nis']);
     $nama = $data['nama'];
-    $password = $data['password'];
+    // $password = $data['password'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
@@ -86,14 +86,13 @@ class Siswa_model {
     $this->db->query("UPDATE tb_siswa SET
                       id_kelas = :id_kelas,
                       nama = :nama,
-                      password = :password,
                       alamat = :alamat,
                       no_telp = :no_telp
                       WHERE nis = :nis");
   
     $this->db->bind('id_kelas', $kelas);
     $this->db->bind('nama', $nama);
-    $this->db->bind('password', $password);
+    // $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
     $this->db->bind('no_telp', $telp);
     $this->db->bind('nis', $nis);

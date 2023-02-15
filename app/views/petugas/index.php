@@ -40,7 +40,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/petugas/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
     <div class="input-box">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>

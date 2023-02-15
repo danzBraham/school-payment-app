@@ -269,9 +269,50 @@ form {
 }
 
 .form-edit {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--fourth-color);
+}
+
+.container-form {
+  width: 435px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  top: -30px;
+}
+
+.container-form a {
+  align-self: flex-start;
+  display: flex;
+  gap: 5px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.container-form a:hover {
+  color: #fff;
+  filter: brightness(1.5);
+}
+
+.container-form a img {
+  transform: inherit;
+  transition: all 300ms ease-out;
+}
+
+.container-form a:hover img {
+  filter: brightness(1.5);
+  transform: translate(-5px);
+}
+
+.container-form form {
+  width: 100%;
 }
 
 .search-form {
@@ -312,24 +353,24 @@ hr {
 }
 
 .modal .input-box input, .container-login input {
-  padding: 8px 10px;
+  padding: 6px 8px;
   font-size: 14px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
 
 .modal .input-box label {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .modal .input-box select {
-  padding: 8px 12px;
+  padding: 6px 8px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);
 }
 
 .modal .input-box textarea {
-  padding: 8px 12px;
+  padding: 8px;
   font-size: 14px;
   border-radius: 8px;
   border: 3px solid var(--fourth-color);

@@ -1,4 +1,9 @@
 <div class="container form-edit">
+  <div class="container-form">
+    <a href="<?= BASEURL; ?>/petugas">
+      <img src="<?= BASEURL; ?>/Assets/Icon/back.svg">
+      <p>Kembali</p>
+    </a>
     <form action="<?= BASEURL; ?>/petugas/update" method="POST" id="modal" class="modal click" autocomplete="off">
       <input type="hidden" name="id_petugas" value="<?= $data['petugas']['id_petugas']; ?>">
       <div class="input-box">
@@ -13,14 +18,15 @@
         <label for="level">Level</label>
         <select name="level" required>
           <?php if ($data['petugas']['level'] == 'admin') : ?>
-            <option selected value="admin">Admin</option>
-            <option value="petugas">Petugas</option>
-            <?php elseif ($data['petugas']['level'] == 'petugas') : ?>
-              <option value="admin">Admin</option>
-              <option selected value="petugas">Petugas</option>
+          <option selected value="admin">Admin</option>
+          <option value="petugas">Petugas</option>
+          <?php elseif ($data['petugas']['level'] == 'petugas') : ?>
+          <option value="admin">Admin</option>
+          <option selected value="petugas">Petugas</option>
           <?php endif; ?>
         </select>
       </div>
       <button type="submit">Edit</button>
     </form>
+  </div>
 </div>

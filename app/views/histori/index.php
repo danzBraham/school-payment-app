@@ -57,7 +57,7 @@
         <?php endforeach; ?>
       </select>
     </div>
-    <div class="input-box">
+    <!-- <div class="input-box">
       <label for="tahun">Tahun</label>
       <select name="tahun" id="tahun" required>
         <option selected value="">Pilih Tahun</option>
@@ -65,7 +65,7 @@
         <option value="<?= $tahun['tahun']; ?>"><?= $tahun['tahun']; ?></option>
         <?php endforeach; ?>
       </select>
-    </div>
+    </div> -->
     <button type="submit">Buat Laporan Kelas</button>
   </form>
 

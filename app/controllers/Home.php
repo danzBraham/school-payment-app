@@ -27,12 +27,8 @@ class Home extends Controller {
       header('Location: ' . BASEURL . '/histori');
       exit;
     } else {
-      echo '<script>
-              alert("Gagal Login!");
-              document.location.href = "' . BASEURL . '/home";
-            </script>';
-      // Flasher::setFlash('Anda', 'failed', 'gagal', 'login');
-      // header('Location: ' . BASEURL . '/home');
+      Flasher::setFlashLogin('Salah!');
+      header('Location: ' . BASEURL . '/home');
       exit;
     }
   }

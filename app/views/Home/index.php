@@ -11,19 +11,27 @@
 </head>
 
 <body>
+  <?php Flasher::flashLogin(); ?>
   <div class="container-login">
-    <form action="<?= BASEURL; ?>/home/login" method="POST" autocomplete="off">
-      <?php Flasher::flash(); ?>
-      <div class="input-box">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+    <div class="container-form-login">
+      <div class="wrapper">
+        <h1>Selamat <span>Datang</span></h1>
+        <form action="<?= BASEURL; ?>/home/login" method="POST" autocomplete="off">
+          <div class="input-box">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="input-box">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit">Login</button>
+        </form>
       </div>
-      <div class="input-box">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+      <div class="img">
+        <img src="<?= BASEURL; ?>/Assets/Icon/hero.svg" alt="Hero">
       </div>
-      <button type="submit">Login</button>
-    </form>
+    </div>
   </div>
 </body>
 

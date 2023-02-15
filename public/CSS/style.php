@@ -94,19 +94,89 @@ header h2 {
 }
 
 .container-login {
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--fourth-color);
+  background: url(../Assets/Icon/background.png);
 }
 
-.container-login form {
-  width: 400px;
+.container-login::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, #000000 100%);
+}
+
+.container-login .container-form-login {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  top: -20px;
+  background-color: var(--fourth-color);
+}
+
+.container-login .container-form-login .wrapper {
+  padding: 70px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: #fff;
+}
+
+.container-login .container-form-login span {
+  color: #6483F2;
+}
+
+.container-login .container-form-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.container-login .container-form-login form label {
+  font-size: 16px;
+}
+
+.container-login .container-form-login form input {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 2px solid var(--fourth-color);
+}
+
+.container-login .container-form-login form button {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background-color: var(--fourth-color);
+  color: var(--text);
+  border-radius: 6px;
   font-size: 14px;
-  font-weight: 600;
-  padding: 20px;
-  background-color: var(--third-color);
-  border-radius: 10px;
+  transition: all 100ms ease-out;
+}
+
+.container-login .container-form-login form button:hover {
+  background-color: var(--main-color);
+}
+
+.container-login .container-form-login form button:active {
+  transform: scale(0.98);
+}
+
+.container-login .container-form-login .img {
+  background-color: var(--fourth-color);
+  padding: 70px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container input {
@@ -167,6 +237,23 @@ header h2 {
 .alert-failed {
   background-color: #fecaca;
 }
+
+.alert-login {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 3;
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 6px;
+  display: flex;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fca5a5;
+}
+
 
 .close-btn-alert {
   cursor: pointer;
@@ -353,7 +440,7 @@ hr {
   opacity: 1;
 }
 
-.modal .input-box input, .container-login input {
+.modal .input-box input {
   padding: 6px 8px;
   font-size: 14px;
   border-radius: 8px;
@@ -384,7 +471,7 @@ hr {
   outline: 1px solid var(--text);
 }
 
-.modal button, .container-login button {
+.modal button {
   width: 100%;
   padding: 8px 12px;
   background-color: var(--fourth-color);

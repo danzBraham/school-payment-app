@@ -16,7 +16,7 @@
       <div class="laporan-info">
         <p>Kelas: <?= $data['kelas']['id_kelas']; ?></p>
         <p>Bulan: <?= $data['tanggal']['bulan']; ?></p>
-        <p>Tahun: <?= $data['tanggal']['tahun']; ?></p>
+        <!-- <p>Tahun: <?= $data['tanggal']['tahun']; ?></p> -->
       </div>
       <table>
         <thead>

@@ -47,7 +47,6 @@ class Siswa_model {
   public function addSiswa($data) {
     $nis = $data['nis'];
     $nama = $data['nama'];
-    // $password = $data['password'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
@@ -59,18 +58,17 @@ class Siswa_model {
     $this->db->bind('nis', $nis);
     $this->db->bind('kelas', $kelas);
     $this->db->bind('nama', $nama);
-    // $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
     $this->db->bind('telp', $telp);
     $this->db->execute();
 
     $firstYear = date('Y');
     $secondYear = date('Y') + 1;
-    $ThirdYear = date('Y') + 2;
+    $tahunAjaran = "$firstYear/$secondYear";
 
-    $this->insertSPP($nis, $firstYear, 'X');
-    $this->insertSPP($nis, $secondYear, 'XI');
-    $this->insertSPP($nis, $ThirdYear, 'XII');
+    $this->insertSPP($nis, $tahunAjaran, 'X');
+    $this->insertSPP($nis, $tahunAjaran, 'XI');
+    $this->insertSPP($nis, $tahunAjaran, 'XII');
 
     return $this->db->rowCount();
   }
@@ -78,7 +76,6 @@ class Siswa_model {
   public function updateSiswa($data) {
     $nis = intval($data['nis']);
     $nama = $data['nama'];
-    // $password = $data['password'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
@@ -92,7 +89,6 @@ class Siswa_model {
   
     $this->db->bind('id_kelas', $kelas);
     $this->db->bind('nama', $nama);
-    // $this->db->bind('password', $password);
     $this->db->bind('alamat', $alamat);
     $this->db->bind('no_telp', $telp);
     $this->db->bind('nis', $nis);
@@ -102,14 +98,6 @@ class Siswa_model {
   }
 
   public function deleteSiswa($nis) {
-    $this->db->query("DELETE FROM tb_transaksi WHERE nis = :nis");
-    $this->db->bind('nis', $nis);
-    $this->db->execute();
-
-    $this->db->query("DELETE FROM tb_spp WHERE nis = :nis");
-    $this->db->bind('nis', $nis);
-    $this->db->execute();
-
     $this->db->query("DELETE FROM tb_siswa WHERE nis = :nis");
     $this->db->bind('nis', $nis);
     $this->db->execute();

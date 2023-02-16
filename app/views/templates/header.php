@@ -13,7 +13,7 @@
 <body>
   <nav>
     <ul>
-      <?php if ($_SESSION['username'] == 'admin') : ?>
+      <?php if ($_SESSION['level'] == 'admin') : ?>
       <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
       <li><a href="<?= BASEURL; ?>/siswa">Siswa</a></li>
       <li><a href="<?= BASEURL; ?>/kelas">Kelas</a></li>
@@ -22,7 +22,7 @@
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
       <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
-      <?php elseif ($_SESSION['username'] == 'petugas') : ?>
+      <?php elseif ($_SESSION['level'] == 'petugas') : ?>
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
       <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>

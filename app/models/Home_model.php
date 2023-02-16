@@ -16,14 +16,14 @@ class Home_model {
     $this->db->execute();
     $data = $this->db->result();
 
-    if ($data && $data['username'] == 'admin' && $data['level'] == 'admin') {
+    if ($data && $data['level'] == 'admin') {
         session_unset();
         $_SESSION['login'] = true;
         $_SESSION['id_petugas'] = $data['id_petugas'];
         $_SESSION['username'] = $data['username'];
         $_SESSION['level'] = $data['level'];
         return $this->db->rowCount();
-      } elseif ( $data && $data['username'] == 'petugas' && $data['level'] == 'petugas') {
+      } elseif ($data && $data['level'] == 'petugas') {
         session_unset();
         $_SESSION['login'] = true;
         $_SESSION['id_petugas'] = $data['id_petugas'];

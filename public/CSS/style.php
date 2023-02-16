@@ -28,7 +28,6 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  /* padding: 20px 50px; */
   padding: 0 50px;
   background-color: var(--main-color);
   font-size: 16px;
@@ -179,6 +178,82 @@ header h2 {
   align-items: center;
 }
 
+.hero {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero h1 {
+  font-size: 36px;
+}
+
+.hero .main-hero {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero .wrapper-box {
+  width: fit-content;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero .box-data {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+  background-color: var(--third-color);
+  border-radius: 16px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero .box-data .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: #D9D9D9;
+  border-radius: 6px;
+}
+
+.hero .box-data span {
+  display: inline-block;
+  width: 2px;
+  height: 50px;
+  background-color: #121212;
+}
+
+.hero .box-data .info-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--text);
+}
+
+.hero .box-data .info-total h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.hero .box-data .info-total p {
+  font-size: 18px;
+}
+
+.container .transaksi-table p {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.container .transaksi-table table {
+  width: 100%;
+}
+
 .container input {
   padding: 8px 12px;
   border-radius: 8px;
@@ -227,7 +302,7 @@ header h2 {
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
 }
 
 .alert-success {
@@ -298,7 +373,6 @@ table .aksi {
 }
 
 table .aksi a button {
-  /* padding: 6px 12px; */
   font-weight: 600;
   width: 80px;
 }

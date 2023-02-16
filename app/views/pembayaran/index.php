@@ -1,6 +1,10 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
-    <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
+    <?php if (!isset($data['siswaByNis'])) : ?>
+      <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
+      <?php else : ?>
+        <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa" required>
+    <?php endif; ?>
     <select name="angkatan" required>
       <option selected value="">Pilih Kelas</option>
       <option value="X">X</option>

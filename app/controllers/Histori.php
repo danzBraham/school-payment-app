@@ -19,10 +19,10 @@ class Histori extends Controller {
   public function laporankelas() {
     $data['title'] = 'Laporan Kelas';
     $data['kelas'] = $this->model('Histori_model')->getKelas();
-    $data['tanggal'] = $this->model('Histori_model')->getBulan();
-    $data['laporan'] = $this->model('Histori_model')->makeLaporanKelas();
+    $data['bulan'] = $this->model('Histori_model')->getAllBulan();
+    $data['siswa'] = $this->model('Histori_model')->getALlSiswaByKelas();
+    $data['laporan'] = $this->model('Histori_model')->LaporanKelas();
     $data['total'] = $this->model('Histori_model')->getTotalKelas();
-    $data['tagihan'] = $this->model('Histori_model')->getTagihanKelas();
     $this->view('histori/laporankelas', $data);
   }
 

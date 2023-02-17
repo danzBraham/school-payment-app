@@ -33,33 +33,23 @@ class Histori_model {
     return $this->db->result();
   }
 
-  public function getBulan() {
+  public function getALlSiswaByKelas() {
     $kelas = $_POST['kelas'];
-    $bulan = $_POST['bulan'];
-
-    $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
+    $this->db->query("SELECT * FROM tb_siswa WHERE id_kelas = :kelas ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
-    $dataKelas = $this->db->result();
-    $angkatan = $dataKelas['kelas'];
-
-    $this->db->query("SELECT * FROM tb_spp WHERE bulan = :bulan AND angkatan = :angkatan GROUP BY angkatan AND bulan");
-    $this->db->bind('bulan', $bulan);
-    $this->db->bind('angkatan', $angkatan);
-    return $this->db->result();
+    return $this->db->results();
   }
 
-  public function makeLaporanKelas() {
+  public function LaporanKelas() {
     $kelas = $_POST['kelas'];
-    $bulan = $_POST['bulan'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
 
-    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND angkatan = :angkatan ORDER BY nama ASC");
+    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
-    $this->db->bind('bulan', $bulan);
     $this->db->bind('angkatan', $angkatan);
     return $this->db->results();
   }
@@ -105,19 +95,17 @@ class Histori_model {
 
   public function getTotalKelas() {
     $kelas = $_POST['kelas'];
-    $bulan = $_POST['bulan'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
+    $this->db->query("SELECT nama, SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL GROUP BY nama ORDER BY nama ASC;");
     $this->db->bind('kelas', $kelas);
-    $this->db->bind('bulan', $bulan);
     $this->db->bind('angkatan', $angkatan);
-    $totalTerbayar = $this->db->result();
-    return intval($totalTerbayar['SUM(jumlah_bayar)']);
+    $totalTerbayar = $this->db->results();
+    return $totalTerbayar;
   }
 
   public function getTotalSiswa() {
@@ -135,32 +123,6 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $totalTerbayar = $this->db->result();
     return intval($totalTerbayar['SUM(jumlah_bayar)']);
-  }
-
-  public function getTagihanKelas() {
-    $kelas = $_POST['kelas'];
-    $bulan = $_POST['bulan'];
-    
-    $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
-    $this->db->bind('kelas', $kelas);
-    $dataKelas = $this->db->result();
-    $angkatan = $dataKelas['kelas'];
-
-    $this->db->query("SELECT COUNT(*) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND angkatan = :angkatan ORDER BY nama ASC");
-    $this->db->bind('kelas', $kelas);
-    $this->db->bind('bulan', $bulan);
-    $this->db->bind('angkatan', $angkatan);
-    $totalData = $this->db->result();
-
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE id_kelas = :kelas AND bulan = :bulan AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
-    $this->db->bind('kelas', $kelas);
-    $this->db->bind('bulan', $bulan);
-    $this->db->bind('angkatan', $angkatan);
-    $totalTerbayar = $this->db->result();
-
-    $totalBayar = intval($totalData['COUNT(*)']) * 500000;
-    $totalTagihan = $totalBayar - intval($totalTerbayar['SUM(jumlah_bayar)']);
-    return $totalTagihan;
   }
 
   public function getTagihanSiswa() {

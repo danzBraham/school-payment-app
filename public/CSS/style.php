@@ -118,6 +118,8 @@ header h2 {
   z-index: 2;
   top: -20px;
   background-color: var(--fourth-color);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .container-login .container-form-login .wrapper {

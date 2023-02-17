@@ -38,7 +38,7 @@
 
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/histori/laporankelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas" id="kelas" required>
@@ -48,7 +48,7 @@
         <?php endforeach; ?>
       </select>
     </div>
-    <div class="input-box">
+    <!-- <div class="input-box">
       <label for="bulan">Bulan</label>
       <select name="bulan" id="bulan" required>
         <option selected value="">Pilih Bulan</option>
@@ -56,21 +56,12 @@
         <option value="<?= $bulan['bulan']; ?>"><?= $bulan['bulan']; ?></option>
         <?php endforeach; ?>
       </select>
-    </div>
-    <!-- <div class="input-box">
-      <label for="tahun">Tahun</label>
-      <select name="tahun" id="tahun" required>
-        <option selected value="">Pilih Tahun</option>
-        <?php foreach ($data['tahun'] as $tahun) : ?>
-        <option value="<?= $tahun['tahun']; ?>"><?= $tahun['tahun']; ?></option>
-        <?php endforeach; ?>
-      </select>
     </div> -->
     <button type="submit">Buat Laporan Kelas</button>
   </form>
 
   <form action="<?= BASEURL; ?>/histori/laporansiswa" method="POST" id="modal-siswa" class="modal" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close-Btn.svg"></div>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
     <div class="input-box">
       <label for="siswa">Siswa</label>
       <input type="text" id="siswa" name="keyword" placeholder="Cari NIS atau Nama Lengkap Siswa" required>

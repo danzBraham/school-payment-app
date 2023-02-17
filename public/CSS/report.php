@@ -15,7 +15,7 @@
 .layer {
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: #222;
   position: fixed;
   left: 0;
   top: 0;
@@ -25,7 +25,7 @@
 }
 
 .container-laporan {
-  padding: 50px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,14 +41,6 @@
 }
 
 .container-laporan .laporan-info {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.container-laporan .laporan-info p {
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -59,7 +51,8 @@
 table, tr, th, td {
   border: 1px solid #121212;
   border-collapse: collapse;
-  padding: 6px;
+  padding: 4px;
+  font-size: 10px;
 }
 
 table thead, table .information {
@@ -72,8 +65,8 @@ table tr td:first-child {
 }
 
 .container-laporan .tertanda {
-  margin-top: 50px;
-  height: 150px;
+  margin-top: 20px;
+  height: 110px;
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -93,4 +86,5 @@ table tr td:first-child {
 
 @page {
   margin: -1px;
+  size: landscape;
 }

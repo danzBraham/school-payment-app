@@ -12,7 +12,6 @@
 <body>
   <div class="container-laporan">
     <h1>Laporan SPP</h1>
-    <!-- <h1><?php var_dump($data['tagihan']); ?></h1> -->
     <div class="laporan">
       <div class="laporan-info">
         <p>Kelas: <?= $data['kelas']['id_kelas']; ?></p>
@@ -23,9 +22,9 @@
             <th>No</th>
             <th>Nama</th>
             <?php foreach ($data['bulan'] as $bulan) : ?>
-              <th><?= $bulan['bulan']; ?></th>
+            <th><?= $bulan['bulan']; ?></th>
             <?php endforeach; ?>
-            <th>Total</th>
+            <th>Terbayar</th>
             <th>Tagihan</th>
           </tr>
         </thead>
@@ -36,18 +35,23 @@
             <td><?= $i++; ?></td>
             <td><?= $siswa['nama']; ?></td>
             <?php foreach ($data['laporan'] as $laporan) : ?>
-              <?php if ($siswa['nama'] == $laporan['nama']) : ?>
-                <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
-              <?php endif; ?>
+            <?php if ($siswa['nama'] == $laporan['nama']) : ?>
+            <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <?php endif; ?>
             <?php endforeach; ?>
-            <?php foreach ($data['total'] as $total) : ?>
-              <?php if ($siswa['nama'] == $total['nama']) : ?>
-                <td class="laporan-info">Rp<?= number_format($total['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-                <td class="laporan-info">Rp<?= number_format(6000000 - $total['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-              <?php endif; ?>
+            <?php foreach ($data['terbayar'] as $terbayar) : ?>
+            <?php if ($siswa['nama'] == $terbayar['nama']) : ?>
+            <td class="laporan-info">Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <?php endif; ?>
             <?php endforeach; ?>
           </tr>
           <?php endforeach; ?>
+          <tr>
+            <td class="laporan-info" colspan="14">Total</td>
+            <td class="laporan-info">Rp<?= number_format($data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">Rp<?= number_format($data['tagihan'] - $data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+          </tr>
         </tbody>
       </table>
       <div class="tertanda">

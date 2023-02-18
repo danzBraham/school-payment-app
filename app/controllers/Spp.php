@@ -1,6 +1,6 @@
 <?php
 class Spp extends Controller {
-  public function index() {
+  public function index($page = 1) {
     if (!isset($_SESSION['login'])) {
       header('Location: ' . BASEURL . '/home');
       exit;
@@ -18,8 +18,16 @@ class Spp extends Controller {
             </script>';
     }
 
+    $limit = 15;
+    $totalRows = $this->model('Spp_model')->getTotalSpp();
+    $totalPages = ceil($totalRows['COUNT(*)']/$limit);
+    $currentPage = $page ? $page : 1;
+    $offset = ($currentPage - 1) * $limit;
+
     $data['title'] = 'SPP';
-    $data['spp'] = $this->model('Spp_model')->getAllSPP();
+    $data['spp'] = $this->model('Spp_model')->getAllSpp($limit, $offset);
+    $data['totalPages'] = $totalPages;
+    $data['currentPage'] = $currentPage;
     $this->view('templates/header', $data);
     $this->view('spp/index', $data);
     $this->view('templates/footer');

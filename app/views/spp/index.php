@@ -1,4 +1,8 @@
 <div class="container">
+  <header>
+    <h2>Data SPP</h2>
+  </header>
+
   <table>
     <thead>
       <tr>
@@ -25,4 +29,23 @@
       <?php endif; ?>
     </tbody>
   </table>
+
+  <!-- Pagination links -->
+  <div class="pagination">
+    <?php if ($data['currentPage'] > 1) : ?>
+      <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] - 1; ?>">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+      <?php if ($i == $data['currentPage']) : ?>
+        <span><?= $i; ?></span>
+      <?php else : ?>
+        <a href="<?= BASEURL; ?>/spp/<?= $i; ?>"><?= $i; ?></a>
+      <?php endif; ?>
+    <?php endfor; ?>
+
+    <?php if ($data['currentPage'] < $data['totalPages']) : ?>
+      <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] + 1; ?>">Next</a>
+    <?php endif; ?>
+  </div>
 </div>

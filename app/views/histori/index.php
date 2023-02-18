@@ -1,8 +1,11 @@
 <div class="container">
-  <div class="container-btn">
-    <button id="laporan-kelas-btn" class="laporan-btn"><span class="button_top">Buat laporan Kelas</span></button>
-    <button id="laporan-siswa-btn" class="laporan-btn"><span class="button_top">Buat laporan Siswa</span></button>
-  </div>
+<header>
+    <h2>Histori Pembayaran</h2>
+    <div class="container-btn">
+      <button id="laporan-kelas-btn" class="laporan-btn"><span class="button_top">Buat laporan Kelas</span></button>
+      <button id="laporan-siswa-btn" class="laporan-btn"><span class="button_top">Buat laporan Siswa</span></button>
+    </div>
+  </header>
 
   <?php Flasher::flash(); ?>
 
@@ -34,8 +37,28 @@
       <?php endif; ?>
     </tbody>
   </table>
+
+  <!-- Pagination links -->
+  <div class="pagination">
+    <?php if ($data['currentPage'] > 1) : ?>
+      <a href="<?= BASEURL; ?>/histori/<?= $data['currentPage'] - 1; ?>">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+      <?php if ($i == $data['currentPage']) : ?>
+        <span><?= $i; ?></span>
+      <?php else : ?>
+        <a href="<?= BASEURL; ?>/histori/<?= $i; ?>"><?= $i; ?></a>
+      <?php endif; ?>
+    <?php endfor; ?>
+
+    <?php if ($data['currentPage'] < $data['totalPages']) : ?>
+      <a href="<?= BASEURL; ?>/histori/<?= $data['currentPage'] + 1; ?>">Next</a>
+    <?php endif; ?>
+  </div>
 </div>
 
+<!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/histori/laporankelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
     <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
@@ -48,15 +71,6 @@
         <?php endforeach; ?>
       </select>
     </div>
-    <!-- <div class="input-box">
-      <label for="bulan">Bulan</label>
-      <select name="bulan" id="bulan" required>
-        <option selected value="">Pilih Bulan</option>
-        <?php foreach ($data['bulan'] as $bulan) : ?>
-        <option value="<?= $bulan['bulan']; ?>"><?= $bulan['bulan']; ?></option>
-        <?php endforeach; ?>
-      </select>
-    </div> -->
     <button type="submit">Buat Laporan Kelas</button>
   </form>
 

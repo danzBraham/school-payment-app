@@ -6,8 +6,15 @@ class Histori_model {
     $this->db = new Database;
   }
 
-  public function getAllTransaksi() {
-    $this->db->query("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) ORDER BY tgl_bayar DESC LIMIT 12");
+  public function getTotalTransaksi() {
+    $this->db->query("SELECT COUNT(*) FROM tb_transaksi");
+    return $this->db->result();
+  }
+
+  public function getAllTransaksi($limit, $offset) {
+    $this->db->query("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) ORDER BY tgl_bayar DESC LIMIT :limit OFFSET :offset");
+    $this->db->bind('limit', $limit);
+    $this->db->bind('offset', $offset);
     return $this->db->results();
   }
 
@@ -151,7 +158,7 @@ class Histori_model {
     $this->db->bind('nis', $nis);
     $this->db->bind('kelas', $kelas);
     $totalTerbayar = $this->db->result();
-    return intval($totalTerbayar['SUM(jumlah_bayar)']);
+    return (int) $totalTerbayar['SUM(jumlah_bayar)'];
   }
 
   public function getTagihanSiswa() {
@@ -174,8 +181,8 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $totalTerbayar = $this->db->result();
 
-    $totalBayar = intval($totalData['COUNT(*)']) * 500000;
-    $totalTagihan = $totalBayar - intval($totalTerbayar['SUM(jumlah_bayar)']);
+    $totalBayar = (int) $totalData['COUNT(*)'] * 500000;
+    $totalTagihan = $totalBayar - (int) $totalTerbayar['SUM(jumlah_bayar)'];
     return $totalTagihan;
   }
 }

@@ -1,6 +1,6 @@
 <?php
 class Siswa extends Controller {
-  public function index() {
+  public function index($page = 1) {
     if (!isset($_SESSION['login'])) {
       header('Location: ' . BASEURL . '/home');
       exit;
@@ -17,10 +17,18 @@ class Siswa extends Controller {
               document.location.href = "' . BASEURL . '/histori";
             </script>';
     }
+    
+    $limit = 30;
+    $totalRows = $this->model('Siswa_model')->getTotalSiswa();
+    $totalPages = ceil($totalRows['COUNT(*)']/$limit);
+    $currentPage = $page ? $page : 1;
+    $offset = ($currentPage - 1) * $limit;
 
     $data['title'] = "Siswa";
-    $data['siswa'] = $this->model('Siswa_model')->getAllSiswa();
+    $data['siswa'] = $this->model('Siswa_model')->getAllSiswa($limit, $offset);
     $data['kelas'] = $this->model('Siswa_model')->getAllKelas();
+    $data['totalPages'] = $totalPages;
+    $data['currentPage'] = $currentPage;
     $this->view('templates/header', $data);
     $this->view('siswa/index', $data);
     $this->view('templates/footer');

@@ -44,4 +44,23 @@ class App {
       return $url;
     }
   }
+
+  // public function parseURL() {
+  //   if (isset($_GET['url'])) {
+  //     $url = $_GET['url'];
+  //     $url = rtrim($url, '/');
+  //     $url = filter_var($url, FILTER_SANITIZE_URL);
+  //     $url = explode('/', $url);
+
+  //     // Extract query string parameters and add them to the $url array
+  //     $query_string = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+  //     parse_str($query_string, $query_params);
+  //     foreach ($query_params as $key => $value) {
+  //       $url[] = $key;
+  //       $url[] = $value;
+  //     }
+
+  //     return $url;
+  //   }
+  // }
 }

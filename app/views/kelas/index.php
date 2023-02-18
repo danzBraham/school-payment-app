@@ -9,6 +9,7 @@
   <table>
     <thead>
       <tr>
+        <th>No</th>
         <th>ID Kelas</th>
         <th>Kelas</th>
         <th>Jurusan</th>
@@ -16,8 +17,10 @@
       </tr>
     </thead>
     <tbody>
+      <?php $i = 1; ?>
       <?php foreach ($data['kelas'] as $kelas) : ?>
       <tr>
+        <td><?= $i++; ?></td>
         <td><?= $kelas['id_kelas']; ?></td>
         <td><?= $kelas['kelas']; ?></td>
         <td><?= $kelas['jurusan']; ?></td>

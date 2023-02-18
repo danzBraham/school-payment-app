@@ -1,16 +1,24 @@
 <?php
 class Histori extends Controller {
-  public function index() {
+  public function index($page = 1) {
     if (!isset($_SESSION['login'])) {
       header('Location: ' . BASEURL . '/home');
       exit;
     }
 
+    $limit = 15;
+    $totalRows = $this->model('Histori_model')->getTotalTransaksi();
+    $totalPages = ceil($totalRows['COUNT(*)']/$limit);
+    $currentPage = $page ? $page : 1;
+    $offset = ($currentPage - 1) * $limit;
+
     $data['title'] = 'Histori';
-    $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi();
+    $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi($limit, $offset);
     $data['kelas'] = $this->model('Histori_model')->getAllKelas();
     $data['bulan'] = $this->model('Histori_model')->getAllBulan();
     $data['tahun'] = $this->model('Histori_model')->getAllTahun();
+    $data['totalPages'] = $totalPages;
+    $data['currentPage'] = $currentPage;
     $this->view('templates/header', $data);
     $this->view('histori/index', $data);
     $this->view('templates/footer');

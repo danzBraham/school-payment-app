@@ -64,7 +64,7 @@ class Pembayaran_model {
     $nis = $data['nis'];
     $angkatan = $data['angkatan'];
     $nominalBayar = 500000;
-    $jumlahBayar = intval($data['jml-bayar']);
+    $jumlahBayar = (int) $data['jml-bayar'];
     $petugas = $_SESSION['id_petugas'];
 
     $this->db->query("INSERT INTO tb_transaksi VALUES (
@@ -85,7 +85,7 @@ class Pembayaran_model {
         return;
       }
 
-      $jumlahBayarSPP = intval($dataSPP['jumlah_bayar']);
+      $jumlahBayarSPP = (int) $dataSPP['jumlah_bayar'];
       $bulan = $dataSPP['bulan'];
 
       if ($jumlahBayarSPP == 0) {
@@ -129,7 +129,7 @@ class Pembayaran_model {
     $this->db->bind('nis', $nis);
     $this->db->bind('angkatan', $angkatan);
     $tagihanTerbayar = $this->db->result();
-    $tagihanTerbayar =  intval($tagihanTerbayar['SUM(jumlah_bayar)']);
+    $tagihanTerbayar =  (int) $tagihanTerbayar['SUM(jumlah_bayar)'];
     $totalTagihan = 500000 * 12;
     $totalTagihan -= $tagihanTerbayar;
     return $totalTagihan;

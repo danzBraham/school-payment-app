@@ -6,9 +6,16 @@ class Siswa_model {
     $this->db = new Database;
   }
 
-  public function getAllSiswa() {
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+  public function getAllSiswa($limit, $offset) {
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) LIMIT :limit OFFSET :offset");
+    $this->db->bind('limit', $limit);
+    $this->db->bind('offset', $offset);
     return $this->db->results();
+}
+
+  public function getTotalSiswa() {
+    $this->db->query("SELECT COUNT(*) FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
+    return $this->db->result();
   }
 
   public function getSiswaByNis($nis) {
@@ -74,7 +81,7 @@ class Siswa_model {
   }
 
   public function updateSiswa($data) {
-    $nis = intval($data['nis']);
+    $nis = (int) $data['nis'];
     $nama = $data['nama'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];

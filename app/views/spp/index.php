@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h2>Data SPP</h2>
+    <h2>Data <span>SPP</span></h2>
   </header>
 
   <table>
@@ -23,9 +23,11 @@
       </tr>
       <?php endforeach; ?>
       <?php else : ?>
-        <tr>
-          <td colspan="6"><p class="no-data">Tidak Ada Data</p></td>
-        </tr>
+      <tr>
+        <td colspan="6">
+          <p class="no-data">Tidak Ada Data</p>
+        </td>
+      </tr>
       <?php endif; ?>
     </tbody>
   </table>
@@ -33,19 +35,19 @@
   <!-- Pagination links -->
   <div class="pagination">
     <?php if ($data['currentPage'] > 1) : ?>
-      <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] - 1; ?>">Previous</a>
+    <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
     <?php endif; ?>
 
     <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-      <?php if ($i == $data['currentPage']) : ?>
-        <span><?= $i; ?></span>
-      <?php else : ?>
-        <a href="<?= BASEURL; ?>/spp/<?= $i; ?>"><?= $i; ?></a>
-      <?php endif; ?>
+    <?php if ($i == $data['currentPage']) : ?>
+    <span><?= $i; ?></span>
+    <?php else : ?>
+    <a href="<?= BASEURL; ?>/spp/<?= $i; ?>"><?= $i; ?></a>
+    <?php endif; ?>
     <?php endfor; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>
-      <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] + 1; ?>">Next</a>
+    <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] + 1; ?>">&raquo;</a>
     <?php endif; ?>
   </div>
 </div>

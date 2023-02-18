@@ -6,7 +6,7 @@ class Histori extends Controller {
       exit;
     }
 
-    $limit = 15;
+    $limit = 12;
     $totalRows = $this->model('Histori_model')->getTotalTransaksi();
     $totalPages = ceil($totalRows['COUNT(*)']/$limit);
     $currentPage = $page ? $page : 1;

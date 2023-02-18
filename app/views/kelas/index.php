@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h2>Data Kelas</h2>
+    <h2>Data <span>Kelas</span></h2>
     <button id="add-btn" class="add-btn"><span class="button_top">Tambah Kelas</span></button>
   </header>
 

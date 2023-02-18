@@ -18,7 +18,7 @@ class Spp extends Controller {
             </script>';
     }
 
-    $limit = 15;
+    $limit = 12;
     $totalRows = $this->model('Spp_model')->getTotalSpp();
     $totalPages = ceil($totalRows['COUNT(*)']/$limit);
     $currentPage = $page ? $page : 1;

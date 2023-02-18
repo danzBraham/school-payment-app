@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h2>Data Siswa</h2>
+    <h2>Data <span>Siswa</span></h2>
     <button id="add-btn" class="add-btn"><span class="button_top">Tambah Siswa</span></button>
   </header>
 
@@ -47,7 +47,7 @@
   <!-- Pagination links -->
   <div class="pagination">
     <?php if ($data['currentPage'] > 1) : ?>
-      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] - 1; ?>">Previous</a>
+      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
     <?php endif; ?>
 
     <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
@@ -59,7 +59,7 @@
     <?php endfor; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>
-      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] + 1; ?>">Next</a>
+      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] + 1; ?>">&raquo;</a>
     <?php endif; ?>
   </div>
 </div>

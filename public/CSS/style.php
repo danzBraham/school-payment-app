@@ -59,19 +59,25 @@ nav ul li a:hover {
   color: #dedede;
 }
 
-nav ul li:last-child {
+nav ul li.logout {
   background-color: #ef4444;
   padding: 0 10px 2px;
   border-radius: 6px;
   margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-nav ul li:last-child:hover {
+nav ul li.logout:hover {
   background-color: #b91c1c;
 }
 
-nav ul li:last-child a:hover {
-  text-decoration: none;
+nav ul li.logout a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 header {
@@ -85,11 +91,15 @@ header h2 {
   color: var(--fourth-color);
 }
 
+header h2 span {
+  color: #4B3399;
+}
+
 .container {
   padding: 85px 50px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .container-login {
@@ -375,6 +385,7 @@ table .aksi {
 }
 
 table .aksi a button {
+  padding: 6px 12px;
   font-weight: 600;
   width: 80px;
 }
@@ -396,6 +407,39 @@ table .aksi .delete-btn {
 table .aksi .delete-btn:hover {
   background-color: hsl(0, 84%, 40%);
   color: var(--text);
+}
+
+.pagination {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination a {
+  background-color: var(--second-color);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 100ms ease-out;
+}
+
+.pagination a:hover {
+  background-color: var(--fourth-color);
+  /* background-color: #fff;
+  color: #4B3399; */
+}
+
+.pagination span {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+  color: #4B3399;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: default;
 }
 
 .overlay {

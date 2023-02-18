@@ -21,14 +21,26 @@
       <li><a href="<?= BASEURL; ?>/spp">SPP</a></li>
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li class="logout">
+        <a href="<?= BASEURL; ?>/home/logout">
+          Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        </a>
+      </li>
       <?php elseif ($_SESSION['level'] == 'petugas') : ?>
       <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li class="logout">
+        <a href="<?= BASEURL; ?>/home/logout">
+          Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        </a>
+      </li>
       <?php elseif (isset($_SESSION['nis'])) : ?>
       <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-      <li><a href="<?= BASEURL; ?>/home/logout">Logout</a></li>
+      <li class="logout">
+        <a href="<?= BASEURL; ?>/home/logout">
+          Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        </a>
+      </li>
       <?php endif; ?>
     </ul>
   </nav>

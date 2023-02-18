@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h2>Data Petugas</h2>
+    <h2>Data <span>Petugas</span></h2>
     <button id="add-btn" class="add-btn"><span class="button_top">Tambah Petugas</span></button>
   </header>
 

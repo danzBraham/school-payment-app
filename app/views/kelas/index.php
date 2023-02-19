@@ -11,7 +11,6 @@
       <tr>
         <th>No</th>
         <th>Kelas</th>
-        <th>Angkatan</th>
         <th>Jurusan</th>
         <th class="aksi">Aksi</th>
       </tr>
@@ -22,7 +21,6 @@
       <tr>
         <td><?= $i++; ?></td>
         <td><?= $kelas['kelas']; ?></td>
-        <td><?= $kelas['angkatan']; ?></td>
         <td><?= $kelas['jurusan']; ?></td>
         <td class="aksi">
           <a href="<?= BASEURL; ?>/kelas/edit/<?= $kelas['id_kelas']; ?>"><button class="edit-btn">Edit</button></a>
@@ -42,15 +40,6 @@
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <input type="text" id="kelas" name="kelas" placeholder="Contoh: X-RPL-1" required>
-    </div>
-    <div class="input-box">
-      <label for="angkatan">Angkatan</label>
-      <select name="angkatan" id="angkatan" required>
-        <option selected value="">Pilih Angkatan</option>
-        <option value="X">X</option>
-        <option value="XI">XI</option>
-        <option value="XII">XII</option>
-      </select>
     </div>
     <div class="input-box">
       <label for="jurusan">Jurusan</label>

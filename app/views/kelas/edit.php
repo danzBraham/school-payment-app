@@ -12,19 +12,6 @@
           placeholder="Contoh: X-RPL-1" required>
       </div>
       <div class="input-box">
-        <label for="angkatan">Angkatan</label>
-        <select name="angkatan" required>
-          <?php foreach ($data['angkatan'] as $angkatan) : ?>
-          <?php if ($angkatan['angkatan'] == $data['kelasById']['angkatan']) : ?>
-          <option selected value="<?= $data['kelasById']['angkatan']; ?>"><?= $data['kelasById']['angkatan']; ?>
-          </option>
-          <?php else : ?>
-          <option value="<?= $angkatan['angkatan']; ?>"><?= $angkatan['angkatan']; ?></option>
-          <?php endif; ?>
-          <?php endforeach; ?>
-        </select>
-      </div>
-      <div class="input-box">
         <label for="jurusan">Jurusan</label>
         <select name="jurusan" required>
           <?php foreach ($data['jurusan'] as $jurusan) : ?>

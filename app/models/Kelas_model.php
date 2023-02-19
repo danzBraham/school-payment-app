@@ -17,26 +17,20 @@ class Kelas_model {
     return $this->db->result();
   }
 
-  public function getAngkatan() {
-    $this->db->query("SELECT * FROM tb_kelas GROUP BY angkatan");
-    return $this->db->results();
-  }
-
   public function getJurusan() {
     $this->db->query("SELECT * FROM tb_kelas GROUP BY jurusan");
     return $this->db->results();
   }
 
-  public function addKelas() {
-    $kelas = $_POST['kelas'];
-    $angkatan = $_POST['angkatan'];
-    $jurusan = $_POST['jurusan'];
+  public function addKelas($data) {
+    $kelas = $data['kelas'];
+    $jurusan = $data['jurusan'];
 
     $this->db->query("INSERT INTO tb_kelas VALUES (
-      null, :kelas, :angkatan, :jurusan
+      null, :kelas, :jurusan
     )");
+
     $this->db->bind('kelas', $kelas);
-    $this->db->bind('angkatan', $angkatan);
     $this->db->bind('jurusan', $jurusan);
 
     $this->db->execute();
@@ -46,18 +40,15 @@ class Kelas_model {
   public function updateKelas($data) {
     $idKelas = $data['id_kelas'];
     $kelas = $data['kelas'];
-    $angkatan = $data['angkatan'];
     $jurusan = $data['jurusan'];
 
     $this->db->query("UPDATE tb_kelas SET
                       kelas = :kelas,
-                      angkatan = :angkatan,
                       jurusan = :jurusan
                       WHERE id_kelas = :id_kelas");
   
     $this->db->bind('id_kelas', $idKelas);
     $this->db->bind('kelas', $kelas);
-    $this->db->bind('angkatan', $angkatan);
     $this->db->bind('jurusan', $jurusan);
 
     $this->db->execute();

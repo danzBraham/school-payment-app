@@ -40,13 +40,15 @@
     <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
     <?php endif; ?>
 
-    <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-    <?php if ($i == $data['currentPage']) : ?>
-    <span><?= $i; ?></span>
-    <?php else : ?>
-    <a href="<?= BASEURL; ?>/spp/<?= $i; ?>"><?= $i; ?></a>
+    <?php if ((int) $data['totalPages'] !== 1) : ?>
+      <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+      <?php if ($i == $data['currentPage']) : ?>
+      <span><?= $i; ?></span>
+      <?php else : ?>
+      <a href="<?= BASEURL; ?>/spp/<?= $i; ?>"><?= $i; ?></a>
+      <?php endif; ?>
+      <?php endfor; ?>
     <?php endif; ?>
-    <?php endfor; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>
     <a href="<?= BASEURL; ?>/spp/<?= $data['currentPage'] + 1; ?>">&raquo;</a>

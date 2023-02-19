@@ -10,18 +10,14 @@
         <label for="nama">Nama</label>
         <input type="text" id="nama" name="nama" value="<?= $data['siswa']['nama']; ?>" required>
       </div>
-      <!-- <div class="input-box">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" value="<?= $data['siswa']['password']; ?>" required>
-      </div> -->
       <div class="input-box">
         <label for="kelas">Kelas</label>
         <select name="kelas" required>
           <?php foreach ($data['kelas'] as $kelas) : ?>
           <?php if ($kelas['id_kelas'] == $data['siswa']['id_kelas']) : ?>
-          <option selected value="<?= $data['siswa']['id_kelas']; ?>"><?= $data['siswa']['id_kelas']; ?></option>
+          <option selected value="<?= $data['siswa']['id_kelas']; ?>"><?= $data['siswa']['kelas']; ?></option>
           <?php else : ?>
-          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
+          <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
           <?php endif; ?>
           <?php endforeach; ?>
         </select>

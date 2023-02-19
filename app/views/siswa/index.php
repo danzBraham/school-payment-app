@@ -28,7 +28,7 @@
           <td><?= $siswa['password']; ?></td>
           <td><?= $siswa['alamat']; ?></td>
           <td><?= $siswa['no_telp']; ?></td>
-          <td><?= $siswa['id_kelas'] ?></td>
+          <td><?= $siswa['kelas'] ?></td>
           <td class="aksi">
             <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
             <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>
@@ -52,13 +52,15 @@
     <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
     <?php endif; ?>
 
-    <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-    <?php if ($i == $data['currentPage']) : ?>
-    <span><?= $i; ?></span>
-    <?php else : ?>
-    <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
+    <?php if ((int) $data['totalPages'] !== 1) : ?>
+      <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+      <?php if ($i == $data['currentPage']) : ?>
+      <span><?= $i; ?></span>
+      <?php else : ?>
+      <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
+      <?php endif; ?>
+      <?php endfor; ?>
     <?php endif; ?>
-    <?php endfor; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>
     <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] + 1; ?>">&raquo;</a>
@@ -69,11 +71,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/siswa/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
-    <div class="input-box">
-      <label for="nis">NIS</label>
-      <input type="text" id="nis" name="nis" placeholder="Masukkan NIS" required>
-    </div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div> -->
     <div class="input-box">
       <label for="nama">Nama</label>
       <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" required>
@@ -83,7 +81,7 @@
       <select name="kelas" required>
         <option selected>Pilih Kelas</option>
         <?php foreach ($data['kelas'] as $kelas) : ?>
-        <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['id_kelas']; ?></option>
+        <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
         <?php endforeach; ?>
       </select>
     </div>

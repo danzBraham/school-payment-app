@@ -7,7 +7,7 @@ class Siswa_model {
   }
 
   public function getAllSiswa($limit, $offset) {
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) LIMIT :limit OFFSET :offset");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) ORDER BY nis DESC LIMIT :limit OFFSET :offset");
     $this->db->bind('limit', $limit);
     $this->db->bind('offset', $offset);
     return $this->db->results();
@@ -52,7 +52,9 @@ class Siswa_model {
   }
 
   public function addSiswa($data) {
-    $nis = $data['nis'];
+    $this->db->query("SELECT * FROM tb_siswa ORDER BY nis DESC");
+    $lastNis = $this->db->result();
+    $nis = (int) $lastNis['nis'] + 1;
     $nama = $data['nama'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
@@ -81,23 +83,23 @@ class Siswa_model {
   }
 
   public function updateSiswa($data) {
-    $nis = (int) $data['nis'];
+    $nis = $data['nis'];
     $nama = $data['nama'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
     $alamat = $data['alamat'];
   
     $this->db->query("UPDATE tb_siswa SET
-                      id_kelas = :id_kelas,
+                      id_kelas = :kelas,
                       nama = :nama,
                       alamat = :alamat,
-                      no_telp = :no_telp
+                      no_telp = :telp
                       WHERE nis = :nis");
   
-    $this->db->bind('id_kelas', $kelas);
+    $this->db->bind('kelas', $kelas);
     $this->db->bind('nama', $nama);
     $this->db->bind('alamat', $alamat);
-    $this->db->bind('no_telp', $telp);
+    $this->db->bind('telp', $telp);
     $this->db->bind('nis', $nis);
 
     $this->db->execute();

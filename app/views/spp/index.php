@@ -10,6 +10,7 @@
           <th>NIS</th>
           <th>Nama Siswa</th>
           <th>Bulan</th>
+          <th>Angkatan</th>
           <th>Jumlah Bayar</th>
         </tr>
       </thead>
@@ -20,6 +21,7 @@
           <td><?= $spp['nis']; ?></td>
           <td><?= $spp['nama']; ?></td>
           <td><?= $spp['bulan']; ?></td>
+          <td><?= $spp['angkatan']; ?></td>
           <td>Rp<?= number_format($spp['jumlah_bayar'], 0, ',', '.'); ?></td>
         </tr>
         <?php endforeach; ?>

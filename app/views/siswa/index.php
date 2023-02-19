@@ -6,60 +6,62 @@
 
   <?php Flasher::flash(); ?>
 
-  <table>
-    <thead>
-      <tr>
-        <th>NIS</th>
-        <th>Nama Siswa</th>
-        <th>Password</th>
-        <th>Alamat</th>
-        <th>No Telp</th>
-        <th>Kelas</th>
-        <th class="aksi">Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php if ($data['siswa'] != null) : ?>
-      <?php foreach($data['siswa'] as $siswa) : ?>
-      <tr>
-        <td><?= $siswa['nis']; ?></td>
-        <td><?= $siswa['nama']; ?></td>
-        <td><?= $siswa['password']; ?></td>
-        <td><?= $siswa['alamat']; ?></td>
-        <td><?= $siswa['no_telp']; ?></td>
-        <td><?= $siswa['id_kelas'] ?></td>
-        <td class="aksi">
-          <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
-          <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>
-        </td>
-      </tr>
-      <?php endforeach; ?>
-      <?php else: ?>
-      <tr>
-        <td colspan="7">
-          <p class="no-data">Tidak Ada Data</p>
-        </td>
-      </tr>
-      <?php endif; ?>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>NIS</th>
+          <th>Nama Siswa</th>
+          <th>Password</th>
+          <th>Alamat</th>
+          <th>No Telp</th>
+          <th>Kelas</th>
+          <th class="aksi">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if ($data['siswa'] != null) : ?>
+        <?php foreach($data['siswa'] as $siswa) : ?>
+        <tr>
+          <td><?= $siswa['nis']; ?></td>
+          <td><?= $siswa['nama']; ?></td>
+          <td><?= $siswa['password']; ?></td>
+          <td><?= $siswa['alamat']; ?></td>
+          <td><?= $siswa['no_telp']; ?></td>
+          <td><?= $siswa['id_kelas'] ?></td>
+          <td class="aksi">
+            <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
+            <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>
+          </td>
+        </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tr>
+          <td colspan="7">
+            <p class="no-data">Tidak Ada Data</p>
+          </td>
+        </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
 
   <!-- Pagination links -->
   <div class="pagination">
     <?php if ($data['currentPage'] > 1) : ?>
-      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
+    <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] - 1; ?>">&laquo;</a>
     <?php endif; ?>
 
     <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-      <?php if ($i == $data['currentPage']) : ?>
-        <span><?= $i; ?></span>
-      <?php else : ?>
-        <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
-      <?php endif; ?>
+    <?php if ($i == $data['currentPage']) : ?>
+    <span><?= $i; ?></span>
+    <?php else : ?>
+    <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
+    <?php endif; ?>
     <?php endfor; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>
-      <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] + 1; ?>">&raquo;</a>
+    <a href="<?= BASEURL; ?>/siswa/<?= $data['currentPage'] + 1; ?>">&raquo;</a>
     <?php endif; ?>
   </div>
 </div>

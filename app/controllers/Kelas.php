@@ -73,10 +73,9 @@ class Kelas extends Controller {
     }
 
     $data['title'] = "Kelas";
-    $data['kelas'] = $this->model('Kelas_model')->getKelas();
+    $data['kelasById'] = $this->model('Kelas_model')->getKelasById($id);
+    $data['angkatan'] = $this->model('Kelas_model')->getAngkatan();
     $data['jurusan'] = $this->model('Kelas_model')->getJurusan();
-    $data['satu-kelas'] = $this->model('Kelas_model')->getKelasById($id);
-    $data['semua-kelas'] = $this->model('Kelas_model')->getAllKelas();
     $this->view('templates/header', $data);
     $this->view('kelas/edit', $data);
     $this->view('templates/footer');

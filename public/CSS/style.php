@@ -346,6 +346,14 @@ header h2 span {
   cursor: pointer;
 }
 
+.table-wrapper {
+  height: 434px;
+}
+
+table {
+  width: 100%;
+}
+
 table, tr, td, th {
   font-size: 13px;
   border-top: 1px solid #121212;

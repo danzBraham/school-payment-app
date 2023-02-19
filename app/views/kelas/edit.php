@@ -5,15 +5,21 @@
       <p>Kembali</p>
     </a>
     <form action="<?= BASEURL; ?>/kelas/update" method="POST" id="modal" class="modal click" autocomplete="off">
-      <input type="hidden" name="id_kelas" value="<?= $data['satu-kelas']['id_kelas']; ?>">
+      <input type="hidden" name="id_kelas" value="<?= $data['kelasById']['id_kelas']; ?>">
       <div class="input-box">
         <label for="kelas">Kelas</label>
-        <select name="kelas" required>
-          <?php foreach ($data['kelas'] as $kelas) : ?>
-          <?php if ($kelas['kelas'] == $data['satu-kelas']['kelas']) : ?>
-          <option selected value="<?= $data['satu-kelas']['kelas']; ?>"><?= $data['satu-kelas']['kelas']; ?></option>
+        <input type="text" id="kelas" name="kelas" value="<?= $data['kelasById']['kelas']; ?>"
+          placeholder="Contoh: X-RPL-1" required>
+      </div>
+      <div class="input-box">
+        <label for="angkatan">Angkatan</label>
+        <select name="angkatan" required>
+          <?php foreach ($data['angkatan'] as $angkatan) : ?>
+          <?php if ($angkatan['angkatan'] == $data['kelasById']['angkatan']) : ?>
+          <option selected value="<?= $data['kelasById']['angkatan']; ?>"><?= $data['kelasById']['angkatan']; ?>
+          </option>
           <?php else : ?>
-          <option value="<?= $kelas['kelas']; ?>"><?= $kelas['kelas']; ?></option>
+          <option value="<?= $angkatan['angkatan']; ?>"><?= $angkatan['angkatan']; ?></option>
           <?php endif; ?>
           <?php endforeach; ?>
         </select>
@@ -22,8 +28,8 @@
         <label for="jurusan">Jurusan</label>
         <select name="jurusan" required>
           <?php foreach ($data['jurusan'] as $jurusan) : ?>
-          <?php if ($jurusan['jurusan'] == $data['satu-kelas']['jurusan']) : ?>
-          <option selected value="<?= $data['satu-kelas']['jurusan']; ?>"><?= $data['satu-kelas']['jurusan']; ?>
+          <?php if ($jurusan['jurusan'] == $data['kelasById']['jurusan']) : ?>
+          <option selected value="<?= $data['kelasById']['jurusan']; ?>"><?= $data['kelasById']['jurusan']; ?>
           </option>
           <?php else : ?>
           <option value="<?= $jurusan['jurusan']; ?>"><?= $jurusan['jurusan']; ?></option>

@@ -11,8 +11,24 @@ class Histori_model {
     return $this->db->result();
   }
 
+  public function getTotalTransaksiBySiswa() {
+    $nis = $_SESSION['nis'];
+    $this->db->query("SELECT COUNT(*) FROM tb_transaksi WHERE nis = :nis");
+    $this->db->bind('nis', $nis);
+    return $this->db->result();
+  }
+
   public function getAllTransaksi($limit, $offset) {
     $this->db->query("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) ORDER BY tgl_bayar DESC LIMIT :limit OFFSET :offset");
+    $this->db->bind('limit', $limit);
+    $this->db->bind('offset', $offset);
+    return $this->db->results();
+  }
+
+  public function getTransaksiBySiswa($limit, $offset) {
+    $nis = $_SESSION['nis'];
+    $this->db->query("SELECT * FROM tb_transaksi INNER JOIN tb_petugas USING(id_petugas) INNER JOIN tb_siswa USING(nis) WHERE nis = :nis ORDER BY tgl_bayar DESC LIMIT :limit OFFSET :offset");
+    $this->db->bind('nis', $nis);
     $this->db->bind('limit', $limit);
     $this->db->bind('offset', $offset);
     return $this->db->results();
@@ -25,11 +41,6 @@ class Histori_model {
 
   public function getAllBulan() {
     $this->db->query("SELECT * FROM tb_spp GROUP BY bulan ORDER BY id_spp");
-    return $this->db->results();
-  }
-
-  public function getAllTahun() {
-    $this->db->query("SELECT * FROM tb_spp GROUP BY tahun");
     return $this->db->results();
   }
 
@@ -54,6 +65,8 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
     $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
@@ -76,11 +89,13 @@ class Histori_model {
     }
 
     $nis = $data['nis'];
-    $kelas = $data['kelas'];
+    $angkatan = $data['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND angkatan = :kelas");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
-    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
     return $this->db->result();
   }
 
@@ -92,11 +107,13 @@ class Histori_model {
     $this->db->bind('keyword', "%$keyword%");
     $data = $this->db->result();
     $nis = $data['nis'];
-    $kelas = $data['kelas'];
+    $angkatan = $data['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT * FROM tb_spp WHERE nis = :nis AND angkatan = :kelas");
+    $this->db->query("SELECT * FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
-    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
     return $this->db->results();
   }
 
@@ -107,6 +124,8 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
     $this->db->query("SELECT nama, SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL GROUP BY nama ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
@@ -122,6 +141,8 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
     $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
@@ -136,6 +157,8 @@ class Histori_model {
     $this->db->bind('kelas', $kelas);
     $dataKelas = $this->db->result();
     $angkatan = $dataKelas['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
     $this->db->query("SELECT COUNT(*) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
@@ -152,11 +175,13 @@ class Histori_model {
     $this->db->bind('keyword', "%$keyword%");
     $data = $this->db->result();
     $nis = $data['nis'];
-    $kelas = $data['kelas'];
+    $angkatan = $data['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND angkatan = :kelas");
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
-    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
     $totalTerbayar = $this->db->result();
     return (int) $totalTerbayar['SUM(jumlah_bayar)'];
   }
@@ -169,16 +194,18 @@ class Histori_model {
     $this->db->bind('keyword', "%$keyword%");
     $data = $this->db->result();
     $nis = $data['nis'];
-    $kelas = $data['kelas'];
+    $angkatan = $data['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT COUNT(*) FROM tb_spp WHERE nis = :nis AND angkatan = :kelas");
+    $this->db->query("SELECT COUNT(*) FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
-    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
     $totalData = $this->db->result();
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND angkatan = :kelas");
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
-    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
     $totalTerbayar = $this->db->result();
 
     $totalBayar = (int) $totalData['COUNT(*)'] * 500000;

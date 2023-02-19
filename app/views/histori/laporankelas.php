@@ -14,7 +14,7 @@
     <h1>Laporan SPP</h1>
     <div class="laporan">
       <div class="laporan-info">
-        <p>Kelas: <?= $data['kelas']['id_kelas']; ?></p>
+        <p>Kelas: <?= $data['kelas']['kelas']; ?></p>
       </div>
       <table>
         <thead>

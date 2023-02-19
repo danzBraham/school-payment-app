@@ -7,16 +7,22 @@ class Histori extends Controller {
     }
 
     $limit = 12;
-    $totalRows = $this->model('Histori_model')->getTotalTransaksi();
+    if (!isset($_SESSION['nis'])) {
+      $totalRows = $this->model('Histori_model')->getTotalTransaksi();
+    } else {
+      $totalRows = $this->model('Histori_model')->getTotalTransaksiBySiswa();
+    }
     $totalPages = ceil($totalRows['COUNT(*)']/$limit);
     $currentPage = $page ? $page : 1;
     $offset = ($currentPage - 1) * $limit;
 
     $data['title'] = 'Histori';
-    $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi($limit, $offset);
-    $data['kelas'] = $this->model('Histori_model')->getAllKelas();
-    $data['bulan'] = $this->model('Histori_model')->getAllBulan();
-    $data['tahun'] = $this->model('Histori_model')->getAllTahun();
+    if (!isset($_SESSION['nis'])) {
+      $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi($limit, $offset);
+      $data['kelas'] = $this->model('Histori_model')->getAllKelas();
+    } else {
+      $data['transaksi'] = $this->model('Histori_model')->getTransaksiBySiswa($limit, $offset);
+    }
     $data['totalPages'] = $totalPages;
     $data['currentPage'] = $currentPage;
     $this->view('templates/header', $data);
@@ -25,6 +31,13 @@ class Histori extends Controller {
   }
 
   public function laporankelas() {
+    if(isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = 'Laporan Kelas';
     $data['kelas'] = $this->model('Histori_model')->getKelas();
     $data['bulan'] = $this->model('Histori_model')->getAllBulan();
@@ -37,6 +50,13 @@ class Histori extends Controller {
   }
 
   public function laporansiswa() {
+    if(isset($_SESSION['nis'])) {
+      echo '<script>
+              alert("Anda Siswa!");
+              document.location.href = "' . BASEURL . '/histori";
+            </script>';
+    }
+
     $data['title'] = 'Laporan Siswa';
     $data['siswa'] = $this->model('Histori_model')->searchSiswaByNis();
     $data['histori'] = $this->model('Histori_model')->getSiswaHistory();

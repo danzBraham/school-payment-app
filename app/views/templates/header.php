@@ -12,39 +12,84 @@
 
 <body>
   <nav>
-    <ul>
-      <?php if (isset($_SESSION['level'])) : ?>
+    <div class="nav-main">
+      <div class="logo">
+        <img src="<?= BASEURL; ?>/Assets/Icon/logo.svg" alt="logo">
+      </div>
+      <ul>
+        <?php if (isset($_SESSION['level'])) : ?>
         <?php if ($_SESSION['level'] == 'admin') : ?>
-        <li><a href="<?= BASEURL; ?>/dashboard">Dashboard</a></li>
-        <li><a href="<?= BASEURL; ?>/siswa">Siswa</a></li>
-        <li><a href="<?= BASEURL; ?>/kelas">Kelas</a></li>
-        <li><a href="<?= BASEURL; ?>/petugas">Petugas</a></li>
-        <li><a href="<?= BASEURL; ?>/spp">SPP</a></li>
-        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li class="logout">
-          <a href="<?= BASEURL; ?>/home/logout">
-            Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        <li>
+          <a href="<?= BASEURL; ?>/dashboard">
+            <img src="<?= BASEURL; ?>/Assets/Icon/dash-icon.svg" alt="dash-icon">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/siswa">
+            <img src="<?= BASEURL; ?>/Assets/Icon/siswa-icon.svg" alt="dash-icon">
+            Siswa
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/kelas">
+            <img src="<?= BASEURL; ?>/Assets/Icon/kelas-icon.svg" alt="dash-icon">
+            Kelas
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/petugas">
+            <img src="<?= BASEURL; ?>/Assets/Icon/petugas-icon.svg" alt="dash-icon">
+            Petugas
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/spp">
+            <img src="<?= BASEURL; ?>/Assets/Icon/spp-icon.svg" alt="dash-icon">
+            SPP
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/pembayaran">
+            <img src="<?= BASEURL; ?>/Assets/Icon/pembayaran-icon.svg" alt="dash-icon">
+            Pembayaran
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/histori">
+            <img src="<?= BASEURL; ?>/Assets/Icon/histori-icon.svg" alt="dash-icon">
+            Histori
           </a>
         </li>
         <?php elseif ($_SESSION['level'] == 'petugas') : ?>
-        <li><a href="<?= BASEURL; ?>/pembayaran">Pembayaran</a></li>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li class="logout">
-          <a href="<?= BASEURL; ?>/home/logout">
-            Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        <li>
+          <a href="<?= BASEURL; ?>/pembayaran">
+            <img src="<?= BASEURL; ?>/Assets/Icon/pembayaran-icon.svg" alt="dash-icon">
+            Pembayaran
+          </a>
+        </li>
+        <li>
+          <a href="<?= BASEURL; ?>/histori">
+            <img src="<?= BASEURL; ?>/Assets/Icon/histori-icon.svg" alt="dash-icon">
+            Histori
           </a>
         </li>
         <?php endif; ?>
-      <?php else : ?>
+        <?php else : ?>
         <?php if (isset($_SESSION['nis'])) : ?>
-        <li><a href="<?= BASEURL; ?>/histori">Histori</a></li>
-        <li class="logout">
-          <a href="<?= BASEURL; ?>/home/logout">
-            Logout<img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">
+        <li>
+          <a href="<?= BASEURL; ?>/histori">
+            <img src="<?= BASEURL; ?>/Assets/Icon/histori-icon.svg" alt="dash-icon">
+            Histori
           </a>
         </li>
         <?php endif; ?>
-      <?php endif; ?>
-    </ul>
+        <?php endif; ?>
+      </ul>
+    </div>
+    <div class="log">
+      <a class="logout" href="<?= BASEURL; ?>/home/logout">
+        <img src="<?= BASEURL; ?>/Assets/Icon/logout.svg" alt="logout">Logout
+      </a>
+    </div>
   </nav>

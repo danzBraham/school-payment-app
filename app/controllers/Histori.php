@@ -6,7 +6,7 @@ class Histori extends Controller {
       exit;
     }
 
-    $limit = 12;
+    $limit = 13;
     if (!isset($_SESSION['nis'])) {
       $totalRows = $this->model('Histori_model')->getTotalTransaksi();
     } else {

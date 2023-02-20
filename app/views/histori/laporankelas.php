@@ -35,15 +35,15 @@
             <td><?= $i++; ?></td>
             <td><?= $siswa['nama']; ?></td>
             <?php foreach ($data['laporan'] as $laporan) : ?>
-            <?php if ($siswa['nama'] == $laporan['nama']) : ?>
-            <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
-            <?php endif; ?>
+              <?php if ($siswa['nama'] == $laporan['nama']) : ?>
+              <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
+              <?php endif; ?>
             <?php endforeach; ?>
             <?php foreach ($data['terbayar'] as $terbayar) : ?>
-            <?php if ($siswa['nama'] == $terbayar['nama']) : ?>
-            <td class="laporan-info">Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-            <td class="laporan-info">Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-            <?php endif; ?>
+              <?php if ($siswa['nama'] == $terbayar['nama']) : ?>
+              <td class="laporan-info">Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+              <td class="laporan-info">Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+              <?php endif; ?>
             <?php endforeach; ?>
           </tr>
           <?php endforeach; ?>

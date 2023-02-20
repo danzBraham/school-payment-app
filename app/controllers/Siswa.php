@@ -18,7 +18,7 @@ class Siswa extends Controller {
             </script>';
     }
     
-    $limit = 10;
+    $limit = 11;
     $totalRows = $this->model('Siswa_model')->getTotalSiswa();
     $totalPages = ceil($totalRows['COUNT(*)']/$limit);
     $currentPage = $page ? $page : 1;

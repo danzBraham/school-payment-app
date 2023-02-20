@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+ul li {
+  list-style: none;
+}
+
 :root {
   font-family: 'Poppins', sans-serif;
   --main-color: #36304A;
@@ -26,58 +30,66 @@ body {
 }
 
 nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
-  width: 100%;
-  padding: 0 50px;
+  width: 180px;
+  height: 100%;
   background-color: var(--main-color);
   font-size: 16px;
 }
 
+nav .nav-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+nav .logo {
+  margin-top: 30px;
+}
+
 nav ul {
   display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-nav ul li {
-  display: block;
-  padding: 20px 30px;
-}
-
-nav ul li:hover {
-  display: block;
-  padding: 20px 30px;
-  background-color: var(--second-color);
+  flex-direction: column;
+  width: 100%;
 }
 
 nav ul li a {
   text-decoration: none;
   color: var(--text);
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
 }
 
 nav ul li a:hover {
   color: #dedede;
+  background-color: var(--second-color);
 }
 
-nav ul li.logout {
-  background-color: #ef4444;
-  padding: 0 10px 2px;
-  border-radius: 6px;
-  margin-left: auto;
+nav .log {
+  width: 100%;
+}
+
+nav .log .logout {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-self: flex-end;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  background-color: #fc3e3e;
+  padding: 10px 0;
 }
 
-nav ul li.logout:hover {
+nav .log .logout:hover {
   background-color: #b91c1c;
-}
-
-nav ul li.logout a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
 }
 
 header {
@@ -96,10 +108,10 @@ header h2 span {
 }
 
 .container {
-  padding: 85px 50px 20px;
+  padding: 30px 30px 30px 200px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .container-login {
@@ -286,6 +298,12 @@ header h2 span {
   color: var(--text);
   cursor: pointer;
   outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.container button.search {
+  padding: 4px 8px;
+  box-shadow: none;
 }
 
 .container button span {
@@ -347,11 +365,12 @@ header h2 span {
 }
 
 .table-wrapper {
-  height: 434px;
+  height: 480px;
 }
 
 table {
   width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 table, tr, td, th {
@@ -436,8 +455,6 @@ table .aksi .delete-btn:hover {
 
 .pagination a:hover {
   background-color: var(--fourth-color);
-  /* background-color: #fff;
-  color: #4B3399; */
 }
 
 .pagination span {

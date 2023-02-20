@@ -1,17 +1,20 @@
 <div class="container">
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
     <?php if (!isset($data['siswaByNis'])) : ?>
-      <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
-      <?php else : ?>
-        <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa" required>
+    <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
+    <?php else : ?>
+    <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa"
+      required>
     <?php endif; ?>
     <select name="angkatan" required>
-      <option selected value="">Pilih Kelas</option>
+      <option selected value="">Pilih Angkatan</option>
       <option value="X">X</option>
       <option value="XI">XI</option>
       <option value="XII">XII</option>
     </select>
-    <button type="submit">Cari</button>
+    <button type="submit" class="search">
+      <img src="<?= BASEURL; ?>/Assets/Icon/search.svg" alt="">
+    </button>
   </form>
 
   <?php Flasher::flash(); ?>
@@ -31,8 +34,8 @@
         <input type="text" id="nama" value="<?= $data['siswaByNis']['nama']; ?>" readonly>
       </div>
       <div class="input-box">
-        <label for="kelas">Kelas</label>
-        <input type="text" name="angkatan" id="kelas" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
+        <label for="angkatan">Angkatan</label>
+        <input type="text" name="angkatan" id="angkatan" value="<?= $data['siswaByNis']['angkatan']; ?>" readonly>
       </div>
       <div class="input-box">
         <label for="nominal-bayar">Nominal Bayar Perbulan</label>

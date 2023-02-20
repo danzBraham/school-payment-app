@@ -28,7 +28,8 @@
         <td class="aksi">
           <a href="<?= BASEURL; ?>/petugas/edit/<?= $petugas['id_petugas']; ?>"><button
               class="edit-btn">Edit</button></a>
-          <a href="<?= BASEURL; ?>/petugas/delete/<?= $petugas['id_petugas']; ?>"><button
+          <a href="<?= BASEURL; ?>/petugas/delete/<?= $petugas['id_petugas']; ?>"
+            onclick="return confirm(`Anda yakin ingin menghapus <?= $petugas['username']; ?>?`)"><button
               class="delete-btn">Delete</button></a>
         </td>
       </tr>

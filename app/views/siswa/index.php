@@ -31,7 +31,9 @@
           <td><?= $siswa['kelas'] ?></td>
           <td class="aksi">
             <a href="<?= BASEURL; ?>/siswa/edit/<?= $siswa['nis']; ?>"><button class="edit-btn">Edit</button></a>
-            <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"><button class="delete-btn">Delete</button></a>
+            <a href="<?= BASEURL; ?>/siswa/delete/<?= $siswa['nis']; ?>"
+              onclick="return confirm(`Anda yakin ingin menghapus <?= $siswa['nama']; ?>?`)"><button
+                class="delete-btn">Delete</button></a>
           </td>
         </tr>
         <?php endforeach; ?>
@@ -53,13 +55,13 @@
     <?php endif; ?>
 
     <?php if ((int) $data['totalPages'] !== 1) : ?>
-      <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-      <?php if ($i == $data['currentPage']) : ?>
-      <span><?= $i; ?></span>
-      <?php else : ?>
-      <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
-      <?php endif; ?>
-      <?php endfor; ?>
+    <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+    <?php if ($i == $data['currentPage']) : ?>
+    <span><?= $i; ?></span>
+    <?php else : ?>
+    <a href="<?= BASEURL; ?>/siswa/<?= $i; ?>"><?= $i; ?></a>
+    <?php endif; ?>
+    <?php endfor; ?>
     <?php endif; ?>
 
     <?php if ($data['currentPage'] < $data['totalPages']) : ?>

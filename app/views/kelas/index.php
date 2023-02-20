@@ -24,7 +24,8 @@
         <td><?= $kelas['jurusan']; ?></td>
         <td class="aksi">
           <a href="<?= BASEURL; ?>/kelas/edit/<?= $kelas['id_kelas']; ?>"><button class="edit-btn">Edit</button></a>
-          <a href="<?= BASEURL; ?>/kelas/delete/<?= $kelas['id_kelas']; ?>"><button
+          <a href="<?= BASEURL; ?>/kelas/delete/<?= $kelas['id_kelas']; ?>"
+            onclick="return confirm(`Anda yakin ingin menghapus <?= $kelas['kelas']; ?>?`)"><button
               class="delete-btn">Delete</button></a>
         </td>
       </tr>

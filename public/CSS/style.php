@@ -55,6 +55,7 @@ nav .logo {
 
 nav ul {
   display: flex;
+  gap: 10px;
   flex-direction: column;
   width: 100%;
 }

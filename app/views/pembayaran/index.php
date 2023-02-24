@@ -2,16 +2,33 @@
   <form action="<?= BASEURL; ?>/pembayaran/siswa" method="POST" autocomplete="off" class="search-form">
     <?php if (!isset($data['siswaByNis'])) : ?>
     <input type="text" name="keyword" placeholder="NIS atau Nama Siswa" required>
-    <?php else : ?>
-    <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa"
-      required>
-    <?php endif; ?>
     <select name="angkatan" required>
-      <option selected value="">Pilih Angkatan</option>
+      <option value="" selected>Pilih Angkatan</option>
       <option value="X">X</option>
       <option value="XI">XI</option>
       <option value="XII">XII</option>
     </select>
+    <?php else : ?>
+    <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa" required>
+    <select name="angkatan" required>
+      <?php if ($data['siswaByNis']['angkatan'] == 'X') : ?>
+      <option value="">Pilih Angkatan</option>
+      <option value="X" selected>X</option>
+      <option value="XI">XI</option>
+      <option value="XII">XII</option>
+      <?php elseif ($data['siswaByNis']['angkatan'] == 'XI') : ?>
+      <option value="">Pilih Angkatan</option>
+      <option value="X">X</option>
+      <option value="XI" selected>XI</option>
+      <option value="XII">XII</option>
+      <?php elseif ($data['siswaByNis']['angkatan'] == 'XII') : ?>
+      <option value="">Pilih Angkatan</option>
+      <option value="X">X</option>
+      <option value="XI">XI</option>
+      <option value="XII" selected>XII</option>
+      <?php endif; ?>
+    </select>
+    <?php endif; ?>
     <button type="submit" class="search">
       <img src="<?= BASEURL; ?>/Assets/Icon/search.svg" alt="">
     </button>

@@ -15,6 +15,7 @@
     <div class="laporan">
       <div class="laporan-info">
         <p>Kelas: <?= $data['kelas']['kelas']; ?></p>
+        <p>Tahun Ajaran: <?= $data['tahun']['tahun']; ?></p>
       </div>
       <table>
         <thead>
@@ -35,30 +36,38 @@
             <td><?= $i++; ?></td>
             <td><?= $siswa['nama']; ?></td>
             <?php foreach ($data['laporan'] as $laporan) : ?>
-              <?php if ($siswa['nama'] == $laporan['nama']) : ?>
-              <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
-              <?php endif; ?>
+            <?php if ($siswa['nama'] == $laporan['nama']) : ?>
+            <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <?php endif; ?>
             <?php endforeach; ?>
             <?php foreach ($data['terbayar'] as $terbayar) : ?>
-              <?php if ($siswa['nama'] == $terbayar['nama']) : ?>
-              <td class="laporan-info">Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-              <td class="laporan-info">Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-              <?php endif; ?>
+            <?php if ($siswa['nama'] == $terbayar['nama']) : ?>
+            <td class="laporan-info">Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <?php endif; ?>
             <?php endforeach; ?>
           </tr>
           <?php endforeach; ?>
           <tr>
             <td class="laporan-info" colspan="14">Total</td>
             <td class="laporan-info">Rp<?= number_format($data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-            <td class="laporan-info">Rp<?= number_format($data['tagihan'] - $data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">
+              Rp<?= number_format($data['tagihan'] - $data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
           </tr>
         </tbody>
       </table>
-      <div class="tertanda">
-        <p>Denpasar, <?= date('d-m-Y'); ?></p>
-        <p>Zidan Abraham</p>
+      <div class="footer">
+        <div class="catatan">
+          <p>Note:</p>
+          <p>Jika Rp0 maka belum dibayar</p>
+          <p>Jika lebih dari Rp0 maka sudah terbayar sebanyak jumlahnya</p>
+        </div>
+        <div class="tertanda">
+          <p>Denpasar, <?= date('d-m-Y'); ?></p>
+          <p>Zidan Abraham</p>
+        </div>
+        <div class="layer"></div>
       </div>
-      <div class="layer"></div>
     </div>
   </div>
 

@@ -51,6 +51,22 @@ class Histori_model {
     return $this->db->result();
   }
 
+  public function getThnAjrn() {
+    $kelas = $_POST['kelas'];
+
+    $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
+    $this->db->bind('kelas', $kelas);
+    $dataKelas = $this->db->result();
+    $angkatan = $dataKelas['kelas'];
+    $angkatan = explode('-', $angkatan);
+    $angkatan = $angkatan[0];
+
+    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan GROUP BY tahun");
+    $this->db->bind('kelas', $kelas);
+    $this->db->bind('angkatan', $angkatan);
+    return $this->db->result();
+  }
+
   public function getALlSiswaByKelas() {
     $kelas = $_POST['kelas'];
     $this->db->query("SELECT * FROM tb_siswa WHERE id_kelas = :kelas ORDER BY nama ASC");

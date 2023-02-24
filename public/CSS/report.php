@@ -64,8 +64,13 @@ table tr td:first-child {
   text-align: center;
 }
 
-.container-laporan .tertanda {
+.container-laporan .footer {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
+}
+
+.container-laporan .footer .tertanda {
   height: 110px;
   align-self: flex-end;
   display: flex;

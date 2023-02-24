@@ -40,6 +40,7 @@ class Histori extends Controller {
 
     $data['title'] = 'Laporan Kelas';
     $data['kelas'] = $this->model('Histori_model')->getKelas();
+    $data['tahun'] = $this->model('Histori_model')->getThnAjrn();
     $data['bulan'] = $this->model('Histori_model')->getAllBulan();
     $data['siswa'] = $this->model('Histori_model')->getALlSiswaByKelas();
     $data['laporan'] = $this->model('Histori_model')->laporanKelas();

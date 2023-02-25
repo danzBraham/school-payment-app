@@ -24,7 +24,7 @@
       </div>
       <div class="input-box">
         <label for="telp">No Telp</label>
-        <input type="text" id="telp" name="telp" value="<?= $data['siswa']['no_telp']; ?>" required>
+        <input type="text" id="telp" name="telp" value="<?= $data['siswa']['no_telp']; ?>" maxlength="12" required>
       </div>
       <div class="input-box">
         <label for="alamat">Alamat</label>

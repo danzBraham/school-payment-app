@@ -9,7 +9,7 @@
       <div class="input-box">
         <label for="kelas">Kelas</label>
         <input type="text" id="kelas" name="kelas" value="<?= $data['kelasById']['kelas']; ?>"
-          placeholder="Contoh: X-RPL-1" required>
+          placeholder="Contoh: X-RPL-1" maxlength="8" required>
       </div>
       <div class="input-box">
         <label for="jurusan">Jurusan</label>

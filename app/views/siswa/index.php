@@ -89,7 +89,7 @@
     </div>
     <div class="input-box">
       <label for="telp">No Telp</label>
-      <input type="text" id="telp" name="telp" placeholder="Masukkan No Telp" required>
+      <input type="text" id="telp" name="telp" placeholder="Masukkan No Telp" maxlength="12" required>
     </div>
     <div class="input-box">
       <label for="alamat">Alamat</label>

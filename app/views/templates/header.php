@@ -44,12 +44,6 @@
           </a>
         </li>
         <li>
-          <a href="<?= BASEURL; ?>/spp">
-            <img src="<?= BASEURL; ?>/Assets/Icon/spp-icon.svg" alt="dash-icon">
-            SPP
-          </a>
-        </li>
-        <li>
           <a href="<?= BASEURL; ?>/pembayaran">
             <img src="<?= BASEURL; ?>/Assets/Icon/pembayaran-icon.svg" alt="dash-icon">
             Pembayaran

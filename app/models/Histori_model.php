@@ -40,7 +40,7 @@ class Histori_model {
   }
 
   public function getAllBulan() {
-    $this->db->query("SELECT * FROM tb_spp GROUP BY bulan ORDER BY id_spp");
+    $this->db->query("SELECT bulan FROM tb_spp GROUP BY bulan ORDER BY id_spp");
     return $this->db->results();
   }
 
@@ -51,31 +51,32 @@ class Histori_model {
     return $this->db->result();
   }
 
-  public function getThnAjrn() {
-    $kelas = $_POST['kelas'];
+  public function getThnMasuk() {
+    $tahun = $_POST['tahun'];
 
-    $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
-    $this->db->bind('kelas', $kelas);
-    $dataKelas = $this->db->result();
-    $angkatan = $dataKelas['kelas'];
-    $angkatan = explode('-', $angkatan);
-    $angkatan = $angkatan[0];
-
-    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan GROUP BY tahun_ajaran");
-    $this->db->bind('kelas', $kelas);
-    $this->db->bind('angkatan', $angkatan);
+    $this->db->query("SELECT tahun_masuk FROM tb_spp WHERE tahun_masuk = :tahun");
+    $this->db->bind('tahun', $tahun);
     return $this->db->result();
   }
 
-  public function getALlSiswaByKelas() {
+  public function getALlThnMasuk() {
+    $this->db->query("SELECT tahun_masuk FROM tb_spp GROUP BY tahun_masuk");
+    return $this->db->results();
+  }
+
+  public function getALlSiswaByKelasAndTahun() {
     $kelas = $_POST['kelas'];
-    $this->db->query("SELECT * FROM tb_siswa WHERE id_kelas = :kelas ORDER BY nama ASC");
+    $tahun = $_POST['tahun'];
+
+    $this->db->query("SELECT nama FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE id_kelas = :kelas AND tahun_masuk = :tahun GROUP BY nama ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
+    $this->db->bind('tahun', $tahun);
     return $this->db->results();
   }
 
   public function laporanKelas() {
     $kelas = $_POST['kelas'];
+    $tahun = $_POST['tahun'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
@@ -84,9 +85,10 @@ class Histori_model {
     $angkatan = explode('-', $angkatan);
     $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan ORDER BY nama ASC");
+    $this->db->query("SELECT * FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND tahun_masuk = :tahun ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
     $this->db->bind('angkatan', $angkatan);
+    $this->db->bind('tahun', $tahun);
     return $this->db->results();
   }
 
@@ -100,7 +102,7 @@ class Histori_model {
 
     if ($this->db->rowCount() < 1) {
       Flasher::setFlash('Siswa', 'failed', 'tidak', 'ditemukan');
-      header('Location:' . BASEURL . '/pembayaran');
+      header('Location:' . BASEURL . '/histori');
       exit;
     }
 
@@ -109,7 +111,7 @@ class Histori_model {
     $angkatan = explode('-', $angkatan);
     $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND angkatan = :angkatan");
+    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE nis = :nis AND angkatan = :angkatan");
     $this->db->bind('nis', $nis);
     $this->db->bind('angkatan', $angkatan);
     return $this->db->result();
@@ -135,6 +137,7 @@ class Histori_model {
 
   public function getTerbayar() {
     $kelas = $_POST['kelas'];
+    $tahun = $_POST['tahun'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
@@ -143,15 +146,17 @@ class Histori_model {
     $angkatan = explode('-', $angkatan);
     $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT nama, SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL GROUP BY nama ORDER BY nama ASC");
+    $this->db->query("SELECT nama, SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND tahun_masuk = :tahun AND jumlah_bayar IS NOT NULL GROUP BY nama ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
     $this->db->bind('angkatan', $angkatan);
+    $this->db->bind('tahun', $tahun);
     $totalTerbayar = $this->db->results();
     return $totalTerbayar;
   }
 
   public function getTotalTerbayarKelas() {
     $kelas = $_POST['kelas'];
+    $tahun = $_POST['tahun'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
@@ -160,14 +165,16 @@ class Histori_model {
     $angkatan = explode('-', $angkatan);
     $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND tahun_masuk = :tahun AND jumlah_bayar IS NOT NULL ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
     $this->db->bind('angkatan', $angkatan);
+    $this->db->bind('tahun', $tahun);
     return $this->db->result();
   }
 
   public function getTotalTagihanKelas() {
     $kelas = $_POST['kelas'];
+    $tahun = $_POST['tahun'];
 
     $this->db->query("SELECT * FROM tb_kelas WHERE id_kelas = :kelas");
     $this->db->bind('kelas', $kelas);
@@ -176,9 +183,10 @@ class Histori_model {
     $angkatan = explode('-', $angkatan);
     $angkatan = $angkatan[0];
 
-    $this->db->query("SELECT COUNT(*) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan ORDER BY nama ASC");
+    $this->db->query("SELECT COUNT(*) FROM tb_spp INNER JOIN tb_siswa USING(nis) INNER JOIN tb_kelas USING(id_kelas) WHERE id_kelas = :kelas AND angkatan = :angkatan AND tahun_masuk = :tahun ORDER BY nama ASC");
     $this->db->bind('kelas', $kelas);
     $this->db->bind('angkatan', $angkatan);
+    $this->db->bind('tahun', $tahun);
     $jumlah = $this->db->result();
     return $jumlah['COUNT(*)'] *= 500000;
   }

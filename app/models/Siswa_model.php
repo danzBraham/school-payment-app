@@ -73,11 +73,11 @@ class Siswa_model {
 
     $firstYear = date('Y');
     $secondYear = date('Y') + 1;
-    $tahunAjaran = "$firstYear/$secondYear";
+    $tahunMasuk = "$firstYear/$secondYear";
 
-    $this->insertSPP($nis, $tahunAjaran, 'X');
-    $this->insertSPP($nis, $tahunAjaran, 'XI');
-    $this->insertSPP($nis, $tahunAjaran, 'XII');
+    $this->insertSPP($nis, $tahunMasuk, 'X');
+    $this->insertSPP($nis, $tahunMasuk, 'XI');
+    $this->insertSPP($nis, $tahunMasuk, 'XII');
 
     return $this->db->rowCount();
   }

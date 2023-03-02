@@ -11,11 +11,12 @@
 
 <body>
   <div class="container-laporan">
-    <h1>Laporan SPP</h1>
+    <h1>Laporan SPP Siswa</h1>
     <div class="laporan">
       <div class="laporan-info">
         <p>Nama: <?= $data['siswa']['nama']; ?></p>
-        <p>Kelas: <?= $data['siswa']['id_kelas']; ?></p>
+        <p>Kelas: <?= $data['siswa']['kelas']; ?></p>
+        <p>Tahun Masuk: <?= $data['siswa']['tahun_masuk']; ?></p>
       </div>
       <table>
         <thead>
@@ -35,9 +36,9 @@
             <td>Rp<?= number_format($histori['jumlah_bayar'], 0, ',', '.'); ?></td>
             <?php $nominal = 500000; ?>
             <?php if ($histori['jumlah_bayar'] - $nominal == 0) : ?>
-              <td>Rp0</td>
-              <?php elseif ($histori['jumlah_bayar'] - $nominal < $nominal) : ?>
-                <td>Rp<?= number_format($nominal - $histori['jumlah_bayar'], 0, ',', '.'); ?></td>
+            <td>Rp0</td>
+            <?php elseif ($histori['jumlah_bayar'] - $nominal < $nominal) : ?>
+            <td>Rp<?= number_format($nominal - $histori['jumlah_bayar'], 0, ',', '.'); ?></td>
             <?php endif; ?>
           </tr>
           <?php endforeach; ?>
@@ -46,24 +47,29 @@
             <td>Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
             <td>Rp<?= number_format($data['tagihan'], 0, ',', '.'); ?></td>
           </tr>
-          <!-- <tr class="information">
-            <th colspan="2">Tagihan</th>
-          </tr> -->
         </tbody>
       </table>
-      <div class="tertanda">
-        <p>Denpasar, <?= date('d-m-Y'); ?></p>
-        <p>Zidan Abraham</p>
+      <div class="footer">
+        <div class="catatan">
+          <p>Note:</p>
+          <p>Jika Rp0 maka belum dibayar</p>
+          <p>Jika lebih dari Rp0 maka sudah terbayar sebanyak jumlahnya</p>
+        </div>
+        <div class="tertanda">
+          <p>Denpasar, <?= date('d-m-Y'); ?></p>
+          <p>Zidan Abraham</p>
+        </div>
+        <div class="layer"></div>
       </div>
       <div class="layer"></div>
     </div>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      window.print();
-      window.onafterprint = () => history.back();
-    });
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   window.print();
+    //   window.onafterprint = () => history.back();
+    // });
   </script>
 </body>
 

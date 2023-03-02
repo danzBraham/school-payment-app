@@ -71,9 +71,18 @@
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas" id="kelas" required>
-        <option selected value="">Pilih Kelas</option>
+        <option value="" selected>Pilih Kelas</option>
         <?php foreach ($data['kelas'] as $kelas) : ?>
         <option value="<?= $kelas['id_kelas']; ?>"><?= $kelas['kelas']; ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <div class="input-box">
+      <label for="tahun">Tahun</label>
+      <select name="tahun" id="tahun" required>
+        <option value="" selected>Pilih Tahun</option>
+        <?php foreach ($data['tahun'] as $tahun) : ?>
+        <option value="<?= $tahun['tahun_masuk']; ?>"><?= $tahun['tahun_masuk']; ?></option>
         <?php endforeach; ?>
       </select>
     </div>

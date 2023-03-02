@@ -11,11 +11,11 @@
 
 <body>
   <div class="container-laporan">
-    <h1>Laporan SPP</h1>
+    <h1>Laporan SPP Kelas</h1>
     <div class="laporan">
       <div class="laporan-info">
         <p>Kelas: <?= $data['kelas']['kelas']; ?></p>
-        <p>Tahun Ajaran: <?= $data['tahun']['tahun_ajaran']; ?></p>
+        <p>Tahun Masuk: <?= $data['tahun']['tahun_masuk']; ?></p>
       </div>
       <table>
         <thead>

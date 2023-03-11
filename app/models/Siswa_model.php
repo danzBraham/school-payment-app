@@ -6,26 +6,26 @@ class Siswa_model {
     $this->db = new Database;
   }
 
-  public function getAllSiswa($limit, $offset) {
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) ORDER BY nis DESC LIMIT :limit OFFSET :offset");
-    $this->db->bind('limit', $limit);
-    $this->db->bind('offset', $offset);
-    return $this->db->results();
-}
-
   public function getTotalSiswa() {
     $this->db->query("SELECT COUNT(*) FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
     return $this->db->result();
   }
 
-  public function getSiswaByNis($nis) {
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = :nis");
-    $this->db->bind('nis', $nis);
-    return $this->db->result();
-  }
+  public function getAllSiswa($limit, $offset) {
+    $this->db->query("SELECT nis, nama, password, alamat, no_telp, kelas FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) ORDER BY nis DESC LIMIT :limit OFFSET :offset");
+    $this->db->bind('limit', $limit);
+    $this->db->bind('offset', $offset);
+    return $this->db->results();
+}
+
+public function getSiswaByNis($nis) {
+  $this->db->query("SELECT nis, nama, id_kelas, kelas, no_telp, alamat FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas) WHERE nis = :nis");
+  $this->db->bind('nis', $nis);
+  return $this->db->result();
+}
 
   public function getAllKelas() {
-    $this->db->query("SELECT * FROM tb_kelas");
+    $this->db->query("SELECT id_kelas, kelas FROM tb_kelas");
     return $this->db->results();
   }
 
@@ -52,9 +52,7 @@ class Siswa_model {
   }
 
   public function addSiswa($data) {
-    $this->db->query("SELECT * FROM tb_siswa ORDER BY nis DESC");
-    $lastNis = $this->db->result();
-    $nis = (int) $lastNis['nis'] + 1;
+    $nis = $data['nis'];
     $nama = $data['nama'];
     $kelas = $data['kelas'];
     $telp = $data['telp'];
@@ -109,8 +107,8 @@ class Siswa_model {
   public function deleteSiswa($nis) {
     $this->db->query("DELETE FROM tb_siswa WHERE nis = :nis");
     $this->db->bind('nis', $nis);
-    $this->db->execute();
 
+    $this->db->execute();
     return $this->db->rowCount();
   }
 }

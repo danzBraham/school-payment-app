@@ -20,10 +20,10 @@ class Histori extends Controller {
     if (!isset($_SESSION['nis'])) {
       $data['transaksi'] = $this->model('Histori_model')->getAllTransaksi($limit, $offset);
       $data['kelas'] = $this->model('Histori_model')->getAllKelas();
+      $data['tahun'] = $this->model('Histori_model')->getALlThnMasuk();
     } else {
       $data['transaksi'] = $this->model('Histori_model')->getTransaksiBySiswa($limit, $offset);
     }
-    $data['tahun'] = $this->model('Histori_model')->getALlThnMasuk();
     $data['totalPages'] = $totalPages;
     $data['currentPage'] = $currentPage;
     $this->view('templates/header', $data);

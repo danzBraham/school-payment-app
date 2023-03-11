@@ -5,7 +5,7 @@
       <div class="wrapper-box">
         <div class="box-data">
           <div class="icon">
-            <img src="<?= BASEURL; ?>/Assets/Icon/students.svg" alt="Students">
+            <img src="<?= BASEURL; ?>/assets/icon/students.svg" alt="Students">
           </div>
           <span></span>
           <div class="info-total">
@@ -15,7 +15,7 @@
         </div>
         <div class="box-data">
           <div class="icon">
-            <img src="<?= BASEURL; ?>/Assets/Icon/class.svg" alt="Students">
+            <img src="<?= BASEURL; ?>/assets/icon/class.svg" alt="Students">
           </div>
           <span></span>
           <div class="info-total">
@@ -25,7 +25,7 @@
         </div>
         <div class="box-data">
           <div class="icon">
-            <img src="<?= BASEURL; ?>/Assets/Icon/officer.svg" alt="Students">
+            <img src="<?= BASEURL; ?>/assets/icon/officer.svg" alt="Students">
           </div>
           <span></span>
           <div class="info-total">
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="img-hero">
-      <img src="<?= BASEURL; ?>/Assets/Icon/hero-dashboard.svg" alt="Hero">
+      <img src="<?= BASEURL; ?>/assets/icon/hero-dashboard.svg" alt="Hero">
     </div>
   </div>
 
@@ -53,12 +53,12 @@
       </thead>
       <tbody>
         <?php if ($data['transaksi'] != null) : ?>
-        <?php foreach($data['transaksi'] as $h) : ?>
+        <?php foreach($data['transaksi'] as $transaksi) : ?>
         <tr>
-          <td><?= $h['username']; ?></td>
-          <td><?= $h['nama']; ?></td>
-          <td><?= $h['tgl_bayar']; ?></td>
-          <td>Rp<?= number_format($h['bayar'], 0, ',', '.'); ?></td>
+          <td><?= $transaksi['username']; ?></td>
+          <td><?= $transaksi['nama']; ?></td>
+          <td><?= $transaksi['tgl_bayar']; ?></td>
+          <td>Rp<?= number_format($transaksi['bayar'], 0, ',', '.'); ?></td>
         </tr>
         <?php endforeach; ?>
         <?php else : ?>

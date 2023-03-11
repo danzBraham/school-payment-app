@@ -17,7 +17,7 @@ class Siswa extends Controller {
               document.location.href = "' . BASEURL . '/histori";
             </script>';
     }
-    
+
     $limit = 11;
     $totalRows = $this->model('Siswa_model')->getTotalSiswa();
     $totalPages = ceil($totalRows['COUNT(*)']/$limit);

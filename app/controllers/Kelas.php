@@ -20,6 +20,7 @@ class Kelas extends Controller {
 
     $data['title'] = 'Kelas';
     $data['kelas'] = $this->model('Kelas_model')->getAllKelas();
+    $data['jurusan'] = $this->model('Kelas_model')->getJurusan();
     $this->view('templates/header', $data);
     $this->view('kelas/index', $data);
     $this->view('templates/footer');

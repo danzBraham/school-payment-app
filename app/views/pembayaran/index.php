@@ -30,7 +30,7 @@
     </select>
     <?php endif; ?>
     <button type="submit" class="search">
-      <img src="<?= BASEURL; ?>/Assets/Icon/search.svg" alt="">
+      <img src="<?= BASEURL; ?>/assets/icon/search.svg" alt="">
     </button>
   </form>
 
@@ -75,7 +75,7 @@
         </thead>
         <tbody>
           <?php $dataTagihan = $data['tagihan']; ?>
-          <?php foreach ($data['siswaHistory'] as $data) : ?>
+          <?php foreach ($data['siswaHistori'] as $data) : ?>
           <tr>
             <td><?= $data['bulan']; ?></td>
             <td>Rp<?= number_format($data['jumlah_bayar'], 0, ',', '.'); ?></td>

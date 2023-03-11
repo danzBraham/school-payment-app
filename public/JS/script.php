@@ -15,23 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.classList.add('click');
     el.classList.add('click');
   }
-  
+
   const handleCloseModal = (el) => {
     overlay.classList.remove('click');
     el.classList.remove('click');
   }
 
   if (addBtn) {
-    addBtn.addEventListener("click", function () {
-      handleModal(modal);
-    });
+    addBtn.addEventListener("click", () => handleModal(modal));
 
     const closeBtn = document.querySelector("#close-btn");
-    closeBtn.addEventListener("click", () => {
-      handleCloseModal(modal);
-    });
+    closeBtn.addEventListener("click", () => handleCloseModal(modal));
 
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         handleCloseModal(modal);
       }
@@ -45,15 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (laporanKlsBtn) {
-    laporanKlsBtn.addEventListener('click', () => {
-      handleLaporan(modalKls);
-    });
+    laporanKlsBtn.addEventListener('click', () => handleLaporan(modalKls));
   }
 
   if (laporanSiswaBtn) {
-    laporanSiswaBtn.addEventListener('click', () => {
-      handleLaporan(modalSiswa);
-    });
+    laporanSiswaBtn.addEventListener('click', () => handleLaporan(modalSiswa));
   }
 
   if(closeBtn) {
@@ -64,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         handleCloseModal(modalKls);
         handleCloseModal(modalSiswa);

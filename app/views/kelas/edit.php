@@ -1,7 +1,7 @@
 <div class="container form-edit">
   <div class="container-form">
     <a href="<?= BASEURL; ?>/kelas">
-      <img src="<?= BASEURL; ?>/Assets/Icon/back.svg">
+      <img src="<?= BASEURL; ?>/assets/icon/back.svg">
       <p>Kembali</p>
     </a>
     <form action="<?= BASEURL; ?>/kelas/update" method="POST" id="modal" class="modal click" autocomplete="off">
@@ -24,7 +24,7 @@
           <?php endforeach; ?>
         </select>
       </div>
-      <button type="submit">Edit</button>
+      <button type="submit">Perbarui</button>
     </form>
   </div>
 </div>

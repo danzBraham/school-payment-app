@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $data['title']; ?></title>
   <link rel="stylesheet" href="<?= BASEURL; ?>/CSS/style.php">
-  <script src="<?= BASEURL; ?>/JS/script.php"></script>
 </head>
 
 <body>
@@ -29,7 +28,7 @@
         </form>
       </div>
       <div class="img">
-        <img src="<?= BASEURL; ?>/Assets/Icon/hero.svg" alt="Hero">
+        <img src="<?= BASEURL; ?>/assets/icon/hero.svg" alt="Hero">
       </div>
     </div>
   </div>

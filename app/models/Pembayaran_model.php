@@ -6,57 +6,60 @@ class Pembayaran_model {
     $this->db = new Database;
   }
 
-  public function getAllSiswa() {
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_kelas USING(id_kelas)");
-    return $this->db->results();
-  }
-
   public function searchSiswaByNis() {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
-    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
+    $this->db->query("SELECT nis, nama, angkatan FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
-    $data = $this->db->result();
+    $this->db->bind('angkatan', $angkatan);
+    $siswa = $this->db->result();
     if ($this->db->rowCount() < 1) {
       Flasher::setFlash('Siswa', 'failed', 'tidak', 'ditemukan');
       header('Location:' . BASEURL . '/pembayaran');
       exit;
     }
-    $nis = $data['nis'];
-
-    $this->db->query("SELECT * FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis AND angkatan = :angkatan");
-    $this->db->bind('nis', $nis);
-    $this->db->bind('angkatan', $angkatan);
-    return $this->db->result();
+    return $siswa;
   }
 
   public function getSiswaHistory() {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
-    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
+    $this->db->query("SELECT bulan, jumlah_bayar FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
-    $data = $this->db->result();
-    $nis = $data['nis'];
-
-    $this->db->query("SELECT * FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan");
-    $this->db->bind('nis', $nis);
     $this->db->bind('angkatan', $angkatan);
     return $this->db->results();
+  }
+
+  public function getTagihan() {
+    $keyword = $_POST['keyword'];
+    $angkatan = $_POST['angkatan'];
+
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL");
+    $this->db->bind('nis', $keyword);
+    $this->db->bind('keyword', "%$keyword%");
+    $this->db->bind('angkatan', $angkatan);
+
+    $tagihanTerbayar = $this->db->result();
+    $tagihanTerbayar =  (int) $tagihanTerbayar['SUM(jumlah_bayar)'];
+    $totalTagihan = 500000 * 12;
+    $totalTagihan -= $tagihanTerbayar;
+
+    return $totalTagihan;
   }
 
   public function updateSPP($bayar, $nis, $bulan, $angkatan) {
     $this->db->query("UPDATE tb_spp SET
                       jumlah_bayar = :bayar 
                       WHERE nis = :nis AND bulan = :bulan AND angkatan = :angkatan");
-
     $this->db->bind('bayar', $bayar);
     $this->db->bind('nis', $nis);
     $this->db->bind('bulan', $bulan);
     $this->db->bind('angkatan', $angkatan);
+
     $this->db->execute();
   }
 
@@ -113,25 +116,5 @@ class Pembayaran_model {
     }
 
     return $this->db->rowCount();
-  }
-
-  public function getTagihan() {
-    $keyword = $_POST['keyword'];
-    $angkatan = $_POST['angkatan'];
-
-    $this->db->query("SELECT * FROM tb_siswa WHERE nis = :nis OR nama LIKE :keyword");
-    $this->db->bind('nis', $keyword);
-    $this->db->bind('keyword', "%$keyword%");
-    $data = $this->db->result();
-    $nis = $data['nis'];
-
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp WHERE nis = :nis AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL");
-    $this->db->bind('nis', $nis);
-    $this->db->bind('angkatan', $angkatan);
-    $tagihanTerbayar = $this->db->result();
-    $tagihanTerbayar =  (int) $tagihanTerbayar['SUM(jumlah_bayar)'];
-    $totalTagihan = 500000 * 12;
-    $totalTagihan -= $tagihanTerbayar;
-    return $totalTagihan;
   }
 }

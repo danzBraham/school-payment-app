@@ -1,7 +1,7 @@
 <div class="container form-edit">
   <div class="container-form">
     <a href="<?= BASEURL; ?>/siswa">
-      <img src="<?= BASEURL; ?>/Assets/Icon/back.svg">
+      <img src="<?= BASEURL; ?>/assets/icon/back.svg">
       <p>Kembali</p>
     </a>
     <form action="<?= BASEURL; ?>/siswa/update" method="POST" id="modal" class="modal click" autocomplete="off">
@@ -30,7 +30,7 @@
         <label for="alamat">Alamat</label>
         <textarea rows="5" name="alamat" required><?= $data['siswa']['alamat']; ?></textarea>
       </div>
-      <button type="submit">Edit</button>
+      <button type="submit">Perbarui</button>
     </form>
   </div>
 </div>

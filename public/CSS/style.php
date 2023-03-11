@@ -121,7 +121,7 @@ header h2 span {
   justify-content: center;
   align-items: center;
   background-color: var(--fourth-color);
-  background: url(../Assets/Icon/background.png);
+  background: url(../assets/img/background.png);
 }
 
 .container-login::after {

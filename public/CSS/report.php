@@ -61,10 +61,6 @@ table thead, table .information {
   font-weight: 700;
 }
 
-table tr td:first-child {
-  text-align: center;
-}
-
 .container-laporan .footer {
   display: flex;
   justify-content: space-between;

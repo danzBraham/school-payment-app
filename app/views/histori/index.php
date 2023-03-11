@@ -50,11 +50,11 @@
 
     <?php if ((int) $data['totalPages'] !== 1) : ?>
       <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
-      <?php if ($i == $data['currentPage']) : ?>
-      <span><?= $i; ?></span>
-      <?php else : ?>
-      <a href="<?= BASEURL; ?>/histori/<?= $i; ?>"><?= $i; ?></a>
-      <?php endif; ?>
+        <?php if ($i == $data['currentPage']) : ?>
+        <span><?= $i; ?></span>
+        <?php else : ?>
+        <a href="<?= BASEURL; ?>/histori/<?= $i; ?>"><?= $i; ?></a>
+        <?php endif; ?>
       <?php endfor; ?>
     <?php endif; ?>
 
@@ -67,7 +67,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/histori/laporankelas" method="POST" id="modal-kelas" class="modal" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/assets/icon/close.svg"></div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <select name="kelas" id="kelas" required>
@@ -90,7 +90,7 @@
   </form>
 
   <form action="<?= BASEURL; ?>/histori/laporansiswa" method="POST" id="modal-siswa" class="modal" autocomplete="off">
-    <div class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
+    <div class="close-btn"><img src="<?= BASEURL; ?>/assets/icon/close.svg"></div>
     <div class="input-box">
       <label for="siswa">Siswa</label>
       <input type="text" id="siswa" name="keyword" placeholder="Cari NIS atau Nama Lengkap Siswa" required>

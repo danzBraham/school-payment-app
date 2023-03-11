@@ -14,9 +14,8 @@ class Pembayaran extends Controller {
     }
 
     $data['title'] = 'Pembayaran';
-    $data['siswa'] = $this->model('Pembayaran_model')->getAllSiswa();
     $this->view('templates/header', $data);
-    $this->view('pembayaran/index', $data);
+    $this->view('pembayaran/index');
     $this->view('templates/footer');
   }
 
@@ -34,9 +33,8 @@ class Pembayaran extends Controller {
     }
 
     $data['title'] = 'Pembayaran';
-    $data['siswa'] = $this->model('Pembayaran_model')->getAllSiswa();
     $data['siswaByNis'] = $this->model('Pembayaran_model')->searchSiswaByNis();
-    $data['siswaHistory'] = $this->model('Pembayaran_model')->getSiswaHistory();
+    $data['siswaHistori'] = $this->model('Pembayaran_model')->getSiswaHistory();
     $data['tagihan'] = $this->model('Pembayaran_model')->getTagihan();
     $this->view('templates/header', $data);
     $this->view('pembayaran/index', $data);

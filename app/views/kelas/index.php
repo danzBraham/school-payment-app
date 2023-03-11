@@ -37,7 +37,7 @@
 <!-- Modal -->
 <div id="overlay" class="overlay">
   <form action="<?= BASEURL; ?>/kelas/add" method="POST" id="modal" class="modal" autocomplete="off">
-    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/Assets/Icon/close.svg"></div>
+    <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/assets/icon/close.svg"></div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
       <input type="text" id="kelas" name="kelas" placeholder="Contoh: X-RPL-1" maxlength="8" required>
@@ -46,9 +46,9 @@
       <label for="jurusan">Jurusan</label>
       <select name="jurusan" id="jurusan" required>
         <option selected value="">Pilih Jurusan</option>
-        <option value="DKV">DKV</option>
-        <option value="RPL">RPL</option>
-        <option value="TKJ">TKJ</option>
+        <?php foreach ($data['jurusan'] as $jurusan) : ?>
+        <option value="<?= $jurusan['jurusan']; ?>"><?= $jurusan['jurusan']; ?></option>
+        <?php endforeach; ?>
       </select>
     </div>
     <button type="submit">Tambah</button>

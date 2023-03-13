@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 
 .container-laporan .laporan {
@@ -81,12 +81,12 @@ table thead, table .information {
     display: none;
   }
 
-  .container-laporan {
-    padding: 50px;
+  .page-break {
+    page-break-after: always;
   }
 }
 
 @page {
-  margin: -1px;
-  size: landscape;
+  margin: 0mm;
+  size: auto;
 }

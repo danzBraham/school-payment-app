@@ -16,36 +16,66 @@
       <div class="laporan-info">
         <p>Nama: <?= $data['siswa']['nama']; ?></p>
         <p>Kelas: <?= $data['siswa']['kelas']; ?></p>
-        <p>Tahun Masuk: <?= $data['siswa']['tahun_masuk']; ?></p>
+        <p>Tahun Masuk: <?= $data['siswa']['tahun_angkatan']; ?></p>
       </div>
       <table>
         <thead>
           <tr>
-            <th>No</th>
-            <th>Bulan</th>
-            <th>Jumlah Bayar</th>
+            <th>Angkatan</th>
+            <?php foreach ($data['bulan'] as $bulan) : ?>
+            <th><?= $bulan['bulan']; ?></th>
+            <?php endforeach; ?>
+            <th>Terbayar</th>
             <th>Tagihan</th>
           </tr>
         </thead>
         <tbody>
-          <?php $i = 1; ?>
-          <?php foreach ($data['histori'] as $histori) : ?>
           <tr>
-            <td><?= $i++; ?></td>
-            <td><?= $histori['bulan']; ?></td>
-            <td>Rp<?= number_format($histori['jumlah_bayar'], 0, ',', '.'); ?></td>
-            <?php $nominal = 500000; ?>
-            <?php if ($histori['jumlah_bayar'] - $nominal == 0) : ?>
-            <td>Rp0</td>
-            <?php elseif ($histori['jumlah_bayar'] - $nominal < $nominal) : ?>
-            <td>Rp<?= number_format($nominal - $histori['jumlah_bayar'], 0, ',', '.'); ?></td>
-            <?php endif; ?>
+            <th>X</th>
+            <?php foreach ($data['laporan'] as $laporan) : ?>
+              <?php if ($laporan['angkatan'] == 'X') : ?>
+              <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+            <?php foreach ($data['terbayar'] as $terbayar) : ?>
+              <?php if ($terbayar['angkatan'] == 'X') : ?>
+              <td>Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <td>Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
           </tr>
-          <?php endforeach; ?>
-          <tr class="information">
-            <th colspan="2">Total</th>
-            <td>Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
-            <td>Rp<?= number_format($data['tagihan'], 0, ',', '.'); ?></td>
+          <tr>
+            <th>XI</th>
+            <?php foreach ($data['laporan'] as $laporan) : ?>
+              <?php if ($laporan['angkatan'] == 'XI') : ?>
+                <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+            <?php foreach ($data['terbayar'] as $terbayar) : ?>
+              <?php if ($terbayar['angkatan'] == 'XI') : ?>
+              <td>Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <td>Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </tr>
+          <tr>
+            <th>XII</th>
+            <?php foreach ($data['laporan'] as $laporan) : ?>
+              <?php if ($laporan['angkatan'] == 'XII') : ?>
+                <td>Rp<?= number_format($laporan['jumlah_bayar'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+            <?php foreach ($data['terbayar'] as $terbayar) : ?>
+              <?php if ($terbayar['angkatan'] == 'XII') : ?>
+              <td>Rp<?= number_format($terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <td>Rp<?= number_format(6000000 - $terbayar['SUM(jumlah_bayar)'], 0, ',',' .'); ?></td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </tr>
+          <tr>
+            <th colspan="13">Total</th>
+            <td class="laporan-info">Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">Rp<?= number_format($data['tagihan'] - $data['total'], 0, ',', '.'); ?></td>
           </tr>
         </tbody>
       </table>
@@ -53,7 +83,7 @@
         <div class="catatan">
           <p>Note:</p>
           <p>Jika Rp0 maka belum dibayar</p>
-          <p>Jika lebih dari Rp0 maka sudah terbayar sebanyak jumlahnya</p>
+          <p>Jika bukan Rp0 maka sudah terbayar sebanyak jumlah yang tertera</p>
         </div>
         <div class="tertanda">
           <p>Denpasar, <?= date('d-m-Y'); ?></p>
@@ -66,10 +96,10 @@
   </div>
 
   <script>
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   window.print();
-    //   window.onafterprint = () => history.back();
-    // });
+    document.addEventListener("DOMContentLoaded", function () {
+      window.print();
+      window.onafterprint = () => history.back();
+    });
   </script>
 </body>
 

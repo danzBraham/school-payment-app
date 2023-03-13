@@ -14,7 +14,7 @@
         <th>Username</th>
         <th>Password</th>
         <th>Level</th>
-        <th>Aksi</th>
+        <th class="aksi">Aksi</th>
       </tr>
     </thead>
     <tbody>

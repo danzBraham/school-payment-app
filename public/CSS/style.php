@@ -380,11 +380,16 @@ table, tr, td, th {
   border-bottom: 1px solid #121212;
   border-collapse: collapse;
   padding: 6px 12px;
+  padding-left: 20px;
 }
 
 table {
   border-radius: 8px;
   overflow: hidden;
+}
+
+th {
+  text-align: left;
 }
 
 thead {
@@ -500,6 +505,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 0 5px;
 }
 
 .form-edit {
@@ -569,6 +575,10 @@ hr {
   border: 1px solid var(--fourth-color);
 }
 
+button:focus {
+  outline: 2px solid var(--fourth-color);
+}
+
 .modal {
   position: relative;
   display: none;
@@ -614,7 +624,7 @@ hr {
 .modal .input-box select:focus,
 .modal .input-box textarea:focus,
 .container-login input:focus {
-  outline: 1px solid var(--text);
+  outline: 2px solid var(--text);
 }
 
 .modal button {

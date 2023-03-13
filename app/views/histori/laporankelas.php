@@ -15,7 +15,7 @@
     <div class="laporan">
       <div class="laporan-info">
         <p>Kelas: <?= $data['kelas']['kelas']; ?></p>
-        <p>Tahun Masuk: <?= $data['tahun']['tahun_masuk']; ?></p>
+        <p>Tahun Masuk: <?= $data['tahun']['tahun_angkatan']; ?></p>
       </div>
       <table>
         <thead>
@@ -33,6 +33,9 @@
         <tbody>
           <?php $i = 1; ?>
           <?php foreach ($data['siswa'] as $siswa) : ?>
+            <?php if ($i % 7 === 1 && $i !== 1) : ?>
+              <div class="page-break">Hello</div>
+            <?php endif; ?>
           <tr>
             <td rowspan="3"><?= $i++; ?></td>
             <td rowspan="3"><?= $siswa['nama']; ?></td>
@@ -82,9 +85,9 @@
           </tr>
           <?php endforeach; ?>
           <tr>
-            <th class="laporan-info" colspan="15">Total</th>
-            <td class="laporan-info">Rp<?= number_format($data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
-            <td class="laporan-info">Rp<?= number_format($data['tagihan'] - $data['total']['SUM(jumlah_bayar)'], 0, ',', '.'); ?></td>
+            <th colspan="15">Total</th>
+            <td class="laporan-info">Rp<?= number_format($data['total'], 0, ',', '.'); ?></td>
+            <td class="laporan-info">Rp<?= number_format($data['tagihan'] - $data['total'], 0, ',', '.'); ?></td>
           </tr>
         </tbody>
       </table>
@@ -104,10 +107,10 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      window.print();
-      window.onafterprint = () => history.back();
-    });
+    // document.addEventListener("DOMContentLoaded", function () {
+    //   window.print();
+    //   window.onafterprint = () => history.back();
+    // });
   </script>
 </body>
 

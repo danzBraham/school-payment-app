@@ -78,11 +78,11 @@
       </select>
     </div>
     <div class="input-box">
-      <label for="tahun">Tahun</label>
+      <label for="tahun">Tahun Angkatan</label>
       <select name="tahun" id="tahun" required>
-        <option value="" selected>Pilih Tahun</option>
+        <option value="" selected>Pilih Tahun Angkatan</option>
         <?php foreach ($data['tahun'] as $tahun) : ?>
-        <option value="<?= $tahun['tahun_masuk']; ?>"><?= $tahun['tahun_masuk']; ?></option>
+        <option value="<?= $tahun['tahun_angkatan']; ?>"><?= $tahun['tahun_angkatan']; ?></option>
         <?php endforeach; ?>
       </select>
     </div>

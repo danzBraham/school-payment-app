@@ -45,7 +45,7 @@ class Histori extends Controller {
     $data['bulan'] = $this->model('Histori_model')->getAllBulan();
     $data['siswa'] = $this->model('Histori_model')->getALlSiswaByKelasAndTahun();
     $data['laporan'] = $this->model('Histori_model')->laporanKelas();
-    $data['terbayar'] = $this->model('Histori_model')->getTerbayar();
+    $data['terbayar'] = $this->model('Histori_model')->getTerbayarKelas();
     $data['total'] = $this->model('Histori_model')->getTotalTerbayarKelas();
     $data['tagihan'] = $this->model('Histori_model')->getTotalTagihanKelas();
     $this->view('histori/laporankelas', $data);
@@ -60,10 +60,12 @@ class Histori extends Controller {
     }
 
     $data['title'] = 'Laporan Siswa';
-    $data['siswa'] = $this->model('Histori_model')->searchSiswaByNis();
-    $data['histori'] = $this->model('Histori_model')->getSiswaHistory();
-    $data['total'] = $this->model('Histori_model')->getTotalSiswa();
-    $data['tagihan'] = $this->model('Histori_model')->getTagihanSiswa();
+    $data['bulan'] = $this->model('Histori_model')->getAllBulan();
+    $data['siswa'] = $this->model('Histori_model')->getSiswaByNis();
+    $data['laporan'] = $this->model('Histori_model')->laporanSiswa();
+    $data['terbayar'] = $this->model('Histori_model')->getTerbayarSiswa();
+    $data['total'] = $this->model('Histori_model')->getTotalTerbayarSiswa();
+    $data['tagihan'] = $this->model('Histori_model')->getTotalTagihanSiswa();
     $this->view('histori/laporansiswa', $data);
   }
 }

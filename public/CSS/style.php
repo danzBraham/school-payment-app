@@ -392,6 +392,10 @@ th {
   text-align: left;
 }
 
+th.pembayaran {
+  text-align: center;
+}
+
 thead {
   background-color: #36304A;
   color: #fff;

@@ -69,8 +69,8 @@
       <table>
         <thead>
           <tr>
-            <th>Bulan</th>
-            <th>Jumlah Bayar</th>
+            <th class="pembayaran">Bulan</th>
+            <th class="pembayaran">Jumlah Bayar</th>
           </tr>
         </thead>
         <tbody>

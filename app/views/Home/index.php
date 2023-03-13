@@ -17,7 +17,7 @@
         <h1>Selamat <span>Datang</span></h1>
         <form action="<?= BASEURL; ?>/home/login" method="POST" autocomplete="off">
           <div class="input-box">
-            <label for="username">Username</label>
+            <label for="username">Username / NIS</label>
             <input type="text" id="username" name="username" required>
           </div>
           <div class="input-box">

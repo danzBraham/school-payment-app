@@ -33,8 +33,8 @@
         <tbody>
           <?php $i = 1; ?>
           <?php foreach ($data['siswa'] as $siswa) : ?>
-            <?php if ($i % 7 === 1 && $i !== 1) : ?>
-              <div class="page-break">Hello</div>
+            <?php if ($i % 7 == 1 && $i != 1) : ?>
+              <div class="page-break"></div>
             <?php endif; ?>
           <tr>
             <td rowspan="3"><?= $i++; ?></td>
@@ -99,7 +99,7 @@
         </div>
         <div class="tertanda">
           <p>Denpasar, <?= date('d-m-Y'); ?></p>
-          <p>Zidan Abraham</p>
+          <p>Prof. Dr. M. Helmi Firmansyah, M.Kom</p>
         </div>
         <div class="layer"></div>
       </div>
@@ -107,10 +107,10 @@
   </div>
 
   <script>
-    // document.addEventListener("DOMContentLoaded", function () {
-    //   window.print();
-    //   window.onafterprint = () => history.back();
-    // });
+    document.addEventListener("DOMContentLoaded", function () {
+      window.print();
+      window.onafterprint = () => history.back();
+    });
   </script>
 </body>
 

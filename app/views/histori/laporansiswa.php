@@ -87,7 +87,7 @@
         </div>
         <div class="tertanda">
           <p>Denpasar, <?= date('d-m-Y'); ?></p>
-          <p>Zidan Abraham</p>
+          <p>Prof. Dr. M. Helmi Firmansyah, M.Kom</p>
         </div>
         <div class="layer"></div>
       </div>

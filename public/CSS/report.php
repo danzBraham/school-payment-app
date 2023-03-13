@@ -13,7 +13,6 @@
 }
 
 .layer {
-  display: none;
   width: 100%;
   height: 100%;
   background-color: #222;
@@ -73,7 +72,7 @@ table thead, table .information {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media print {
@@ -81,12 +80,8 @@ table thead, table .information {
     display: none;
   }
 
-  .page-break {
-    page-break-after: always;
+  @page {
+    margin: 20mm;
+    size: auto;
   }
-}
-
-@page {
-  margin: 0mm;
-  size: auto;
 }

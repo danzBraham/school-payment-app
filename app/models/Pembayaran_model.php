@@ -6,7 +6,7 @@ class Pembayaran_model {
     $this->db = new Database;
   }
 
-  public function searchSiswaByNis() {
+  public function getSiswaByNis() {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
@@ -20,6 +20,7 @@ class Pembayaran_model {
       header('Location:' . BASEURL . '/pembayaran');
       exit;
     }
+
     return $siswa;
   }
 
@@ -31,6 +32,7 @@ class Pembayaran_model {
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $this->db->bind('angkatan', $angkatan);
+
     return $this->db->results();
   }
 

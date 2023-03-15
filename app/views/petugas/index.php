@@ -28,9 +28,14 @@
         <td class="aksi">
           <a href="<?= BASEURL; ?>/petugas/edit/<?= $petugas['id_petugas']; ?>"><button
               class="edit-btn">Edit</button></a>
+          <?php if ($_SESSION['id_petugas'] == $petugas['id_petugas']) : ?>
+          <a href="<?= BASEURL; ?>/petugas/"><button disabled
+              class="delete-btn disabled">Delete</button></a>
+              <?php else : ?>
           <a href="<?= BASEURL; ?>/petugas/delete/<?= $petugas['id_petugas']; ?>"
             onclick="return confirm(`Anda yakin ingin menghapus <?= $petugas['username']; ?>?`)"><button
               class="delete-btn">Delete</button></a>
+          <?php endif; ?>
         </td>
       </tr>
       <?php endforeach; ?>

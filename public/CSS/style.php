@@ -446,6 +446,12 @@ table .aksi .delete-btn:hover {
   color: var(--text);
 }
 
+table .aksi .delete-btn.disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  color: var(--text);
+}
+
 .pagination {
   font-size: 16px;
   display: flex;

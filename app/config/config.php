@@ -1,5 +1,5 @@
 <?php
-define('BASEURL', 'http://localhost/school-payment-app/public');
+define('BASEURL', 'http://localhost/paydu/public');
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'pembayaran_spp');

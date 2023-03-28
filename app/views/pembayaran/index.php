@@ -11,17 +11,17 @@
     <?php else : ?>
     <input type="text" name="keyword" value="<?= $data['siswaByNis']['nama']; ?>" placeholder="NIS atau Nama Siswa" required>
     <select name="angkatan" required>
-      <?php if ($data['siswaByNis']['angkatan'] == 'X') : ?>
+      <?php if ($data['siswaByNis']['angkatan'] === 'X') : ?>
       <option value="">Pilih Angkatan</option>
       <option value="X" selected>X</option>
       <option value="XI">XI</option>
       <option value="XII">XII</option>
-      <?php elseif ($data['siswaByNis']['angkatan'] == 'XI') : ?>
+      <?php elseif ($data['siswaByNis']['angkatan'] === 'XI') : ?>
       <option value="">Pilih Angkatan</option>
       <option value="X">X</option>
       <option value="XI" selected>XI</option>
       <option value="XII">XII</option>
-      <?php elseif ($data['siswaByNis']['angkatan'] == 'XII') : ?>
+      <?php elseif ($data['siswaByNis']['angkatan'] === 'XII') : ?>
       <option value="">Pilih Angkatan</option>
       <option value="X">X</option>
       <option value="XI">XI</option>

@@ -38,7 +38,7 @@ class Histori_model {
   }
 
   public function getAllKelas() {
-    $this->db->query("SELECT id_kelas, kelas FROM tb_kelas");
+    $this->db->query("SELECT id_kelas, kelas FROM tb_kelas ORDER BY kelas ASC");
     return $this->db->results();
   }
 
@@ -167,7 +167,7 @@ class Histori_model {
   public function getTotalTerbayarSiswa() {
     $keyword = $_POST['keyword'];
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND jumlah_bayar IS NOT NULL");
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE (nis = :nis OR nama LIKE :keyword) AND jumlah_bayar IS NOT NULL");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $total = $this->db->result();

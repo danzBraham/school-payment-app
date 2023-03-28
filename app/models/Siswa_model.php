@@ -25,7 +25,7 @@ public function getSiswaByNis($nis) {
 }
 
   public function getAllKelas() {
-    $this->db->query("SELECT id_kelas, kelas FROM tb_kelas");
+    $this->db->query("SELECT id_kelas, kelas FROM tb_kelas ORDER BY kelas");
     return $this->db->results();
   }
 

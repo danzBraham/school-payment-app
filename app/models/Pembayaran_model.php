@@ -10,7 +10,7 @@ class Pembayaran_model {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
-    $this->db->query("SELECT nis, nama, angkatan FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan");
+    $this->db->query("SELECT nis, nama, angkatan FROM tb_siswa INNER JOIN tb_spp USING(nis) WHERE (nis = :nis OR nama LIKE :keyword) AND angkatan = :angkatan");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $this->db->bind('angkatan', $angkatan);
@@ -28,7 +28,7 @@ class Pembayaran_model {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
-    $this->db->query("SELECT bulan, jumlah_bayar FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan");
+    $this->db->query("SELECT bulan, jumlah_bayar FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE (nis = :nis OR nama LIKE :keyword) AND angkatan = :angkatan");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $this->db->bind('angkatan', $angkatan);
@@ -40,7 +40,7 @@ class Pembayaran_model {
     $keyword = $_POST['keyword'];
     $angkatan = $_POST['angkatan'];
 
-    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE nis = :nis OR nama LIKE :keyword AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL");
+    $this->db->query("SELECT SUM(jumlah_bayar) FROM tb_spp INNER JOIN tb_siswa USING(nis) WHERE (nis = :nis OR nama LIKE :keyword) AND angkatan = :angkatan AND jumlah_bayar IS NOT NULL");
     $this->db->bind('nis', $keyword);
     $this->db->bind('keyword', "%$keyword%");
     $this->db->bind('angkatan', $angkatan);

@@ -40,7 +40,7 @@
     <div id="close-btn" class="close-btn"><img src="<?= BASEURL; ?>/assets/icon/close.svg"></div>
     <div class="input-box">
       <label for="kelas">Kelas</label>
-      <input type="text" id="kelas" name="kelas" placeholder="Contoh: X-RPL-1" maxlength="8" required>
+      <input type="text" id="kelas" name="kelas" placeholder="Contoh: X-RPL-1" maxlength="10" required>
     </div>
     <div class="input-box">
       <label for="jurusan">Jurusan</label>

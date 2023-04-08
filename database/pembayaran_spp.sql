@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2023 at 12:40 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Waktu pembuatan: 30 Mar 2023 pada 11.40
+-- Versi server: 10.4.27-MariaDB
+-- Versi PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kelas`
+-- Struktur dari tabel `tb_kelas`
 --
 
 CREATE TABLE `tb_kelas` (
@@ -34,7 +34,7 @@ CREATE TABLE `tb_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_kelas`
+-- Dumping data untuk tabel `tb_kelas`
 --
 
 INSERT INTO `tb_kelas` (`id_kelas`, `kelas`, `jurusan`) VALUES
@@ -44,14 +44,14 @@ INSERT INTO `tb_kelas` (`id_kelas`, `kelas`, `jurusan`) VALUES
 (4, 'XI-RPL-1', 'RPL'),
 (5, 'XI-DKV-1', 'DKV'),
 (6, 'XI-TKJ-1', 'TKJ'),
-(8, 'X-RPL-2', 'RPL'),
-(9, 'X-RPL-3', 'RPL'),
-(11, 'X-TKJ-2', 'TKJ');
+(12, 'XII-DKV-1', 'DKV'),
+(13, 'XII-RPL-1', 'RPL'),
+(14, 'XII-TKJ-1', 'TKJ');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_petugas`
+-- Struktur dari tabel `tb_petugas`
 --
 
 CREATE TABLE `tb_petugas` (
@@ -62,7 +62,7 @@ CREATE TABLE `tb_petugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_petugas`
+-- Dumping data untuk tabel `tb_petugas`
 --
 
 INSERT INTO `tb_petugas` (`id_petugas`, `username`, `password`, `level`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `tb_petugas` (`id_petugas`, `username`, `password`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_siswa`
+-- Struktur dari tabel `tb_siswa`
 --
 
 CREATE TABLE `tb_siswa` (
@@ -89,7 +89,7 @@ CREATE TABLE `tb_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_siswa`
+-- Dumping data untuk tabel `tb_siswa`
 --
 
 INSERT INTO `tb_siswa` (`nis`, `id_kelas`, `nama`, `password`, `alamat`, `no_telp`) VALUES
@@ -99,26 +99,26 @@ INSERT INTO `tb_siswa` (`nis`, `id_kelas`, `nama`, `password`, `alamat`, `no_tel
 (5004, 2, 'Rizky Billar', '123456', 'Jl. Moyoyo No. 33', '087636452837'),
 (5005, 2, 'Dewa Krsna', '123456', 'Jl. Akaka No. 77', '086574382645'),
 (5006, 2, 'Dek Ryan', '123456', 'Jl. Sesetan No. 76', '081456728645'),
-(5007, 2, 'Sancho Desa', '123456', 'Jl. Manchester No. 25', '087765628976'),
+(5007, 2, 'Ahmad Sancho', '123456', 'Jl. Manchester No. 25', '087765628976'),
 (5008, 2, 'Gung Rama', '123456', 'Jl. Bypass No. 11', '081564733847'),
 (5009, 2, 'Arin rin', '123456', 'Jl. Pemogan No. 87', '085734257463'),
 (5010, 3, 'Cristiano Rolando', '123456', 'Jl. Siuuuu No. 7', '081564738564'),
 (5011, 3, 'Marcus Rashy', '123456', 'Jl. Trafford', '081354876594'),
 (5012, 3, 'Bang Messi', '123456', 'Jl. Muca Gracias', '082745247263'),
 (5013, 2, 'Jack Joko', '123456', 'Jl. Lope', '081564738294'),
-(5014, 1, 'radit', '123456', 'sanur\r\n', '081239884705'),
+(5014, 1, 'Tegar Radit', '123456', 'Jl. Sanur\r\n', '081239884705'),
 (5015, 1, 'Anto Nirma', '123456', 'Jl. Santo', '084556587626'),
 (5016, 1, 'Kili Bape', '123456', 'Jl. Pasir', '081734628746'),
 (5017, 1, 'Rara Jojo', '123456', 'Jl. Amer', '088284657285'),
 (5018, 1, 'Alex Santo', '123456', 'Jl. Garnato', '085672834826'),
 (5019, 1, 'Andi Fredi', '123456', 'Jl. Sekte', '087735625365'),
 (5020, 2, 'Budi Kratos', '123456', 'Jl. Ragrok', '085472878628'),
-(5021, 2, 'dede', '123456', 'Jl raya sesetan. 10', '0878661050');
+(5021, 3, 'Ali Nkunku', '123456', 'Jl. Sumba', '085636482684');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_spp`
+-- Struktur dari tabel `tb_spp`
 --
 
 CREATE TABLE `tb_spp` (
@@ -131,7 +131,7 @@ CREATE TABLE `tb_spp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_spp`
+-- Dumping data untuk tabel `tb_spp`
 --
 
 INSERT INTO `tb_spp` (`id_spp`, `nis`, `bulan`, `tahun_angkatan`, `jumlah_bayar`, `angkatan`) VALUES
@@ -363,9 +363,9 @@ INSERT INTO `tb_spp` (`id_spp`, `nis`, `bulan`, `tahun_angkatan`, `jumlah_bayar`
 (298, 5007, 'April', '2023/2024', 500000, 'X'),
 (299, 5007, 'Mei', '2023/2024', 500000, 'X'),
 (300, 5007, 'Juni', '2023/2024', 500000, 'X'),
-(301, 5007, 'Juli', '2023/2024', NULL, 'XI'),
-(302, 5007, 'Agustus', '2023/2024', NULL, 'XI'),
-(303, 5007, 'September', '2023/2024', NULL, 'XI'),
+(301, 5007, 'Juli', '2023/2024', 500000, 'XI'),
+(302, 5007, 'Agustus', '2023/2024', 500000, 'XI'),
+(303, 5007, 'September', '2023/2024', 200000, 'XI'),
 (304, 5007, 'Oktober', '2023/2024', NULL, 'XI'),
 (305, 5007, 'November', '2023/2024', NULL, 'XI'),
 (306, 5007, 'Desember', '2023/2024', NULL, 'XI'),
@@ -855,47 +855,47 @@ INSERT INTO `tb_spp` (`id_spp`, `nis`, `bulan`, `tahun_angkatan`, `jumlah_bayar`
 (934, 5020, 'April', '2023/2024', NULL, 'XII'),
 (935, 5020, 'Mei', '2023/2024', NULL, 'XII'),
 (936, 5020, 'Juni', '2023/2024', NULL, 'XII'),
-(973, 5021, 'Juli', '2023/2024', 500000, 'X'),
-(974, 5021, 'Agustus', '2023/2024', 500000, 'X'),
-(975, 5021, 'September', '2023/2024', 500000, 'X'),
-(976, 5021, 'Oktober', '2023/2024', 500000, 'X'),
-(977, 5021, 'November', '2023/2024', 500000, 'X'),
-(978, 5021, 'Desember', '2023/2024', 500000, 'X'),
-(979, 5021, 'Januari', '2023/2024', 500000, 'X'),
-(980, 5021, 'Februari', '2023/2024', 500000, 'X'),
-(981, 5021, 'Maret', '2023/2024', 500000, 'X'),
-(982, 5021, 'April', '2023/2024', 500000, 'X'),
-(983, 5021, 'Mei', '2023/2024', 500000, 'X'),
-(984, 5021, 'Juni', '2023/2024', 500000, 'X'),
-(985, 5021, 'Juli', '2023/2024', NULL, 'XI'),
-(986, 5021, 'Agustus', '2023/2024', NULL, 'XI'),
-(987, 5021, 'September', '2023/2024', NULL, 'XI'),
-(988, 5021, 'Oktober', '2023/2024', NULL, 'XI'),
-(989, 5021, 'November', '2023/2024', NULL, 'XI'),
-(990, 5021, 'Desember', '2023/2024', NULL, 'XI'),
-(991, 5021, 'Januari', '2023/2024', NULL, 'XI'),
-(992, 5021, 'Februari', '2023/2024', NULL, 'XI'),
-(993, 5021, 'Maret', '2023/2024', NULL, 'XI'),
-(994, 5021, 'April', '2023/2024', NULL, 'XI'),
-(995, 5021, 'Mei', '2023/2024', NULL, 'XI'),
-(996, 5021, 'Juni', '2023/2024', NULL, 'XI'),
-(997, 5021, 'Juli', '2023/2024', NULL, 'XII'),
-(998, 5021, 'Agustus', '2023/2024', NULL, 'XII'),
-(999, 5021, 'September', '2023/2024', NULL, 'XII'),
-(1000, 5021, 'Oktober', '2023/2024', NULL, 'XII'),
-(1001, 5021, 'November', '2023/2024', NULL, 'XII'),
-(1002, 5021, 'Desember', '2023/2024', NULL, 'XII'),
-(1003, 5021, 'Januari', '2023/2024', NULL, 'XII'),
-(1004, 5021, 'Februari', '2023/2024', NULL, 'XII'),
-(1005, 5021, 'Maret', '2023/2024', NULL, 'XII'),
-(1006, 5021, 'April', '2023/2024', NULL, 'XII'),
-(1007, 5021, 'Mei', '2023/2024', NULL, 'XII'),
-(1008, 5021, 'Juni', '2023/2024', NULL, 'XII');
+(1009, 5021, 'Juli', '2023/2024', 500000, 'X'),
+(1010, 5021, 'Agustus', '2023/2024', 200000, 'X'),
+(1011, 5021, 'September', '2023/2024', NULL, 'X'),
+(1012, 5021, 'Oktober', '2023/2024', NULL, 'X'),
+(1013, 5021, 'November', '2023/2024', NULL, 'X'),
+(1014, 5021, 'Desember', '2023/2024', NULL, 'X'),
+(1015, 5021, 'Januari', '2023/2024', NULL, 'X'),
+(1016, 5021, 'Februari', '2023/2024', NULL, 'X'),
+(1017, 5021, 'Maret', '2023/2024', NULL, 'X'),
+(1018, 5021, 'April', '2023/2024', NULL, 'X'),
+(1019, 5021, 'Mei', '2023/2024', NULL, 'X'),
+(1020, 5021, 'Juni', '2023/2024', NULL, 'X'),
+(1021, 5021, 'Juli', '2023/2024', NULL, 'XI'),
+(1022, 5021, 'Agustus', '2023/2024', NULL, 'XI'),
+(1023, 5021, 'September', '2023/2024', NULL, 'XI'),
+(1024, 5021, 'Oktober', '2023/2024', NULL, 'XI'),
+(1025, 5021, 'November', '2023/2024', NULL, 'XI'),
+(1026, 5021, 'Desember', '2023/2024', NULL, 'XI'),
+(1027, 5021, 'Januari', '2023/2024', NULL, 'XI'),
+(1028, 5021, 'Februari', '2023/2024', NULL, 'XI'),
+(1029, 5021, 'Maret', '2023/2024', NULL, 'XI'),
+(1030, 5021, 'April', '2023/2024', NULL, 'XI'),
+(1031, 5021, 'Mei', '2023/2024', NULL, 'XI'),
+(1032, 5021, 'Juni', '2023/2024', NULL, 'XI'),
+(1033, 5021, 'Juli', '2023/2024', NULL, 'XII'),
+(1034, 5021, 'Agustus', '2023/2024', NULL, 'XII'),
+(1035, 5021, 'September', '2023/2024', NULL, 'XII'),
+(1036, 5021, 'Oktober', '2023/2024', NULL, 'XII'),
+(1037, 5021, 'November', '2023/2024', NULL, 'XII'),
+(1038, 5021, 'Desember', '2023/2024', NULL, 'XII'),
+(1039, 5021, 'Januari', '2023/2024', NULL, 'XII'),
+(1040, 5021, 'Februari', '2023/2024', NULL, 'XII'),
+(1041, 5021, 'Maret', '2023/2024', NULL, 'XII'),
+(1042, 5021, 'April', '2023/2024', NULL, 'XII'),
+(1043, 5021, 'Mei', '2023/2024', NULL, 'XII'),
+(1044, 5021, 'Juni', '2023/2024', NULL, 'XII');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_transaksi`
+-- Struktur dari tabel `tb_transaksi`
 --
 
 CREATE TABLE `tb_transaksi` (
@@ -907,7 +907,7 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_transaksi`
+-- Dumping data untuk tabel `tb_transaksi`
 --
 
 INSERT INTO `tb_transaksi` (`id_transaksi`, `id_petugas`, `nis`, `tgl_bayar`, `bayar`) VALUES
@@ -967,40 +967,41 @@ INSERT INTO `tb_transaksi` (`id_transaksi`, `id_petugas`, `nis`, `tgl_bayar`, `b
 (62, 1, 5016, '2023-03-13 23:51:40', 500000),
 (63, 1, 5016, '2023-03-13 23:51:55', 5500000),
 (64, 1, 5020, '2023-03-14 10:15:55', 400000),
-(65, 1, 5021, '2023-03-16 10:03:51', 12000000);
+(67, 1, 5007, '2023-03-28 19:13:33', 1200000),
+(68, 1, 5021, '2023-03-28 19:21:55', 700000);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_kelas`
+-- Indeks untuk tabel `tb_kelas`
 --
 ALTER TABLE `tb_kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indexes for table `tb_petugas`
+-- Indeks untuk tabel `tb_petugas`
 --
 ALTER TABLE `tb_petugas`
   ADD PRIMARY KEY (`id_petugas`);
 
 --
--- Indexes for table `tb_siswa`
+-- Indeks untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
   ADD PRIMARY KEY (`nis`),
   ADD KEY `fk_kelas` (`id_kelas`);
 
 --
--- Indexes for table `tb_spp`
+-- Indeks untuk tabel `tb_spp`
 --
 ALTER TABLE `tb_spp`
   ADD PRIMARY KEY (`id_spp`),
   ADD KEY `fk_nis` (`nis`);
 
 --
--- Indexes for table `tb_transaksi`
+-- Indeks untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
@@ -1008,51 +1009,51 @@ ALTER TABLE `tb_transaksi`
   ADD KEY `fk_nis_petugas` (`nis`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_kelas`
+-- AUTO_INCREMENT untuk tabel `tb_kelas`
 --
 ALTER TABLE `tb_kelas`
-  MODIFY `id_kelas` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_kelas` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `tb_petugas`
+-- AUTO_INCREMENT untuk tabel `tb_petugas`
 --
 ALTER TABLE `tb_petugas`
   MODIFY `id_petugas` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_spp`
+-- AUTO_INCREMENT untuk tabel `tb_spp`
 --
 ALTER TABLE `tb_spp`
-  MODIFY `id_spp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1009;
+  MODIFY `id_spp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1081;
 
 --
--- AUTO_INCREMENT for table `tb_transaksi`
+-- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id_transaksi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_transaksi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `tb_siswa`
+-- Ketidakleluasaan untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
   ADD CONSTRAINT `fk_kelas` FOREIGN KEY (`id_kelas`) REFERENCES `tb_kelas` (`id_kelas`);
 
 --
--- Constraints for table `tb_spp`
+-- Ketidakleluasaan untuk tabel `tb_spp`
 --
 ALTER TABLE `tb_spp`
   ADD CONSTRAINT `fk_nis` FOREIGN KEY (`nis`) REFERENCES `tb_siswa` (`nis`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tb_transaksi`
+-- Ketidakleluasaan untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   ADD CONSTRAINT `fk_nis_petugas` FOREIGN KEY (`nis`) REFERENCES `tb_siswa` (`nis`) ON DELETE CASCADE,
